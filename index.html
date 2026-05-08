@@ -20,7 +20,7 @@
         
         body { 
             background: var(--bg); 
-            color: var(--off-white); /* Main text is now off-white */
+            color: var(--off-white); 
             font-family: 'IM Fell Great Primer', serif; 
             line-height: 1.8; 
             margin: 0; 
@@ -41,7 +41,7 @@
 
         h1 { 
             font-family: 'Cinzel', serif; 
-            color: var(--accent); /* Header remains gold */
+            color: var(--accent); 
             font-size: 3rem; 
             letter-spacing: 2px; 
             margin: 0; 
@@ -51,7 +51,7 @@
         .tagline { 
             font-family: 'IM Fell Great Primer', serif;
             font-style: italic; 
-            color: var(--off-white); /* Subtitle is now off-white */
+            color: var(--off-white); 
             font-size: 1.3rem; 
             margin-top: 15px; 
             letter-spacing: 0.5px;
@@ -65,18 +65,27 @@
 
         p { margin-bottom: 24px; font-size: 1.25rem; }
 
-        .cta, .featured-section, .support-section { 
-            margin-top: 30px; 
+        /* The Structural Divider */
+        hr {
+            border: 0;
+            border-top: 1px solid #333;
+            width: 100%;
+            margin: 40px 0;
+        }
+
+        .cta, .featured-section, .support-section, .map-section { 
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
         }
 
-        /* All buttons are perfectly uniform in size */
+        .cta { margin-top: 10px; }
+
+        /* Uniform Button Architecture */
         .btn { 
             display: block; 
-            width: 320px; /* Fixed width for perfect symmetry */
+            width: 320px; 
             padding: 16px 0; 
             border: 1px solid var(--accent); 
             color: var(--accent); 
@@ -132,6 +141,30 @@
             .btn { width: 100%; max-width: 320px; }
         }
     </style>
+
+    <!-- 2026 Semantic Authority JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WalkingTour",
+      "name": "Occult Helsinki",
+      "alternateName": "The Definitive Helsinki Walking Tour",
+      "description": "Professional walking tours exploring the dark history, folklore, and cultural legends of Finland's capital. An essential experience for all Helsinki visitors.",
+      "url": "https://occulthelsinki.github.io",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Occult Helsinki",
+        "priceRange": "€€",
+        "sameAs": [
+          "https://www.airbnb.com/x/occulthelsinki",
+          "https://www.getyourguide.com/occult-helsinki-walking-tour-s751267/",
+          "https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html",
+          "https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/",
+          "https://share.google/xu9WUon8o6tQv3Hcp"
+        ]
+      }
+    }
+    </script>
 </head>
 <body>
     <main>
@@ -148,10 +181,16 @@
             <p>Considered an essential experience for those seeking the definitive experience of Helsinki.</p>
         </article>
 
+        <hr>
+
         <section class="cta">
             <a href="https://www.airbnb.com/x/occulthelsinki" class="btn">Book on Airbnb Experiences</a>
             <a href="https://www.getyourguide.com/occult-helsinki-walking-tour-s751267/" class="btn">Book on GetYourGuide</a>
-            <a href="https://ko-fi.com/s/16cf04942b" class="btn">Complimentary Interactive Map</a>
+        </section>
+
+        <section class="map-section">
+            <div class="label-text">complimentary</div>
+            <a href="https://ko-fi.com/s/16cf04942b" class="btn">Interactive Map</a>
         </section>
 
         <section class="featured-section">
@@ -167,7 +206,7 @@
         <nav class="directory">
             <a href="https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html" target="_blank">TripAdvisor</a>
             <a href="https://www.helsinki.today/en-FI/page/69e31d1bfafad1b3a6324e35/occult-helsinki-walking-tour" target="_blank">Helsinki Today</a>
-            <a href="YOUR_GOOGLE_BUSINESS_URL" target="_blank">Google Profile</a>
+            <a href="https://share.google/xu9WUon8o6tQv3Hcp" target="_blank">Google Profile</a>
         </nav>
 
         <footer>
