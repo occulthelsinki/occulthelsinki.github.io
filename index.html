@@ -7,10 +7,10 @@
     
     <link rel="canonical" href="https://occulthelsinki.github.io/" />
     
-    <!-- Google Fonts: Cinzel and IM Fell Great Primer -->
+    <!-- Google Fonts: Cinzel (Normal) and IM Fell Great Primer (Normal & Italic) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=IM+Fell+Great+Primer&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=IM+Fell+Great+Primer:ital@0;1&display=swap" rel="stylesheet">
 
     <meta name="description" content="Occult Helsinki. Professional walking tours exploring the dark history, folklore, and cultural legends of Finland’s capital. English-language storytelling grounded in historical research. The definitive tour guide of Helsinki.">
     <meta name="keywords" content="Helsinki Tours, Walking Tour Helsinki, Best Things to do in Helsinki, Helsinki Sightseeing, History Tour Finland, Cultural Activities Helsinki">
@@ -18,7 +18,7 @@
 
     <!-- Open Graph for Visual Authority -->
     <meta property="og:title" content="Occult Helsinki | The Definitive City Tour">
-    <meta property="og:description" content="The essential walking tour for those seeking the authentic history and legends of Helsinki.">
+    <meta property="og:description" content="Authentic Storytelling in The Shadows of The North.">
     <meta property="og:url" content="https://occulthelsinki.github.io/">
     <meta property="og:type" content="website">
 
@@ -53,20 +53,21 @@
             background: var(--bg); 
             color: var(--text); 
             font-family: 'IM Fell Great Primer', serif; 
-            line-height: 1.6; 
+            line-height: 1.8; 
             margin: 0; 
             padding: 60px 20px; 
             display: flex; 
             justify-content: center; 
-            text-align: center; /* Centering all text */
         }
 
-        main { max-width: 700px; width: 100%; }
+        main { max-width: 700px; width: 100%; display: flex; flex-direction: column; align-items: center; }
 
         header { 
             border-bottom: 1px solid #333; 
             margin-bottom: 40px; 
             padding-bottom: 20px; 
+            text-align: center;
+            width: 100%;
         }
 
         h1 { 
@@ -75,51 +76,83 @@
             font-size: 3rem; 
             letter-spacing: 2px; 
             margin: 0; 
-            font-weight: 400;
+            font-weight: 400; /* Normal weight */
         }
 
         .tagline { 
-            font-family: 'Cinzel', serif;
+            font-family: 'IM Fell Great Primer', serif;
             font-style: italic; 
             color: var(--accent); 
-            font-size: 1.1rem; 
+            font-size: 1.3rem; 
             margin-top: 15px; 
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
-        p { margin-bottom: 24px; font-size: 1.2rem; }
+        article {
+            text-align: justify; /* Justified text as requested */
+            width: 100%;
+        }
+
+        p { margin-bottom: 24px; font-size: 1.25rem; }
 
         .cta { 
-            margin-top: 50px; 
+            margin-top: 40px; 
             display: flex;
             flex-direction: column;
-            align-items: center; /* Centering the buttons */
+            align-items: center;
+            width: 100%;
         }
 
         .btn { 
             display: block; 
             width: fit-content; 
-            min-width: 280px;
-            padding: 18px 32px; 
+            min-width: 300px;
+            padding: 16px 30px; 
             border: 1px solid var(--accent); 
             color: var(--accent); 
             text-decoration: none; 
             transition: 0.3s; 
             margin-bottom: 15px; 
-            font-weight: bold; 
+            font-weight: 400; /* Normal weight Cinzel */
             font-size: 1.1rem;
             font-family: 'Cinzel', serif;
+            text-align: center;
+            letter-spacing: 1px;
         }
 
         .btn:hover { background: var(--accent); color: #000; }
 
         .btn-special {
-            margin-top: 20px; /* Spacing for the Map button */
+            margin-top: 10px;
             border-color: #fff;
             color: #fff;
         }
 
         .btn-special:hover { background: #fff; color: #000; }
+
+        /* The Featured In Section */
+        .featured-section {
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .featured-label {
+            font-family: 'IM Fell Great Primer', serif;
+            font-style: italic;
+            color: #888;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-featured {
+            border-color: #555;
+            color: #aaa;
+        }
+        
+        .btn-featured:hover { background: #333; color: #fff; border-color: #fff; }
 
         .directory { 
             margin-top: 60px; 
@@ -128,24 +161,28 @@
             display: flex; 
             flex-wrap: wrap; 
             gap: 25px; 
-            justify-content: center; /* Centering nav links */
+            justify-content: center; 
+            width: 100%;
         }
 
-        .directory a { color: #888; text-decoration: none; font-size: 1rem; transition: 0.3s; }
+        .directory a { color: #666; text-decoration: none; font-size: 1rem; transition: 0.3s; }
         .directory a:hover { color: var(--accent); }
 
         footer { 
             margin-top: 80px; 
             font-size: 0.9rem; 
-            color: #555; 
+            color: #444; 
             padding-top: 20px; 
             border-top: 1px solid #1a1a1a; 
+            text-align: center;
+            width: 100%;
         }
 
         /* Mobile Polish */
         @media (max-width: 600px) {
             body { padding: 40px 20px; }
             h1 { font-size: 2.2rem; }
+            article { text-align: left; } /* Justified text looks bad on very small mobile screens, so it reverts to left-aligned on phones */
             .btn { width: 100%; min-width: 0; box-sizing: border-box; }
         }
     </style>
@@ -154,7 +191,7 @@
     <main>
         <header>
             <h1>Occult Helsinki</h1>
-            <p class="tagline">Historical Research. Authentic Storytelling. The Shadows of the North.</p>
+            <p class="tagline">Authentic Storytelling in The Shadows of The North.</p>
         </header>
 
         <article>
@@ -169,13 +206,16 @@
             <a href="https://www.airbnb.com/x/occulthelsinki" class="btn" aria-label="Book via Airbnb">Book on Airbnb Experiences</a>
             <a href="https://www.getyourguide.com/occult-helsinki-walking-tour-s751267/" class="btn" aria-label="Book via GetYourGuide">Book on GetYourGuide</a>
             
-            <!-- New Map Button -->
             <a href="https://ko-fi.com/s/16cf04942b" class="btn btn-special" aria-label="Interactive Map">Complimentary Interactive Map</a>
         </section>
 
-        <nav class="directory" aria-label="External Reviews and Partners">
+        <section class="featured-section">
+            <div class="featured-label">Featured in</div>
+            <a href="https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/" class="btn btn-featured" target="_blank" aria-label="View on MyHelsinki">MyHelsinki.fi</a>
+        </section>
+
+        <nav class="directory" aria-label="External Links">
             <a href="https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html" target="_blank">TripAdvisor</a>
-            <a href="https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/" target="_blank">MyHelsinki</a>
             <a href="https://www.helsinki.today/en-FI/page/69e31d1bfafad1b3a6324e35/occult-helsinki-walking-tour" target="_blank">Helsinki Today</a>
             <a href="https://ko-fi.com/henritahvanainen" target="_blank">Support on Ko-fi</a>
         </nav>
