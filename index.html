@@ -7,51 +7,20 @@
     
     <link rel="canonical" href="https://occulthelsinki.github.io/" />
     
-    <!-- Google Fonts: Cinzel (Normal) and IM Fell Great Primer (Normal & Italic) -->
+    <!-- Google Fonts: Cinzel and IM Fell Great Primer -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=IM+Fell+Great+Primer:ital@0;1&display=swap" rel="stylesheet">
 
     <meta name="description" content="Occult Helsinki. Professional walking tours exploring the dark history, folklore, and cultural legends of Finland’s capital. English-language storytelling grounded in historical research. The definitive tour guide of Helsinki.">
-    <meta name="keywords" content="Helsinki Tours, Walking Tour Helsinki, Best Things to do in Helsinki, Helsinki Sightseeing, History Tour Finland, Cultural Activities Helsinki">
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph for Visual Authority -->
-    <meta property="og:title" content="Occult Helsinki | The Definitive City Tour">
-    <meta property="og:description" content="Authentic Storytelling in The Shadows of The North.">
-    <meta property="og:url" content="https://occulthelsinki.github.io/">
-    <meta property="og:type" content="website">
-
-    <!-- 2026 Semantic Entity JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WalkingTour",
-      "name": "Occult Helsinki",
-      "alternateName": "The Definitive Helsinki Walking Tour",
-      "description": "Professional walking tours exploring the dark history, folklore, and cultural legends of Finland's capital. An essential experience for all Helsinki visitors.",
-      "url": "https://occulthelsinki.github.io",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": "Occult Helsinki",
-        "priceRange": "€€",
-        "sameAs": [
-          "https://www.airbnb.com/x/occulthelsinki",
-          "https://www.getyourguide.com/occult-helsinki-walking-tour-s751267/",
-          "https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html",
-          "https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/",
-          "https://ko-fi.com/henritahvanainen"
-        ]
-      }
-    }
-    </script>
-
     <style>
-        :root { --accent: #b08d57; --bg: #0c0c0c; --text: #d1d1d1; }
+        :root { --accent: #b08d57; --bg: #0c0c0c; }
         
         body { 
             background: var(--bg); 
-            color: var(--text); 
+            color: var(--accent); /* All font is now the golden color */
             font-family: 'IM Fell Great Primer', serif; 
             line-height: 1.8; 
             margin: 0; 
@@ -72,37 +41,39 @@
 
         h1 { 
             font-family: 'Cinzel', serif; 
-            color: #fff; 
+            color: var(--accent); 
             font-size: 3rem; 
             letter-spacing: 2px; 
             margin: 0; 
-            font-weight: 400; /* Normal weight */
+            font-weight: 400;
         }
 
         .tagline { 
             font-family: 'IM Fell Great Primer', serif;
             font-style: italic; 
-            color: var(--accent); 
+            color: #fff; /* Subtitle is white */
             font-size: 1.3rem; 
             margin-top: 15px; 
             letter-spacing: 0.5px;
         }
 
         article {
-            text-align: justify; /* Justified text as requested */
+            text-align: justify;
+            text-justify: inter-word; /* Ensures complete justification */
             width: 100%;
         }
 
         p { margin-bottom: 24px; font-size: 1.25rem; }
 
         .cta { 
-            margin-top: 40px; 
+            margin-top: 20px; 
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
         }
 
+        /* All buttons are now the same occult golden */
         .btn { 
             display: block; 
             width: fit-content; 
@@ -113,7 +84,7 @@
             text-decoration: none; 
             transition: 0.3s; 
             margin-bottom: 15px; 
-            font-weight: 400; /* Normal weight Cinzel */
+            font-weight: 400; 
             font-size: 1.1rem;
             font-family: 'Cinzel', serif;
             text-align: center;
@@ -122,37 +93,30 @@
 
         .btn:hover { background: var(--accent); color: #000; }
 
-        .btn-special {
-            margin-top: 10px;
-            border-color: #fff;
-            color: #fff;
-        }
-
-        .btn-special:hover { background: #fff; color: #000; }
-
-        /* The Featured In Section */
+        /* Sections moved higher as requested */
         .featured-section {
-            margin-top: 60px;
+            margin-top: 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
         }
 
-        .featured-label {
+        .label-text {
             font-family: 'IM Fell Great Primer', serif;
             font-style: italic;
             color: #888;
             font-size: 1.1rem;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
-        .btn-featured {
-            border-color: #555;
-            color: #aaa;
+        .support-section {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
         }
-        
-        .btn-featured:hover { background: #333; color: #fff; border-color: #fff; }
 
         .directory { 
             margin-top: 60px; 
@@ -178,11 +142,10 @@
             width: 100%;
         }
 
-        /* Mobile Polish */
         @media (max-width: 600px) {
             body { padding: 40px 20px; }
             h1 { font-size: 2.2rem; }
-            article { text-align: left; } /* Justified text looks bad on very small mobile screens, so it reverts to left-aligned on phones */
+            article { text-align: left; } 
             .btn { width: 100%; min-width: 0; box-sizing: border-box; }
         }
     </style>
@@ -199,25 +162,30 @@
             
             <p>Our English-language storytelling is grounded in historical research and local expertise, offering tasteful travelers an authentic perspective of the city beyond the traditional tourist traps.</p>
             
-            <p>Considered an essential experience for those seeking the definitive history of Helsinki.</p>
+            <p>Considered an essential experience for those seeking the definitive experience of Helsinki.</p>
         </article>
 
         <section class="cta">
-            <a href="https://www.airbnb.com/x/occulthelsinki" class="btn" aria-label="Book via Airbnb">Book on Airbnb Experiences</a>
-            <a href="https://www.getyourguide.com/occult-helsinki-walking-tour-s751267/" class="btn" aria-label="Book via GetYourGuide">Book on GetYourGuide</a>
-            
-            <a href="https://ko-fi.com/s/16cf04942b" class="btn btn-special" aria-label="Interactive Map">Complimentary Interactive Map</a>
+            <a href="https://www.airbnb.com/x/occulthelsinki" class="btn">Book on Airbnb Experiences</a>
+            <a href="https://www.getyourguide.com/occult-helsinki-walking-tour-s751267/" class="btn">Book on GetYourGuide</a>
+            <a href="https://ko-fi.com/s/16cf04942b" class="btn">Complimentary Interactive Map</a>
         </section>
 
         <section class="featured-section">
-            <div class="featured-label">Featured in</div>
-            <a href="https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/" class="btn btn-featured" target="_blank" aria-label="View on MyHelsinki">MyHelsinki.fi</a>
+            <div class="label-text">Featured in</div>
+            <a href="https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/" class="btn">MyHelsinki.fi</a>
         </section>
 
-        <nav class="directory" aria-label="External Links">
+        <section class="support-section">
+            <div class="label-text">Support the Research</div>
+            <a href="https://ko-fi.com/henritahvanainen" class="btn">Support on Ko-fi</a>
+        </section>
+
+        <nav class="directory">
             <a href="https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html" target="_blank">TripAdvisor</a>
             <a href="https://www.helsinki.today/en-FI/page/69e31d1bfafad1b3a6324e35/occult-helsinki-walking-tour" target="_blank">Helsinki Today</a>
-            <a href="https://ko-fi.com/henritahvanainen" target="_blank">Support on Ko-fi</a>
+            <!-- Added Google Business placeholder - replace URL below with your actual link -->
+            <a href="YOUR_GOOGLE_BUSINESS_PROFILE_URL_HERE" target="_blank">Google Profile</a>
         </nav>
 
         <footer>
