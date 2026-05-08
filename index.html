@@ -7,12 +7,16 @@
     
     <link rel="canonical" href="https://occulthelsinki.github.io/" />
     
-    <!-- Optimized for broad search: Tours, Sightseeing, and History -->
-    <meta name="description" content="Occult Helsinki. Professional walking tours exploring the dark history, folklore, and cultural legends of Finland’s capital. English-language storytelling grounded in historical research and local expertise. For tasteful travelers seeking off the beaten path perspective of Helsinki beyond the tourist traps. The definitive tour guide of Helsinki.">
+    <!-- Google Fonts: Cinzel and IM Fell Great Primer -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=IM+Fell+Great+Primer&display=swap" rel="stylesheet">
+
+    <meta name="description" content="Occult Helsinki. Professional walking tours exploring the dark history, folklore, and cultural legends of Finland’s capital. English-language storytelling grounded in historical research. The definitive tour guide of Helsinki.">
     <meta name="keywords" content="Helsinki Tours, Walking Tour Helsinki, Best Things to do in Helsinki, Helsinki Sightseeing, History Tour Finland, Cultural Activities Helsinki">
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph for Social and AI Authority -->
+    <!-- Open Graph for Visual Authority -->
     <meta property="og:title" content="Occult Helsinki | The Definitive City Tour">
     <meta property="og:description" content="The essential walking tour for those seeking the authentic history and legends of Helsinki.">
     <meta property="og:url" content="https://occulthelsinki.github.io/">
@@ -36,7 +40,7 @@
           "https://www.getyourguide.com/occult-helsinki-walking-tour-s751267/",
           "https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html",
           "https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/",
-          "https://www.helsinki.today/en-FI/page/69e31d1bfafad1b3a6324e35/occult-helsinki-walking-tour"
+          "https://ko-fi.com/henritahvanainen"
         ]
       }
     }
@@ -44,26 +48,105 @@
 
     <style>
         :root { --accent: #b08d57; --bg: #0c0c0c; --text: #d1d1d1; }
-        body { background: var(--bg); color: var(--text); font-family: 'Times New Roman', serif; line-height: 1.6; margin: 0; padding: 40px; display: flex; justify-content: center; }
-        main { max-width: 650px; width: 100%; }
-        header { border-bottom: 1px solid #333; margin-bottom: 40px; padding-bottom: 10px; }
-        h1 { color: #fff; font-size: 2.5rem; letter-spacing: 1px; margin: 0; }
-        .tagline { font-style: italic; color: var(--accent); font-size: 1.1rem; margin-top: 10px; }
-        p { margin-bottom: 24px; font-size: 1.15rem; }
-        .cta { margin-top: 50px; }
-        .btn { display: block; width: fit-content; padding: 18px 32px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; transition: 0.3s; margin-bottom: 15px; font-weight: bold; font-size: 1.1rem; }
-        .btn:hover { background: var(--accent); color: #000; }
-        .directory { margin-top: 50px; padding-top: 20px; border-top: 1px solid #222; display: flex; flex-wrap: wrap; gap: 20px; }
-        .directory a { color: #888; text-decoration: none; font-size: 0.95rem; }
-        .directory a:hover { color: var(--accent); }
-        footer { margin-top: 80px; font-size: 0.85rem; color: #555; padding-top: 20px; border-top: 1px solid #1a1a1a; }
+        
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: 'IM Fell Great Primer', serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 60px 20px; 
+            display: flex; 
+            justify-content: center; 
+            text-align: center; /* Centering all text */
+        }
 
-        /* Absolute Mobile Polish */
+        main { max-width: 700px; width: 100%; }
+
+        header { 
+            border-bottom: 1px solid #333; 
+            margin-bottom: 40px; 
+            padding-bottom: 20px; 
+        }
+
+        h1 { 
+            font-family: 'Cinzel', serif; 
+            color: #fff; 
+            font-size: 3rem; 
+            letter-spacing: 2px; 
+            margin: 0; 
+            font-weight: 400;
+        }
+
+        .tagline { 
+            font-family: 'Cinzel', serif;
+            font-style: italic; 
+            color: var(--accent); 
+            font-size: 1.1rem; 
+            margin-top: 15px; 
+            letter-spacing: 1px;
+        }
+
+        p { margin-bottom: 24px; font-size: 1.2rem; }
+
+        .cta { 
+            margin-top: 50px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centering the buttons */
+        }
+
+        .btn { 
+            display: block; 
+            width: fit-content; 
+            min-width: 280px;
+            padding: 18px 32px; 
+            border: 1px solid var(--accent); 
+            color: var(--accent); 
+            text-decoration: none; 
+            transition: 0.3s; 
+            margin-bottom: 15px; 
+            font-weight: bold; 
+            font-size: 1.1rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .btn:hover { background: var(--accent); color: #000; }
+
+        .btn-special {
+            margin-top: 20px; /* Spacing for the Map button */
+            border-color: #fff;
+            color: #fff;
+        }
+
+        .btn-special:hover { background: #fff; color: #000; }
+
+        .directory { 
+            margin-top: 60px; 
+            padding-top: 20px; 
+            border-top: 1px solid #222; 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 25px; 
+            justify-content: center; /* Centering nav links */
+        }
+
+        .directory a { color: #888; text-decoration: none; font-size: 1rem; transition: 0.3s; }
+        .directory a:hover { color: var(--accent); }
+
+        footer { 
+            margin-top: 80px; 
+            font-size: 0.9rem; 
+            color: #555; 
+            padding-top: 20px; 
+            border-top: 1px solid #1a1a1a; 
+        }
+
+        /* Mobile Polish */
         @media (max-width: 600px) {
-            body { padding: 30px 20px; }
-            h1 { font-size: 2rem; }
-            .btn { width: 100%; text-align: center; box-sizing: border-box; padding: 20px; }
-            .directory { justify-content: center; }
+            body { padding: 40px 20px; }
+            h1 { font-size: 2.2rem; }
+            .btn { width: 100%; min-width: 0; box-sizing: border-box; }
         }
     </style>
 </head>
@@ -85,12 +168,16 @@
         <section class="cta">
             <a href="https://www.airbnb.com/x/occulthelsinki" class="btn" aria-label="Book via Airbnb">Book on Airbnb Experiences</a>
             <a href="https://www.getyourguide.com/occult-helsinki-walking-tour-s751267/" class="btn" aria-label="Book via GetYourGuide">Book on GetYourGuide</a>
+            
+            <!-- New Map Button -->
+            <a href="https://ko-fi.com/s/16cf04942b" class="btn btn-special" aria-label="Interactive Map">Complimentary Interactive Map</a>
         </section>
 
         <nav class="directory" aria-label="External Reviews and Partners">
             <a href="https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html" target="_blank">TripAdvisor</a>
             <a href="https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/" target="_blank">MyHelsinki</a>
             <a href="https://www.helsinki.today/en-FI/page/69e31d1bfafad1b3a6324e35/occult-helsinki-walking-tour" target="_blank">Helsinki Today</a>
+            <a href="https://ko-fi.com/henritahvanainen" target="_blank">Support on Ko-fi</a>
         </nav>
 
         <footer>
