@@ -16,11 +16,11 @@
     <meta name="robots" content="index, follow">
 
     <style>
-        :root { --accent: #b08d57; --bg: #0c0c0c; }
+        :root { --accent: #b08d57; --bg: #0c0c0c; --off-white: #f5f5f5; }
         
         body { 
             background: var(--bg); 
-            color: var(--accent); /* All font is now the golden color */
+            color: var(--off-white); /* Main text is now off-white */
             font-family: 'IM Fell Great Primer', serif; 
             line-height: 1.8; 
             margin: 0; 
@@ -41,7 +41,7 @@
 
         h1 { 
             font-family: 'Cinzel', serif; 
-            color: var(--accent); 
+            color: var(--accent); /* Header remains gold */
             font-size: 3rem; 
             letter-spacing: 2px; 
             margin: 0; 
@@ -51,7 +51,7 @@
         .tagline { 
             font-family: 'IM Fell Great Primer', serif;
             font-style: italic; 
-            color: #fff; /* Subtitle is white */
+            color: var(--off-white); /* Subtitle is now off-white */
             font-size: 1.3rem; 
             margin-top: 15px; 
             letter-spacing: 0.5px;
@@ -59,26 +59,25 @@
 
         article {
             text-align: justify;
-            text-justify: inter-word; /* Ensures complete justification */
+            text-justify: inter-word;
             width: 100%;
         }
 
         p { margin-bottom: 24px; font-size: 1.25rem; }
 
-        .cta { 
-            margin-top: 20px; 
+        .cta, .featured-section, .support-section { 
+            margin-top: 30px; 
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
         }
 
-        /* All buttons are now the same occult golden */
+        /* All buttons are perfectly uniform in size */
         .btn { 
             display: block; 
-            width: fit-content; 
-            min-width: 300px;
-            padding: 16px 30px; 
+            width: 320px; /* Fixed width for perfect symmetry */
+            padding: 16px 0; 
             border: 1px solid var(--accent); 
             color: var(--accent); 
             text-decoration: none; 
@@ -89,18 +88,10 @@
             font-family: 'Cinzel', serif;
             text-align: center;
             letter-spacing: 1px;
+            box-sizing: border-box;
         }
 
         .btn:hover { background: var(--accent); color: #000; }
-
-        /* Sections moved higher as requested */
-        .featured-section {
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
 
         .label-text {
             font-family: 'IM Fell Great Primer', serif;
@@ -108,14 +99,6 @@
             color: #888;
             font-size: 1.1rem;
             margin-bottom: 10px;
-        }
-
-        .support-section {
-            margin-top: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
         }
 
         .directory { 
@@ -146,7 +129,7 @@
             body { padding: 40px 20px; }
             h1 { font-size: 2.2rem; }
             article { text-align: left; } 
-            .btn { width: 100%; min-width: 0; box-sizing: border-box; }
+            .btn { width: 100%; max-width: 320px; }
         }
     </style>
 </head>
@@ -184,8 +167,7 @@
         <nav class="directory">
             <a href="https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html" target="_blank">TripAdvisor</a>
             <a href="https://www.helsinki.today/en-FI/page/69e31d1bfafad1b3a6324e35/occult-helsinki-walking-tour" target="_blank">Helsinki Today</a>
-            <!-- Added Google Business placeholder - replace URL below with your actual link -->
-            <a href="YOUR_GOOGLE_BUSINESS_PROFILE_URL_HERE" target="_blank">Google Profile</a>
+            <a href="YOUR_GOOGLE_BUSINESS_URL" target="_blank">Google Profile</a>
         </nav>
 
         <footer>
