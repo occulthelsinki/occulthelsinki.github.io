@@ -63,9 +63,9 @@
             width: 100%;
         }
 
-        p { margin-bottom: 24px; font-size: 1.25rem; }
+        /* Body text size reduced for elegance */
+        p { margin-bottom: 20px; font-size: 1.15rem; }
 
-        /* Unified Dividers */
         hr {
             border: 0;
             border-top: 1px solid #333;
@@ -80,7 +80,6 @@
             width: 100%;
         }
 
-        /* Standardized Button Spine */
         .btn { 
             display: block; 
             width: 320px; 
@@ -118,7 +117,8 @@
             width: 100%;
         }
 
-        .directory a { color: #666; text-decoration: none; font-size: 1rem; transition: 0.3s; }
+        /* Bottom directory links slightly enlarged */
+        .directory a { color: #666; text-decoration: none; font-size: 1.1rem; transition: 0.3s; }
         .directory a:hover { color: var(--accent); }
 
         footer { 
@@ -167,7 +167,7 @@
     <main>
         <header>
             <h1>Occult Helsinki</h1>
-            <p class="tagline">Authentic Storytelling in The Shadows of The North.</p>
+            <p class="tagline">Walking tours with a local guide</p>
         </header>
 
         <article>
@@ -188,6 +188,14 @@
 
         <hr>
 
+        <!-- Featured In moved directly under Main Booking as requested -->
+        <section>
+            <div class="label-text">Featured in</div>
+            <a href="https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/" class="btn">MyHelsinki.fi</a>
+        </section>
+
+        <hr>
+
         <!-- Map Section -->
         <section>
             <div class="label-text">Complimentary</div>
@@ -196,17 +204,9 @@
 
         <hr>
 
-        <!-- Featured Section -->
+        <!-- Support Section renamed -->
         <section>
-            <div class="label-text">Featured in</div>
-            <a href="https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/" class="btn">MyHelsinki.fi</a>
-        </section>
-
-        <hr>
-
-        <!-- Support Section -->
-        <section>
-            <div class="label-text">Support the Research</div>
+            <div class="label-text">Support the author</div>
             <a href="https://ko-fi.com/henritahvanainen" class="btn">Support on Ko-fi</a>
         </section>
 
