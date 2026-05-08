@@ -17,8 +17,8 @@
 
     <style>
         :root { 
-            --sun: #b08d57; /* Golden Sun */
-            --moon: #e0e0e0; /* Moonlit Grey-White */
+            --sun: #b08d57; /* Golden Title/Buttons */
+            --moon: #e0e0e0; /* Moonlit Narratives/Links */
             --bg: #0c0c0c; 
         }
         
@@ -29,6 +29,7 @@
             padding: 60px 20px; 
             display: flex; 
             justify-content: center; 
+            -webkit-font-smoothing: antialiased;
         }
 
         main { max-width: 700px; width: 100%; display: flex; flex-direction: column; align-items: center; }
@@ -41,7 +42,6 @@
             width: 100%;
         }
 
-        /* Title: Cinzel Sun */
         h1 { 
             font-family: 'Cinzel', serif; 
             color: var(--sun); 
@@ -51,7 +51,6 @@
             font-weight: 400;
         }
 
-        /* Subtitle: Cinzel Moon */
         .tagline { 
             font-family: 'Cinzel', serif;
             font-style: normal; 
@@ -65,16 +64,17 @@
         article {
             text-align: justify;
             text-justify: inter-word;
+            hyphens: auto; /* Required for clean justification on mobile */
+            -webkit-hyphens: auto;
             width: 100%;
         }
 
-        /* Description: IM Fell Great Primer Moon */
         p { 
             font-family: 'IM Fell Great Primer', serif;
             color: var(--moon);
             margin-bottom: 20px; 
-            font-size: 1.2rem; /* Slightly larger for serif legibility */
-            line-height: 1.8;
+            font-size: 1.05rem; /* Size reduced for elegance */
+            line-height: 1.7;
         }
 
         hr {
@@ -91,7 +91,6 @@
             width: 100%;
         }
 
-        /* Buttons: Cinzel Sun */
         .btn { 
             display: block; 
             width: 320px; 
@@ -112,7 +111,6 @@
         .btn:last-child { margin-bottom: 0; }
         .btn:hover { background: var(--sun); color: #000; }
 
-        /* Labels: IM Fell Great Primer Moon */
         .label-text {
             font-family: 'IM Fell Great Primer', serif;
             font-style: italic;
@@ -130,7 +128,6 @@
             width: 100%;
         }
 
-        /* Bottom Links: Moon color */
         .directory a { 
             font-family: 'IM Fell Great Primer', serif;
             color: var(--moon); 
@@ -154,7 +151,6 @@
         @media (max-width: 600px) {
             body { padding: 40px 20px; }
             h1 { font-size: 2.2rem; }
-            article { text-align: left; } 
             .btn { width: 100%; max-width: 320px; }
         }
     </style>
