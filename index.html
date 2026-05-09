@@ -25,7 +25,7 @@
 
     <style>
         :root { 
-            --sun: #d4af37; /* Golden Title/Buttons */
+            --sun: #d4af37; /* Your new Golden Color */
             --moon: #e0e0e0; /* Moonlit Narratives/Links */
             --bg: #0c0c0c; 
         }
@@ -44,8 +44,8 @@
 
         header { 
             border-bottom: 1px solid #333; 
-            margin-bottom: 40px; 
-            padding-bottom: 10px; 
+            margin-bottom: 30px; 
+            padding-bottom: 20px; 
             text-align: center;
             width: 100%;
         }
@@ -65,23 +65,35 @@
             color: var(--moon); 
             font-size: 1.5rem; 
             margin-top: 0; 
+            margin-bottom: 10px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+        }
+
+        /* Decorative stars style - positioned closer to tagline */
+        .stars {
+            color: var(--sun);
+            font-size: 1.2rem;
+            letter-spacing: 8px;
+            margin-bottom: 0;
+            text-align: center;
+            opacity: 0.9;
         }
 
         article {
             text-align: justify;
             text-justify: inter-word;
-            hyphens: auto; /* Required for clean justification on mobile */
+            hyphens: auto; 
             -webkit-hyphens: auto;
             width: 85%;
+            max-width: 550px; /* Constraining width for better readability */
         }
 
         p { 
             font-family: 'IM Fell Great Primer', serif;
             color: var(--moon);
             margin-bottom: 20px; 
-            font-size: 1.05rem; /* Size reduced for elegance */
+            font-size: 1.05rem; 
             line-height: 1.7;
         }
 
@@ -160,6 +172,7 @@
             body { padding: 40px 20px; }
             h1 { font-size: 2.2rem; }
             .btn { width: 100%; max-width: 320px; }
+            article { width: 100%; }
         }
     </style>
 
@@ -196,6 +209,8 @@
         <header>
             <h1>Occult Helsinki</h1>
             <p class="tagline">Walking tours</p>
+            <!-- Golden Star Seal - Now inside the header -->
+            <div class="stars">★★★★★</div>
         </header>
 
         <article>
