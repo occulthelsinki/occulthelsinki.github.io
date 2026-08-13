@@ -1,5 +1,5 @@
 # occulthelsinki.github.io
-Occult Helsinki provides professional guided walking tours exploring the dark history, folklore, and cultural heritage of Finland’s capital.
+Occult Helsinki provides professional guided walking tours exploring the fascinating history, folklore, and cultural heritage of Finland’s capital.
 
 Our English-language storytelling is grounded in historical research and local expertise, offering discerning travelers an authentic perspective of the city beyond the mundane tourist traps.
 
