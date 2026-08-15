@@ -126,12 +126,17 @@
             margin: 20px 0 10px;
             font-family: 'Cinzel', serif;
             font-size: 0.85rem;
-            color: #ffffff; /* Plain white text */
+            color: #ffffff !important;
             letter-spacing: 1px;
             text-align: center;
         }
 
+        .logistics-bar span {
+            color: #ffffff !important;
+        }
+
         .logistics-bar span.sep {
+            color: #ffffff !important;
             opacity: 0.5;
         }
 
@@ -153,16 +158,18 @@
         }
 
         .author-link {
-            color: var(--sun);
-            text-decoration: none;
-            border-bottom: none; /* Removed underline */
+            color: var(--sun) !important;
+            text-decoration: none !important;
+            border-bottom: none !important;
+            box-shadow: none !important;
+            outline: none !important;
             transition: color 0.2s ease;
         }
 
         .author-link:hover {
-            color: #ffffff;
-            text-decoration: none;
-            border-bottom: none;
+            color: #ffffff !important;
+            text-decoration: none !important;
+            border-bottom: none !important;
         }
 
         hr {
