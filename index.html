@@ -62,7 +62,7 @@
         :root { 
             --sun: #d4af37; /* Golden Accent */
             --moon: #e0e0e0; /* Off-white text */
-            --muted: #F2F2F2; /* Neutral muted for specs */
+            --muted: #a0a0a0; /* Neutral muted for specs */
             --bg: #0c0c0c; 
         }
         
@@ -185,6 +185,7 @@
             width: 320px; 
             padding: 16px 0; 
             border: 1px solid var(--sun); 
+            background: transparent;
             color: var(--sun); 
             text-decoration: none; 
             transition: 0.3s ease; 
@@ -195,10 +196,35 @@
             text-align: center;
             letter-spacing: 1px;
             box-sizing: border-box;
+            cursor: pointer;
         }
 
         .btn:last-child { margin-bottom: 0; }
         .btn:hover { background: var(--sun); color: #000; }
+
+        .email-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            position: relative;
+        }
+
+        .copy-tooltip {
+            font-family: 'IM Fell Great Primer', serif;
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--moon);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            pointer-events: none;
+            margin-top: 6px;
+        }
 
         .label-text {
             font-family: 'IM Fell Great Primer', serif;
@@ -262,7 +288,7 @@
           "url": "https://occulthelsinki.com",
           "logo": "https://occulthelsinki.com/favicon.ico",
           "image": "https://occulthelsinki.com/favicon.ico",
-          "email": "contact@henritahvanainen.com",
+          "email": "contact@occulthelsinki.com",
           "description": "Occult Helsinki provides professional guided walking tours showcasing the highlights and hidden gems of Finland’s capital. Operated personally by local Finnish performer Henri Tahvanainen.",
           "priceRange": "€€",
           "currenciesAccepted": "EUR",
@@ -303,7 +329,7 @@
           ],
           "contactPoint": {
             "@type": "ContactPoint",
-            "email": "contact@henritahvanainen.com",
+            "email": "contact@occulthelsinki.com",
             "contactType": "customer service",
             "availableLanguage": ["Finnish", "English"]
           },
@@ -369,7 +395,7 @@
               "name": "Can I book a private or corporate tour?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes, private group and corporate walking tours can be arranged upon request in English or Finnish by contacting contact@henritahvanainen.com."
+                "text": "Yes, private group and corporate walking tours can be arranged upon request in English or Finnish by contacting contact@occulthelsinki.com."
               }
             },
             {
@@ -425,7 +451,18 @@
             <div class="label-text">Book now</div>
             <a href="https://www.airbnb.com/x/occulthelsinki" target="_blank" rel="noopener noreferrer" class="btn">on Airbnb Experiences</a>
             <a href="https://www.getyourguide.com/occult-helsinki-walking-tour-s751267/" target="_blank" rel="noopener noreferrer" class="btn">on GetYourGuide</a>
-            <a href="mailto:contact@henritahvanainen.com?subject=Private%20Tour%20Inquiry%20-%20Occult%20Helsinki" class="btn">Private Tour Inquiries</a>
+        </section>
+
+        <hr>
+
+        <section>
+            <div class="label-text">Private tour inquiries</div>
+            <div class="email-container">
+                <button type="button" class="btn" onclick="copyEmail(event)" title="Click to copy email address">
+                    contact@occulthelsinki.com
+                </button>
+                <span id="copy-feedback" class="copy-tooltip">Copied to clipboard!</span>
+            </div>
         </section>
 
         <hr>
@@ -461,5 +498,30 @@
             &copy; 2026 Henri Tahvanainen. All rights reserved.
         </footer>
     </main>
+
+    <script>
+        function copyEmail(event) {
+            event.preventDefault();
+            var email = "contact@occulthelsinki.com";
+            var tempInput = document.createElement("input");
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand("copy");
+            } catch (err) {
+                console.error("Unable to copy email", err);
+            }
+            document.body.removeChild(tempInput);
+
+            var feedback = document.getElementById("copy-feedback");
+            if (feedback) {
+                feedback.style.opacity = "1";
+                setTimeout(function() {
+                    feedback.style.opacity = "0";
+                }, 2000);
+            }
+        }
+    </script>
 </body>
 </html>
