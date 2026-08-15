@@ -19,6 +19,11 @@
       })();
     </script>
 
+    <!-- DNS Prefetch for Booking Partners -->
+    <link rel="dns-prefetch" href="https://www.airbnb.com">
+    <link rel="dns-prefetch" href="https://www.getyourguide.com">
+    <link rel="dns-prefetch" href="https://www.tripadvisor.com">
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +32,7 @@
     <link rel="canonical" href="https://occulthelsinki.com/" />
     
     <!-- Meta Descriptions & Search Directives -->
-    <meta name="description" content="Occult Helsinki Walking Tours by Henri Tahvanainen. The best thing to do in Helsinki: exploring architecture, folklore, symbolism, and hidden cultural gems.">
+    <meta name="description" content="Occult Helsinki provides professional guided walking tours showcasing the highlights and hidden gems of Finland’s capital. Operated personally by local Finnish performer Henri Tahvanainen.">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Henri Tahvanainen">
     <meta name="geo.region" content="FI-18">
@@ -36,15 +41,17 @@
     <!-- Open Graph / Social Sharing Metadata -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://occulthelsinki.com/">
-    <meta property="og:title" content="Occult Helsinki | Walking Tours with Henri Tahvanainen">
-    <meta property="og:description" content="Discover the best thing to do in Helsinki. Henri Tahvanainen showcases the capital's hidden gems, folklore, architecture, and symbolism.">
+    <meta property="og:title" content="Occult Helsinki | Guided Walking Tours with Henri Tahvanainen">
+    <meta property="og:description" content="Professional guided walking tours showcasing the highlights and hidden gems of Helsinki. Immersive storytelling in folklore, architecture, and cultural heritage.">
+    <meta property="og:image" content="https://occulthelsinki.com/favicon.ico">
     <meta property="og:site_name" content="Occult Helsinki">
     <meta property="og:locale" content="en_US">
     
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Occult Helsinki | Walking Tours with Henri Tahvanainen">
-    <meta name="twitter:description" content="Discover the best thing to do in Helsinki. Henri Tahvanainen showcases the capital's hidden gems, folklore, architecture, and symbolism.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Occult Helsinki | Guided Walking Tours with Henri Tahvanainen">
+    <meta name="twitter:description" content="Professional guided walking tours showcasing the highlights and hidden gems of Helsinki. Immersive storytelling in folklore, architecture, and cultural heritage.">
+    <meta name="twitter:image" content="https://occulthelsinki.com/favicon.ico">
 
     <!-- Google Fonts: Cinzel and IM Fell Great Primer -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,6 +62,7 @@
         :root { 
             --sun: #d4af37; /* Golden Accent */
             --moon: #e0e0e0; /* Off-white text */
+            --muted: #a0a0a0; /* Neutral muted for specs */
             --bg: #0c0c0c; 
         }
         
@@ -119,13 +127,14 @@
             margin: 20px 0 10px;
             font-family: 'Cinzel', serif;
             font-size: 0.85rem;
-            color: var(--sun);
+            color: var(--muted);
             letter-spacing: 1px;
             text-align: center;
+            opacity: 0.9;
         }
 
         .logistics-bar span.sep {
-            opacity: 0.5;
+            opacity: 0.35;
         }
 
         article {
@@ -145,14 +154,16 @@
             line-height: 1.7;
         }
 
-        p a.inline-link {
+        .author-link {
             color: var(--sun);
-            text-decoration: underline;
-            text-underline-offset: 3px;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+            transition: 0.2s ease;
         }
 
-        p a.inline-link:hover {
-            color: #fff;
+        .author-link:hover {
+            color: #ffffff;
+            border-bottom-color: #ffffff;
         }
 
         hr {
@@ -250,7 +261,9 @@
           ],
           "url": "https://occulthelsinki.com",
           "logo": "https://occulthelsinki.com/favicon.ico",
-          "description": "Professional guided walking tours in Helsinki operated personally by Henri Tahvanainen, exploring the city's architectural symbolism, folklore, mythology, and hidden gems.",
+          "image": "https://occulthelsinki.com/favicon.ico",
+          "email": "contact@henritahvanainen.com",
+          "description": "Occult Helsinki provides professional guided walking tours showcasing the highlights and hidden gems of Finland’s capital. Operated personally by local Finnish performer Henri Tahvanainen.",
           "priceRange": "€€",
           "currenciesAccepted": "EUR",
           "founder": {
@@ -278,6 +291,22 @@
             "name": "Helsinki"
           },
           "knowsLanguage": ["en", "fi"],
+          "knowsAbout": [
+            "Helsinki History",
+            "Finnish Mythology",
+            "Art Nouveau Architecture",
+            "Jugendstil",
+            "Folklore",
+            "Symbolism",
+            "Esotericism",
+            "Guided Walking Tours"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@henritahvanainen.com",
+            "contactType": "customer service",
+            "availableLanguage": ["Finnish", "English"]
+          },
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "5.0",
@@ -324,7 +353,7 @@
               "name": "Who guides the Occult Helsinki walking tours?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "All tours are personally operated and guided by Henri Tahvanainen, a Finnish performing audiovisual artist, actor, and storyteller with deep connection to Finnish culture and lore."
+                "text": "All tours are personally operated and guided by Henri Tahvanainen, a Finnish performing audiovisual artist, actor, and storyteller with a deep connection to Finnish culture and lore."
               }
             },
             {
@@ -337,10 +366,18 @@
             },
             {
               "@type": "Question",
+              "name": "Can I book a private or corporate tour?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, private group and corporate walking tours can be arranged upon request in English or Finnish by contacting contact@henritahvanainen.com."
+              }
+            },
+            {
+              "@type": "Question",
               "name": "What language is the tour conducted in?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Tours are conducted in fluent English, delivering an engaging and authentic experience for international travelers."
+                "text": "Public tours are conducted in fluent English, delivering an engaging and authentic experience for international travelers."
               }
             }
           ]
@@ -373,11 +410,13 @@
         </div>
 
         <article>
-            <p>Occult Helsinki provides exclusive walking tours widely considered the best thing to do in Helsinki for curious minds and lovers of arts, architecture, and history.</p>
+            <p>Occult Helsinki provides professional guided walking tours showcasing the highlights and hidden gems of Finland’s capital. Perfect for all curious minds and lovers of art, architecture, and history.</p>
             
-            <p>Henri Tahvanainen operates Occult Helsinki Walking Tours, where he personally showcases the highlights and hidden gems of Finland's capital. Drawing from history, folklore, mythology, and symbolism, he serves guests with meaningful experiences through engaging and insightful storytelling with a side of warm local hospitality.</p>
+            <p>All tours are operated by local Finnish performer <a href="https://henritahvanainen.com" target="_blank" rel="noopener noreferrer" class="author-link">Henri Tahvanainen</a>, who personally guides guests and immerses them in cultural heritage while helping them discover hidden details in their surroundings.</p>
             
-            <p>English-language storytelling grounded in research and performance craft, offering discerning travelers an authentic perspective of the city far beyond ordinary tourist routes. Exclusively limited spots available.</p>
+            <p>Drawing from history, folklore, mythology, and symbolism, he serves guests with meaningful experiences through engaging and insightful storytelling, with a side of warm local hospitality.</p>
+            
+            <p>Considered the best thing to do in Helsinki for discerning travelers who want an authentic perspective of the city beyond the mundane tourist traps. Strictly limited spots available.</p>
         </article>
 
         <hr>
@@ -386,6 +425,7 @@
             <div class="label-text">Book now</div>
             <a href="https://www.airbnb.com/x/occulthelsinki" target="_blank" rel="noopener noreferrer" class="btn">on Airbnb Experiences</a>
             <a href="https://www.getyourguide.com/occult-helsinki-walking-tour-s751267/" target="_blank" rel="noopener noreferrer" class="btn">on GetYourGuide</a>
+            <a href="mailto:contact@henritahvanainen.com?subject=Private%20Tour%20Inquiry%20-%20Occult%20Helsinki" class="btn">Private Tour Inquiries</a>
         </section>
 
         <hr>
