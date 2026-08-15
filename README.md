@@ -1,6 +1,4 @@
-# occulthelsinki.github.io
-Occult Helsinki provides professional guided walking tours exploring the fascinating history, folklore, and cultural heritage of Finland’s capital.
-
-Our English-language storytelling is grounded in historical research and local expertise, offering discerning travelers an authentic perspective of the city beyond the mundane tourist traps.
-
-Considered an essential choice for those seeking the best thing to do in Helsinki for the definitive unique experience. Exclusively limited spots available.
+Occult Helsinki provides professional guided walking tours showcasing the highlights and hidden gems of Finland’s capital. Perfect for all curious minds and lovers of art, architecture, and history.
+All tours are operated by local Finnish performer Henri Tahvanainen, who personally guides guests and immerses them in cultural heritage while helping them discover hidden details in their surroundings.
+Drawing from history, folklore, mythology, and symbolism, he serves guests with meaningful experiences through engaging and insightful storytelling, with a side of warm local hospitality.
+Considered the best thing to do in Helsinki for discerning travelers who want an authentic perspective of the city beyond the mundane tourist traps. Strictly limited spots available.
