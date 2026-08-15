@@ -20,25 +20,41 @@
     </script>
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Occult Helsinki | Walking Tours</title>
+    <title>Occult Helsinki | Guided Walking Tours with Henri Tahvanainen</title>
     
     <link rel="canonical" href="https://occulthelsinki.com/" />
     
+    <!-- Meta Descriptions & Search Directives -->
+    <meta name="description" content="Occult Helsinki Walking Tours by Henri Tahvanainen. The best thing to do in Helsinki: exploring architecture, folklore, symbolism, and hidden cultural gems.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Henri Tahvanainen">
+    <meta name="geo.region" content="FI-18">
+    <meta name="geo.placename" content="Helsinki">
+
+    <!-- Open Graph / Social Sharing Metadata -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://occulthelsinki.com/">
+    <meta property="og:title" content="Occult Helsinki | Walking Tours with Henri Tahvanainen">
+    <meta property="og:description" content="Discover the best thing to do in Helsinki. Henri Tahvanainen showcases the capital's hidden gems, folklore, architecture, and symbolism.">
+    <meta property="og:site_name" content="Occult Helsinki">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Occult Helsinki | Walking Tours with Henri Tahvanainen">
+    <meta name="twitter:description" content="Discover the best thing to do in Helsinki. Henri Tahvanainen showcases the capital's hidden gems, folklore, architecture, and symbolism.">
+
     <!-- Google Fonts: Cinzel and IM Fell Great Primer -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=IM+Fell+Great+Primer:ital@0;1&display=swap" rel="stylesheet">
-
-    <meta name="description" content="Occult Helsinki. Professional walking tours exploring the fascinating history, folklore, and cultural legends of Finland’s capital. English-language storytelling grounded in historical research. The definitive tour guide of Helsinki.">
-    <meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=IM+Fell+Great+Primer:ital@0;1&display=swap" rel="stylesheet">
 
     <style>
         :root { 
-            --sun: #d4af37; /* Your new Golden Color */
-            --moon: #e0e0e0; /* Moonlit Narratives/Links */
+            --sun: #d4af37; /* Golden Accent */
+            --moon: #e0e0e0; /* Off-white text */
             --bg: #0c0c0c; 
         }
         
@@ -75,24 +91,41 @@
             font-family: 'Cinzel', serif;
             font-style: normal; 
             color: var(--moon); 
-            font-size: 1.5rem; 
-            margin-top: 0; 
+            font-size: 1.4rem; 
+            margin-top: 5px; 
             margin-bottom: 10px;
             line-height: 1;
             letter-spacing: 1.5px;
             text-transform: uppercase;
         }
 
-        /* Decorative stars style - positioned closer to tagline */
         .stars {
             color: var(--sun);
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             letter-spacing: 8px;
-            margin-top: -4px;
-            margin-bottom: -4px;
+            margin-top: -2px;
+            margin-bottom: -2px;
             line-height: 1;
             text-align: center;
             opacity: 0.9;
+        }
+
+        .logistics-bar {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0 10px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            color: var(--sun);
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .logistics-bar span.sep {
+            opacity: 0.5;
         }
 
         article {
@@ -101,15 +134,25 @@
             hyphens: auto; 
             -webkit-hyphens: auto;
             width: 85%;
-            max-width: 550px; /* Constraining width for better readability */
+            max-width: 550px;
         }
 
         p { 
             font-family: 'IM Fell Great Primer', serif;
-            color: var(--moon);
+            color: var(--moon); 
             margin-bottom: 20px; 
             font-size: 1.05rem; 
             line-height: 1.7;
+        }
+
+        p a.inline-link {
+            color: var(--sun);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        p a.inline-link:hover {
+            color: #fff;
         }
 
         hr {
@@ -133,7 +176,7 @@
             border: 1px solid var(--sun); 
             color: var(--sun); 
             text-decoration: none; 
-            transition: 0.3s; 
+            transition: 0.3s ease; 
             margin-bottom: 15px; 
             font-weight: 400; 
             font-size: 1.1rem;
@@ -168,7 +211,7 @@
             color: var(--moon); 
             text-decoration: none; 
             font-size: 1.1rem; 
-            transition: 0.3s; 
+            transition: 0.3s ease; 
             opacity: 0.8; 
         }
         .directory a:hover { color: var(--sun); opacity: 1; }
@@ -176,7 +219,8 @@
         footer { 
             margin-top: 80px; 
             font-size: 0.9rem; 
-            color: #444; 
+            font-family: 'IM Fell Great Primer', serif;
+            color: #555; 
             padding-top: 20px; 
             border-top: 1px solid #1a1a1a; 
             text-align: center;
@@ -191,26 +235,117 @@
         }
     </style>
 
+    <!-- Comprehensive Linked Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WalkingTour",
-      "name": "Occult Helsinki",
-      "alternateName": "Authentic Walking Tours with a local guide",
-      "description": "Professional walking tours exploring the fascinating history, folklore, and cultural legends of Finland's capital.",
-      "url": "https://occulthelsinki.github.io",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": "Occult Helsinki",
-        "priceRange": "€€",
-        "sameAs": [
-          "https://www.airbnb.com/x/occulthelsinki",
-          "https://www.getyourguide.com/occult-helsinki-walking-tour-s751267/",
-          "https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html",
-          "https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/",
-          "https://share.google/xu9WUon8o6tQv3Hcp"
-        ]
-      }
+      "@graph": [
+        {
+          "@type": ["TourOperator", "LocalBusiness"],
+          "@id": "https://occulthelsinki.com/#organization",
+          "name": "Occult Helsinki Walking Tours",
+          "alternateName": [
+            "Occult Helsinki",
+            "Occult Helsinki Tours"
+          ],
+          "url": "https://occulthelsinki.com",
+          "logo": "https://occulthelsinki.com/favicon.ico",
+          "description": "Professional guided walking tours in Helsinki operated personally by Henri Tahvanainen, uncovering the city's architectural symbolism, folklore, mythology, and hidden gems.",
+          "priceRange": "€€",
+          "currenciesAccepted": "EUR",
+          "founder": {
+            "@type": "Person",
+            "@id": "https://henritahvanainen.com/#person",
+            "name": "Henri Tahvanainen",
+            "url": "https://henritahvanainen.com",
+            "sameAs": [
+              "https://www.wikidata.org/wiki/Q141081833",
+              "https://imdb.me/henritahvanainen",
+              "https://www.linkedin.com/in/henritahvanainen"
+            ]
+          },
+          "employee": {
+            "@id": "https://henritahvanainen.com/#person"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Helsinki",
+            "addressRegion": "Uusimaa",
+            "addressCountry": "FI"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Helsinki"
+          },
+          "knowsLanguage": ["en", "fi"],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "bestRating": "5",
+            "worstRating": "1",
+            "ratingCount": "35",
+            "reviewCount": "35"
+          },
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q141082275",
+            "https://www.airbnb.com/x/occulthelsinki",
+            "https://www.getyourguide.com/occult-helsinki-walking-tour-s751267/",
+            "https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html",
+            "https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/",
+            "https://www.helsinki.today/en-FI/page/69e31d1bfafad1b3a6324e35/occult-helsinki-walking-tour",
+            "https://share.google/xu9WUon8o6tQv3Hcp"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Helsinki Walking Tours",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "TouristTrip",
+                  "name": "Occult Helsinki Guided Walking Tour",
+                  "description": "A 3 to 4 km English-language walking tour personally hosted by Henri Tahvanainen exploring Helsinki's folklore, architecture, mythology, and hidden history.",
+                  "touristType": [
+                    "Cultural tourists",
+                    "History enthusiasts",
+                    "Art & Architecture lovers"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://occulthelsinki.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Who guides the Occult Helsinki walking tours?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "All tours are personally operated and guided by Henri Tahvanainen, a Finnish performing audiovisual artist, actor, and storyteller with deep expertise in Finnish culture and lore."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What distance does the walking tour cover?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The walking tour typically covers a comfortable 3 to 4 km route through historic central Helsinki."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What language is the tour conducted in?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Tours are conducted in fluent English, delivering an engaging and authentic experience for international travelers."
+              }
+            }
+          ]
+        }
+      ]
     }
     </script>
 </head>
@@ -224,57 +359,66 @@
         <header>
             <h1>Occult Helsinki</h1>
             <p class="tagline">Walking tours</p>
-            <!-- Golden Star Seal - Now inside the header -->
-            <div class="stars">★★★★★</div>
+            <div class="stars" aria-label="5 Star Rating">★★★★★</div>
         </header>
 
+        <div class="logistics-bar">
+            <span>⏳ ~100–120 MIN</span>
+            <span class="sep">•</span>
+            <span>🚶 3–4 KM ROUTE</span>
+            <span class="sep">•</span>
+            <span>📍 CENTRAL HELSINKI</span>
+            <span class="sep">•</span>
+            <span>🗣️ ENGLISH</span>
+        </div>
+
         <article>
-            <p>Occult Helsinki provides professional guided walking tours exploring the fascinating history, folklore, and cultural heritage of Finland’s capital.</p>
+            <p>Occult Helsinki provides premier walking tours widely considered the best thing to do in Helsinki for curious minds and lovers of arts, architecture, and history.</p>
             
-            <p>Our English-language storytelling is grounded in historical research and local expertise, offering discerning travelers an authentic perspective of the city beyond the mundane tourist traps.</p>
+            <p>Henri Tahvanainen operates Occult Helsinki Walking Tours, where he personally showcases the highlights and hidden gems of Finland's capital. Drawing from history, folklore, mythology, and symbolism, he serves guests with meaningful experiences through engaging and insightful storytelling with a side of warm local hospitality.</p>
             
-            <p>Considered an essential choice for those seeking the best thing to do in Helsinki for the definitive unique experience. Exclusively limited spots available.</p>
+            <p>English-language storytelling grounded in research and performance craft, offering discerning travelers an authentic perspective of the city far beyond ordinary tourist routes. Exclusively limited spots available.</p>
         </article>
 
         <hr>
 
         <section>
             <div class="label-text">Book now</div>
-            <a href="https://www.airbnb.com/x/occulthelsinki" class="btn">on Airbnb Experiences</a>
-            <a href="https://www.getyourguide.com/occult-helsinki-walking-tour-s751267/" class="btn">on GetYourGuide</a>
+            <a href="https://www.airbnb.com/x/occulthelsinki" target="_blank" rel="noopener noreferrer" class="btn">on Airbnb Experiences</a>
+            <a href="https://www.getyourguide.com/occult-helsinki-walking-tour-s751267/" target="_blank" rel="noopener noreferrer" class="btn">on GetYourGuide</a>
         </section>
 
         <hr>
 
         <section>
             <div class="label-text">Featured in</div>
-            <a href="https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/" class="btn">MyHelsinki.fi</a>
+            <a href="https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/" target="_blank" rel="noopener noreferrer" class="btn">MyHelsinki.fi</a>
         </section>
 
         <hr>
 
         <section>
             <div class="label-text">Complimentary</div>
-            <a href="https://ko-fi.com/s/16cf04942b" class="btn">Interactive Map</a>
+            <a href="https://ko-fi.com/s/16cf04942b" target="_blank" rel="noopener noreferrer" class="btn">Interactive Map</a>
         </section>
 
         <hr>
 
         <section>
-            <div class="label-text">Support the author</div>
-            <a href="https://ko-fi.com/henritahvanainen" class="btn">Support on Ko-fi</a>
+            <div class="label-text">About the guide</div>
+            <a href="https://henritahvanainen.com" target="_blank" rel="noopener noreferrer" class="btn">Henri Tahvanainen</a>
         </section>
 
         <hr>
 
         <nav class="directory">
-            <a href="https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html" target="_blank">TripAdvisor</a>
-            <a href="https://www.helsinki.today/en-FI/page/69e31d1bfafad1b3a6324e35/occult-helsinki-walking-tour" target="_blank">Helsinki Today</a>
-            <a href="https://share.google/xu9WUon8o6tQv3Hcp" target="_blank">Google Profile</a>
+            <a href="https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html" target="_blank" rel="noopener noreferrer">TripAdvisor</a>
+            <a href="https://www.helsinki.today/en-FI/page/69e31d1bfafad1b3a6324e35/occult-helsinki-walking-tour" target="_blank" rel="noopener noreferrer">Helsinki Today</a>
+            <a href="https://share.google/xu9WUon8o6tQv3Hcp" target="_blank" rel="noopener noreferrer">Google Profile</a>
         </nav>
 
         <footer>
-            &copy; 2026 Occult Helsinki. All rights reserved.
+            &copy; 2026 Occult Helsinki. Operated by Henri Tahvanainen. All rights reserved.
         </footer>
     </main>
 </body>
