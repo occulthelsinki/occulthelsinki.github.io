@@ -62,7 +62,6 @@
         :root { 
             --sun: #d4af37; /* Golden Accent */
             --moon: #e0e0e0; /* Off-white text */
-            --muted: #a0a0a0; /* Neutral muted for specs */
             --bg: #0c0c0c; 
         }
         
@@ -127,14 +126,13 @@
             margin: 20px 0 10px;
             font-family: 'Cinzel', serif;
             font-size: 0.85rem;
-            color: var(--muted);
+            color: #ffffff; /* Plain white text */
             letter-spacing: 1px;
             text-align: center;
-            opacity: 0.9;
         }
 
         .logistics-bar span.sep {
-            opacity: 0.35;
+            opacity: 0.5;
         }
 
         article {
@@ -157,13 +155,14 @@
         .author-link {
             color: var(--sun);
             text-decoration: none;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.4);
-            transition: 0.2s ease;
+            border-bottom: none; /* Removed underline */
+            transition: color 0.2s ease;
         }
 
         .author-link:hover {
             color: #ffffff;
-            border-bottom-color: #ffffff;
+            text-decoration: none;
+            border-bottom: none;
         }
 
         hr {
@@ -202,7 +201,6 @@
         .btn:last-child { margin-bottom: 0; }
         .btn:hover { background: var(--sun); color: #000; }
 
-        /* Dedicated Email Copy Button Styling */
         .btn-email {
             font-size: 0.95rem;
             font-family: 'Cinzel', serif;
@@ -520,7 +518,6 @@
 
     <script>
         function copyEmail(event) {
-            // Only trigger auto-copy if the user is not actively selecting text
             var selection = window.getSelection().toString();
             if (selection.length > 0) return;
 
