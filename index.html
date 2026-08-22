@@ -57,7 +57,7 @@
     <style>
         :root { 
             --sun: #d4af37; /* Golden Accent */
-            --moon: #e0e0e0; /* Off-white text */
+            --moon: #e0e0e0; /* Off-white body text */
             --bg: #111213; 
             --card-bg: #18191c;
             --border-color: #26272b;
@@ -67,18 +67,23 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body { 
             background: var(--bg); 
             color: var(--moon); 
             margin: 0; 
-            padding: 24px 16px 100px; 
+            padding: 24px 16px 110px; 
             display: flex; 
             justify-content: center; 
             -webkit-font-smoothing: antialiased;
+            font-family: 'IM Fell Great Primer', serif;
         }
 
         main { 
-            max-width: 780px; 
+            max-width: 820px; 
             width: 100%; 
             display: flex; 
             flex-direction: column; 
@@ -96,9 +101,9 @@
         h1 { 
             font-family: 'Cinzel', serif; 
             color: var(--sun); 
-            font-size: 2.6rem; 
-            letter-spacing: 2px; 
-            margin: 0 0 2px; 
+            font-size: clamp(2.4rem, 5vw, 3.4rem); 
+            letter-spacing: 2.5px; 
+            margin: 0 0 4px; 
             font-weight: 400;
             line-height: 1.15;
         }
@@ -107,16 +112,16 @@
             font-family: 'Cinzel', serif;
             font-style: normal; 
             color: #ffffff; 
-            font-size: 1.2rem; 
+            font-size: clamp(1.15rem, 2.5vw, 1.45rem); 
             margin: 0 0 6px;
             line-height: 1.1;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
         .stars {
             color: var(--sun);
-            font-size: 1.2rem;
+            font-size: clamp(1.2rem, 2.5vw, 1.45rem);
             letter-spacing: 6px;
             margin: 0 0 4px;
             line-height: 1;
@@ -126,13 +131,13 @@
 
         .logistics-bar {
             display: flex;
-            gap: 10px;
+            gap: 10px 14px;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             margin: 10px 0 16px;
             font-family: 'Cinzel', serif;
-            font-size: 0.82rem;
+            font-size: clamp(0.82rem, 1.8vw, 0.95rem);
             color: #ffffff !important;
             letter-spacing: 1px;
             text-align: center;
@@ -147,11 +152,83 @@
             opacity: 0.5;
         }
 
+        /* Nav Accordion */
+        .nav-accordion-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 0 16px;
+        }
+
+        .nav-accordion-content {
+            display: none;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 10px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 16px;
+        }
+
+        .nav-links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .nav-links-grid a {
+            display: block;
+            padding: 10px 8px;
+            background: #111213;
+            border: 1px solid #333;
+            color: #ffffff;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            text-decoration: none;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links-grid a:hover {
+            border-color: #ffffff;
+            background: #ffffff;
+            color: #000000;
+        }
+
         /* Embed Container Spacing */
         .embed-wrapper {
             width: 100%;
             margin: 0 0 14px;
             background: transparent;
+        }
+
+        /* White General Buttons (Non-Book Now) */
+        .btn-white {
+            display: block; 
+            width: 100%;
+            max-width: 500px;
+            padding: 14px 18px; 
+            border: 1px solid #ffffff; 
+            background: transparent;
+            color: #ffffff; 
+            text-decoration: none; 
+            transition: 0.3s ease; 
+            font-weight: 600; 
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .btn-white:hover {
+            background: #ffffff;
+            color: #0c0c0c;
         }
 
         /* Collapsible Info Button & Content */
@@ -163,39 +240,15 @@
             margin: 4px 0 16px;
         }
 
-        .btn-info {
-            display: block; 
-            width: 100%;
-            max-width: 480px;
-            padding: 13px 16px; 
-            border: 1px solid var(--sun); 
-            background: transparent;
-            color: var(--sun); 
-            text-decoration: none; 
-            transition: 0.3s ease; 
-            font-weight: 600; 
-            font-size: 0.95rem;
-            font-family: 'Cinzel', serif;
-            text-align: center;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            cursor: pointer;
-        }
-
-        .btn-info:hover {
-            background: var(--sun);
-            color: #0c0c0c;
-        }
-
         .info-content {
             display: none;
             width: 100%;
-            max-width: 640px;
+            max-width: 680px;
             margin-top: 14px;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-left: 3px solid var(--sun);
-            padding: 22px 24px;
+            border-left: 3px solid #ffffff;
+            padding: 24px 28px;
             text-align: left;
             hyphens: none;
             -webkit-hyphens: none;
@@ -203,11 +256,10 @@
         }
 
         .info-content p { 
-            font-family: 'IM Fell Great Primer', serif;
             color: var(--moon); 
             margin: 0 0 14px; 
-            font-size: 1.02rem; 
-            line-height: 1.7;
+            font-size: clamp(1.02rem, 1.8vw, 1.15rem); 
+            line-height: 1.75;
             hyphens: none;
             -webkit-hyphens: none;
         }
@@ -219,8 +271,8 @@
         .info-heading {
             font-family: 'Cinzel', serif;
             color: #ffffff;
-            font-size: 1.15rem;
-            margin: 18px 0 10px;
+            font-size: clamp(1.15rem, 2vw, 1.3rem);
+            margin: 20px 0 10px;
             letter-spacing: 1px;
             text-transform: uppercase;
             font-weight: 600;
@@ -233,11 +285,10 @@
         }
 
         .info-list li {
-            font-family: 'IM Fell Great Primer', serif;
-            font-size: 1rem;
+            font-size: clamp(1rem, 1.8vw, 1.12rem);
             color: var(--moon);
-            line-height: 1.6;
-            margin-bottom: 6px;
+            line-height: 1.7;
+            margin-bottom: 8px;
             hyphens: none;
             -webkit-hyphens: none;
         }
@@ -245,7 +296,7 @@
         .info-list li strong {
             font-family: 'Cinzel', serif;
             color: #ffffff;
-            font-size: 0.9rem;
+            font-size: clamp(0.92rem, 1.6vw, 1.02rem);
             letter-spacing: 0.5px;
         }
 
@@ -253,44 +304,46 @@
             border: 0;
             border-top: 1px solid var(--border-color);
             width: 100%;
-            margin: 24px 0 20px;
+            margin: 28px 0 24px;
+        }
+
+        /* Section Titles (White) */
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            text-align: center;
+            font-weight: 600;
         }
 
         /* Custom Tour Inquiries Form */
         .form-section {
             width: 100%;
-            max-width: 580px;
+            max-width: 620px;
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-
-        .form-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.25rem;
-            color: #ffffff;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            text-align: center;
         }
 
         .inquiry-form {
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 6px;
         }
 
         .form-group label {
             font-family: 'Cinzel', serif;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #ffffff;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -299,12 +352,12 @@
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 12px 14px;
+            padding: 14px 16px;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             color: var(--moon);
             font-family: 'IM Fell Great Primer', serif;
-            font-size: 1rem;
+            font-size: clamp(1rem, 1.8vw, 1.1rem);
             border-radius: 2px;
             outline: none;
             transition: border-color 0.2s ease;
@@ -312,21 +365,21 @@
 
         .form-group input:focus,
         .form-group textarea:focus {
-            border-color: var(--sun);
+            border-color: #ffffff;
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 14px;
         }
 
         .form-submit-btn {
             margin-top: 6px;
-            padding: 14px;
-            background: var(--sun);
+            padding: 15px;
+            background: #ffffff;
             color: #0c0c0c;
-            border: 1px solid var(--sun);
+            border: 1px solid #ffffff;
             font-family: 'Cinzel', serif;
             font-size: 0.95rem;
             font-weight: 600;
@@ -337,15 +390,73 @@
         }
 
         .form-submit-btn:hover {
-            background: #fff;
-            border-color: #fff;
-            color: #000;
+            background: #000000;
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+
+        /* 5-Star Reviews Section */
+        .reviews-section {
+            width: 100%;
+            max-width: 720px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .reviews-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .review-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--sun);
+            padding: 22px 24px;
+            text-align: left;
+            hyphens: none;
+            -webkit-hyphens: none;
+            text-wrap: pretty;
+        }
+
+        .review-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px 12px;
+            margin-bottom: 10px;
+        }
+
+        .review-stars {
+            color: var(--sun);
+            font-size: 1.15rem;
+            letter-spacing: 2px;
+        }
+
+        .review-author {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .review-body {
+            color: var(--moon);
+            font-size: clamp(1rem, 1.8vw, 1.1rem);
+            line-height: 1.7;
+            margin: 0;
+            hyphens: none;
+            -webkit-hyphens: none;
         }
 
         /* Map Embed Section */
         .map-section {
             width: 100%;
-            max-width: 580px;
+            max-width: 720px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -353,7 +464,7 @@
 
         .map-container {
             width: 100%;
-            height: 340px;
+            height: 360px;
             border: 1px solid var(--border-color);
             border-radius: 2px;
             overflow: hidden;
@@ -369,19 +480,18 @@
 
         footer { 
             margin-top: 40px; 
-            font-size: 0.85rem; 
-            font-family: 'IM Fell Great Primer', serif;
-            color: #666; 
-            padding-top: 16px; 
+            font-size: 0.9rem; 
+            color: #777; 
+            padding-top: 20px; 
             border-top: 1px solid #222; 
             text-align: center;
             width: 100%;
         }
 
-        /* Floating Booking Button */
+        /* Floating Booking Button (Retains Gold FareHarbor Style) */
         .fh-button-custom {
             position: fixed !important;
-            bottom: 20px !important;
+            bottom: 22px !important;
             left: 50% !important;
             top: auto !important;
             right: auto !important;
@@ -389,7 +499,7 @@
             z-index: 9999 !important;
             font-family: 'Cinzel', serif !important;
             font-weight: 600 !important;
-            font-size: 0.95rem !important;
+            font-size: 1rem !important;
             letter-spacing: 1.5px !important;
             text-transform: uppercase !important;
             white-space: nowrap !important;
@@ -397,17 +507,18 @@
             align-items: center !important;
             justify-content: center !important;
             width: auto !important;
-            min-width: 160px !important;
-            padding: 12px 26px !important;
+            min-width: 170px !important;
+            padding: 13px 28px !important;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.4) !important;
         }
 
         @media (max-width: 600px) {
             body { padding: 18px 12px 90px; }
-            h1 { font-size: 2.1rem; }
             .form-row { grid-template-columns: 1fr; }
+            .nav-links-grid { grid-template-columns: 1fr; }
             .info-content { padding: 16px 18px; }
-            .map-container { height: 280px; }
+            .review-card { padding: 16px 18px; }
+            .map-container { height: 290px; }
             .fh-button-custom {
                 bottom: 16px !important;
                 padding: 11px 22px !important;
@@ -537,17 +648,34 @@
             <span class="sep">•</span>
             <span>📍 CENTRAL HELSINKI</span>
             <span class="sep">•</span>
-            <span>🔊 ENGLISH</span>
+            <span>🗣️ ENGLISH</span>
         </div>
 
+        <!-- Navigation Accordion -->
+        <section class="nav-accordion-section">
+            <button type="button" class="btn-white" onclick="toggleNav()" id="nav-btn">
+                Navigation +
+            </button>
+            <div id="nav-content" class="nav-accordion-content">
+                <div class="nav-links-grid">
+                    <a href="#tours-grid" onclick="toggleNav()">Tours</a>
+                    <a href="#info-section" onclick="toggleNav()">Info</a>
+                    <a href="#calendar-section" onclick="toggleNav()">Calendar</a>
+                    <a href="#inquiry-section" onclick="toggleNav()">Custom Tours</a>
+                    <a href="#reviews-section" onclick="toggleNav()">Reviews</a>
+                    <a href="#map-section" onclick="toggleNav()">Location</a>
+                </div>
+            </div>
+        </section>
+
         <!-- 1. FareHarbor Item Grid Embed -->
-        <div class="embed-wrapper">
+        <div class="embed-wrapper" id="tours-grid">
             <script src="https://fareharbor.com/embeds/script/items/occulthelsinki/?full-items=yes&flow=1690620&fallback=simple"></script>
         </div>
 
         <!-- 2. Info Toggle Button & Expanded Narrative -->
-        <section class="info-section">
-            <button type="button" class="btn-info" onclick="toggleInfo()" id="info-btn">
+        <section class="info-section" id="info-section">
+            <button type="button" class="btn-white" onclick="toggleInfo()" id="info-btn">
                 Info +
             </button>
             <div id="info-content" class="info-content">
@@ -570,15 +698,15 @@
         </section>
 
         <!-- 3. FareHarbor Live Calendar Embed -->
-        <div class="embed-wrapper">
+        <div class="embed-wrapper" id="calendar-section">
             <script src="https://fareharbor.com/embeds/script/calendar/occulthelsinki/?full-items=yes&flow=1690620&fallback=simple"></script>
         </div>
 
         <hr>
 
         <!-- 4. Custom Tour Inquiries Form -->
-        <section class="form-section">
-            <div class="form-title">custom tour inquires</div>
+        <section class="form-section" id="inquiry-section">
+            <div class="section-title">custom tour inquires</div>
             
             <form class="inquiry-form" onsubmit="handleInquirySubmit(event)">
                 <div class="form-row">
@@ -614,8 +742,77 @@
 
         <hr>
 
-        <!-- 5. Google Business Profile Map Embed -->
-        <section class="map-section">
+        <!-- 5. 5-Star Reviews Section -->
+        <section class="reviews-section" id="reviews-section">
+            <div class="section-title">Guest Reviews</div>
+            
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-author">5/5 Glenn, from United States</span>
+                    </div>
+                    <p class="review-body">
+                        It was not until this tour that I began to appreciate what an amazing city Helsinki is. Henri pointed out many details that helped me better understand the history and factors that influenced the development of Helsinki culture. While the title mentioned “occult”, I think a better term would be not commonly mentioned details associated with various buildings and places in the city. I highly recommend this tour to anyone wanting a more in in depth perspective of Helsinki.
+                    </p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-author">5/5 M, from Australia</span>
+                    </div>
+                    <p class="review-body">
+                        Highly recommend! Did the night tour and this is a very pleasant way to spend an evening getting to know the secrets of Helsinki. Henri is a wonderful storyteller and will take you to places you will want to go back to, so my tip is to do this tour early in your stay. Thank you Henri!
+                    </p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-author">5/5 Charlotte, from Germany</span>
+                    </div>
+                    <p class="review-body">
+                        We had a wonderful time guided through Helsinki with Henry. We loved getting off the beaten path! He is well informed and being a local is an enormous advantage. We had a wonderful time! Would recommend this tour highly!
+                    </p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-author">5/5 Michelle, from United States</span>
+                    </div>
+                    <p class="review-body">
+                        I enjoyed the night tour with Henri. He was easy to find as he held up his black bag with Occult Tours. Henri is fun, knowledgeable, and enjoys sharing the richness of Helsinki's unique buildings and hidden mysteries. The upside down giant head that I would never have seen. The unique shops for upliftment. His voice is easy to listen to and his patience to answer all our curious questions or when we lose track of him and he gathers us by stopping and waiting. We finished on time. He clearly planned the route and also custom fitted it to expand our learning. What he shares is not a reflection of his beliefs. Think occult as in the beauty of arts and science. Definitely do this tour early in your arrival to get a deeper cultural sense of the city. Night is less crowded. Summer has longer light, so perfect.
+                    </p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-author">5/5 Todd, from United States</span>
+                    </div>
+                    <p class="review-body">
+                        Great. Henri was super knowledgeable and gave me a great understanding of Finland and history. I was impressed by his story telling about The Kalevala and how we pointed our monuments and hidden elements tied to this throughout the tour.
+                    </p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-stars">★★★★★</span>
+                        <span class="review-author">5/5 Donna, from United Kingdom</span>
+                    </div>
+                    <p class="review-body">
+                        Henri was friendly and welcoming, which made the atmosphere relaxed and easygoing. This itinerary took us through a range of Helsinki sights — from churches to library spaces to small specialty shops. It was enjoyable to see different parts of the city and get a broad impression of its history and character.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- 6. Google Business Profile Map Embed -->
+        <section class="map-section" id="map-section">
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254498.04808482924!2d24.689062095540375!3d60.11009636768345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab0ec604aa5bff93%3A0x5f94e81551b16c82!2sOccult%20Helsinki%20Walking%20Tours!5e0!3m2!1sfi!2sfi!4v1787390371506!5m2!1sfi!2sfi" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
@@ -627,6 +824,18 @@
     </main>
 
     <script>
+        function toggleNav() {
+            var content = document.getElementById("nav-content");
+            var btn = document.getElementById("nav-btn");
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                btn.innerText = "Navigation +";
+            } else {
+                content.style.display = "block";
+                btn.innerText = "Navigation −";
+            }
+        }
+
         function toggleInfo() {
             var content = document.getElementById("info-content");
             var btn = document.getElementById("info-btn");
