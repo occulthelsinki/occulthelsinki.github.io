@@ -152,7 +152,7 @@
             opacity: 0.5;
         }
 
-        /* Tight Divider Under Logistics */
+        /* Divider Under Logistics */
         .tight-hr {
             border: 0;
             border-top: 1px solid var(--border-color);
@@ -268,7 +268,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Section Titles (White) */
+        /* Section Titles (White & Gold) */
         .section-title {
             font-family: 'Cinzel', serif;
             font-size: clamp(1.25rem, 2.4vw, 1.55rem);
@@ -276,6 +276,17 @@
             letter-spacing: 1.5px;
             text-transform: uppercase;
             margin-bottom: 18px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .section-title-gold {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+            color: var(--sun);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
             text-align: center;
             font-weight: 600;
         }
@@ -384,7 +395,7 @@
 
         .form-group input:focus,
         .form-group textarea:focus {
-            border-color: #ffffff;
+            border-color: var(--sun);
         }
 
         .form-row {
@@ -393,13 +404,13 @@
             gap: 14px;
         }
 
-        /* White Submit Button */
+        /* Golden Submit Button */
         .form-submit-btn {
             margin-top: 6px;
             padding: 15px;
-            background: #ffffff;
+            background: var(--sun);
             color: #0c0c0c;
-            border: 1px solid #ffffff;
+            border: 1px solid var(--sun);
             font-family: 'Cinzel', serif;
             font-size: clamp(0.95rem, 1.8vw, 1.05rem);
             font-weight: 600;
@@ -410,9 +421,9 @@
         }
 
         .form-submit-btn:hover {
-            background: #000000;
-            color: #ffffff;
-            border-color: #ffffff;
+            background: transparent;
+            color: var(--sun);
+            border-color: var(--sun);
         }
 
         /* Map Embed Section */
@@ -450,47 +461,65 @@
             width: 100%;
         }
 
-        /* Floating Accordion Navigation Button */
+        /* Upper Right Floating 3-Line Hamburger Navigation Button */
         .floating-nav-btn {
             position: fixed !important;
-            bottom: 22px !important;
-            left: 20px !important;
+            top: 22px !important;
+            right: 22px !important;
+            bottom: auto !important;
+            left: auto !important;
             z-index: 9999 !important;
-            background: #18191c !important;
-            color: #ffffff !important;
+            background: rgba(24, 25, 28, 0.95) !important;
+            backdrop-filter: blur(8px) !important;
             border: 1px solid #ffffff !important;
-            border-radius: 50% !important;
-            width: 52px !important;
-            height: 52px !important;
-            font-size: 1.5rem !important;
-            line-height: 1 !important;
+            border-radius: 4px !important;
+            width: 46px !important;
+            height: 46px !important;
             display: flex !important;
+            flex-direction: column !important;
             align-items: center !important;
             justify-content: center !important;
+            gap: 5px !important;
             cursor: pointer !important;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8) !important;
             transition: all 0.3s ease !important;
+            padding: 0 !important;
+        }
+
+        .floating-nav-btn .bar {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            border-radius: 1px;
         }
 
         .floating-nav-btn:hover {
             background: #ffffff !important;
-            color: #0c0c0c !important;
-            transform: scale(1.05);
+            border-color: #ffffff !important;
+            transform: scale(1.04);
         }
 
-        /* Floating Navigation Popover Menu */
+        .floating-nav-btn:hover .bar {
+            background: #0c0c0c;
+        }
+
+        /* Upper Right Popover Navigation Menu */
         .floating-nav-menu {
             display: none;
             position: fixed;
-            bottom: 84px;
-            left: 20px;
+            top: 76px;
+            right: 22px;
+            bottom: auto;
+            left: auto;
             z-index: 10000;
             background: #18191c;
             border: 1px solid var(--border-color);
             border-radius: 3px;
-            padding: 10px 0;
+            padding: 8px 0;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.95);
-            width: 210px;
+            width: 200px;
         }
 
         .floating-nav-menu a {
@@ -498,7 +527,7 @@
             padding: 10px 18px;
             color: #ffffff;
             font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             text-decoration: none;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -546,15 +575,18 @@
             .review-card { padding: 16px 18px; }
             .map-container { height: 290px; }
             .floating-nav-btn {
-                bottom: 16px !important;
-                left: 14px !important;
-                width: 46px !important;
-                height: 46px !important;
-                font-size: 1.3rem !important;
+                top: 14px !important;
+                right: 14px !important;
+                width: 40px !important;
+                height: 40px !important;
+                gap: 4px !important;
+            }
+            .floating-nav-btn .bar {
+                width: 18px;
             }
             .floating-nav-menu {
-                bottom: 72px;
-                left: 14px;
+                top: 60px;
+                right: 14px;
             }
             .fh-button-custom {
                 bottom: 16px !important;
@@ -670,6 +702,23 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNVSCSP2"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Upper Right Floating 3-Line Hamburger Navigation Button -->
+    <button type="button" class="floating-nav-btn" onclick="toggleNavMenu()" id="nav-toggle-btn" aria-label="Navigation Menu" title="Navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+    
+    <!-- Floating Navigation Menu -->
+    <div id="nav-floating-menu" class="floating-nav-menu">
+        <a href="#tours-grid" onclick="toggleNavMenu()">Tours</a>
+        <a href="#info-section" onclick="toggleNavMenu()">Info</a>
+        <a href="#calendar-section" onclick="toggleNavMenu()">Calendar</a>
+        <a href="#reviews-section" onclick="toggleNavMenu()">Reviews</a>
+        <a href="#inquiry-section" onclick="toggleNavMenu()">Custom Tours</a>
+        <a href="#map-section" onclick="toggleNavMenu()">Location</a>
+    </div>
 
     <main>
         <header>
@@ -797,7 +846,8 @@
 
         <!-- 5. Custom Tour Inquiries Form (Between Reviews & Map) -->
         <section class="form-section" id="inquiry-section">
-            <div class="section-title">custom tour inquires</div>
+            <div class="section-title-gold">custom tour inquires</div>
+            <hr class="tight-hr">
             
             <form class="inquiry-form" onsubmit="handleInquirySubmit(event)">
                 <div class="form-row">
@@ -827,7 +877,7 @@
                     <textarea id="message" name="message" rows="4" required placeholder="Tell us about your schedule, group, or custom wishes..."></textarea>
                 </div>
 
-                <button type="submit" class="form-submit-btn">Send Tour Inquiry</button>
+                <button type="submit" class="form-submit-btn">Send Inquiry</button>
             </form>
         </section>
 
@@ -844,18 +894,6 @@
             &copy; 2026 Henri Tahvanainen. All rights reserved.
         </footer>
     </main>
-
-    <!-- Floating Accordion Navigation Button & Menu -->
-    <button type="button" class="floating-nav-btn" onclick="toggleNavMenu()" id="nav-toggle-btn" aria-label="Navigation Menu" title="Navigation">🪗</button>
-    
-    <div id="nav-floating-menu" class="floating-nav-menu">
-        <a href="#tours-grid" onclick="toggleNavMenu()">Tours</a>
-        <a href="#info-section" onclick="toggleNavMenu()">Info</a>
-        <a href="#calendar-section" onclick="toggleNavMenu()">Calendar</a>
-        <a href="#reviews-section" onclick="toggleNavMenu()">Reviews</a>
-        <a href="#inquiry-section" onclick="toggleNavMenu()">Custom Tours</a>
-        <a href="#map-section" onclick="toggleNavMenu()">Location</a>
-    </div>
 
     <!-- Floating Book Now Button -->
     <a href="https://fareharbor.com/embeds/book/occulthelsinki/items/?full-items=yes" class="fh-button-blue fh-icon--ticket fh-shape--default fh-size--default fh-button-custom">Book Now</a>
