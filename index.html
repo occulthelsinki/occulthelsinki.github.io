@@ -397,10 +397,8 @@
             text-align: center;
             cursor: pointer;
             box-sizing: border-box;
-            user-select: all !important;
-            -webkit-user-select: all !important;
-            -moz-user-select: all !important;
-            -ms-user-select: all !important;
+            user-select: text;
+            -webkit-user-select: text;
         }
 
         .btn-email-copy:hover {
@@ -425,7 +423,7 @@
             margin-top: 8px;
         }
 
-        /* Map Embed Section */
+        /* Map Embed Section with Dark Mode / Greyscale Filter */
         .map-section {
             width: 100%;
             max-width: 740px;
@@ -440,7 +438,7 @@
             border: 1px solid var(--border-color);
             border-radius: 2px;
             overflow: hidden;
-            background: var(--card-bg);
+            background: #18191c;
         }
 
         .map-container iframe {
@@ -448,6 +446,8 @@
             height: 100%;
             border: 0;
             display: block;
+            filter: grayscale(100%) invert(90%) contrast(85%);
+            -webkit-filter: grayscale(100%) invert(90%) contrast(85%);
         }
 
         footer { 
@@ -861,10 +861,10 @@
 
         <hr>
 
-        <!-- 6. Google Business Profile Map Embed -->
+        <!-- 6. Google Business Profile Map Embed (Dark Mode Greyscale) -->
         <section class="map-section" id="map-section">
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254498.04808482924!2d24.689062095540375!3d60.11009636768345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab0ec604aa5bff93%3A0x5f94e81551b16c82!2sOccult%20Helsinki%20Walking%20Tours!5e0!3m2!1sfi!2sfi!4v1787390371506!5m2!1sfi!2sfi" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254498.04808482924!2d24.689062095540375!3d60.11009636768345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab0ec604aa5bff93%3A0x5f94e81551b16c82!2sOccult%20Helsinki%20Walking%20Tours!5e0!3m2!1sfi!2sfi!4v1787395409544!5m2!1sfi!2sfi" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
         </section>
 
@@ -909,27 +909,31 @@
             }
         }
 
+        // Direct Clipboard Copy
         function copyEmail(event) {
-            var selection = window.getSelection().toString();
-            if (selection.length > 0) return;
-
             var email = "contact@occulthelsinki.com";
             
             if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(email).then(showFeedback);
+                navigator.clipboard.writeText(email).then(showFeedback).catch(function() {
+                    fallbackCopy(email);
+                });
             } else {
-                var tempInput = document.createElement("input");
-                tempInput.value = email;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                try {
-                    document.execCommand("copy");
-                    showFeedback();
-                } catch (err) {
-                    console.error("Copy failed", err);
-                }
-                document.body.removeChild(tempInput);
+                fallbackCopy(email);
             }
+        }
+
+        function fallbackCopy(text) {
+            var tempInput = document.createElement("input");
+            tempInput.setAttribute("value", text);
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand("copy");
+                showFeedback();
+            } catch (err) {
+                console.error("Copy failed", err);
+            }
+            document.body.removeChild(tempInput);
         }
 
         function showFeedback() {
@@ -938,7 +942,7 @@
                 feedback.style.opacity = "1";
                 setTimeout(function() {
                     feedback.style.opacity = "0";
-                }, 2000);
+                }, 2200);
             }
         }
     </script>
