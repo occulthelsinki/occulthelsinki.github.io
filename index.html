@@ -176,7 +176,7 @@
             background: transparent;
         }
 
-        /* Info Button: Golden Edge, White Text */
+        /* Golden Edge Info Button (White Text) */
         .info-section {
             width: 100%;
             display: flex;
@@ -268,6 +268,13 @@
             color: #ffffff;
             font-size: clamp(0.95rem, 1.6vw, 1.05rem);
             letter-spacing: 0.5px;
+        }
+
+        .btn-close-info {
+            margin: 24px auto 0;
+            padding: 11px 20px;
+            font-size: 0.9rem;
+            max-width: 220px;
         }
 
         /* Non-bold Golden Section Titles */
@@ -379,7 +386,7 @@
             position: relative;
         }
 
-        /* Contact Button: Golden Edge, White Text */
+        /* Golden Edge Contact Button (White Text) */
         .btn-email-copy {
             display: block;
             width: 100%;
@@ -423,7 +430,7 @@
             margin-top: 8px;
         }
 
-        /* Map Embed Section with Dark Mode / Greyscale Filter */
+        /* Map Embed Section (Dark Mode / Greyscale) */
         .map-section {
             width: 100%;
             max-width: 740px;
@@ -518,7 +525,7 @@
             border-radius: 3px;
             padding: 8px 0;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.95);
-            width: 200px;
+            width: 190px;
         }
 
         .floating-nav-menu a {
@@ -532,6 +539,7 @@
             text-transform: uppercase;
             border-bottom: 1px solid #242529;
             transition: color 0.2s ease, background 0.2s ease;
+            cursor: pointer;
         }
 
         .floating-nav-menu a:last-child {
@@ -695,7 +703,7 @@
     }
     </script>
 </head>
-<body>
+<body id="home">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNVSCSP2"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -710,12 +718,10 @@
     
     <!-- Floating Navigation Menu -->
     <div id="nav-floating-menu" class="floating-nav-menu">
-        <a href="#tours-grid" onclick="toggleNavMenu()">Tours</a>
-        <a href="#info-section" onclick="toggleNavMenu()">Info</a>
-        <a href="#calendar-section" onclick="toggleNavMenu()">Calendar</a>
-        <a href="#reviews-section" onclick="toggleNavMenu()">Reviews</a>
-        <a href="#inquiry-section" onclick="toggleNavMenu()">Custom Tours</a>
-        <a href="#map-section" onclick="toggleNavMenu()">Location</a>
+        <a onclick="navTo('home')">Home</a>
+        <a onclick="navTo('info')">Info</a>
+        <a onclick="navTo('calendar')">Calendar</a>
+        <a onclick="navTo('contact')">Contact</a>
     </div>
 
     <main>
@@ -748,13 +754,13 @@
                 Info +
             </button>
             <div id="info-content" class="info-content">
-                <p>Occult Helsinki provides professional guided walking tours showcasing the highlights and hidden gems of Finland’s capital. Perfect for all curious minds and lovers of art, architecture, and history.</p>
-                <p>All tours are operated by local Finnish performer Henri Tahvanainen, who personally guides guests and immerses them in cultural heritage while helping them to find hidden details in their surroundings.</p>
-                <p>Drawing from history, folklore, mythology, and symbolism, he serves guests meaningful experiences through engaging and insightful storytelling with a side of warm local hospitality.</p>
+                <p>Occult Helsinki provides professional guided walking tours showcasing the highlights and hidden gems of Finland’s capital. Perfect for all curious minds and lovers of art, architecture, and history[cite: 1].</p>
+                <p>All tours are operated by local Finnish performer Henri Tahvanainen, who personally guides guests and immerses them in cultural heritage while helping them to find hidden details in their surroundings[cite: 1].</p>
+                <p>Drawing from history, folklore, mythology, and symbolism, he serves guests meaningful experiences through engaging and insightful storytelling with a side of warm local hospitality[cite: 1].</p>
                 <p>As the cultural gateway to the North, Helsinki is the ideal stop before or after visiting Lapland, Rovaniemi, and the Arctic Circle.</p>
                 <p>Whether you are heading north or returning south, this walk provides the essential Finnish folklore and mythological context to enrich your entire journey through Finland.</p>
-                <p>Considered the best thing to do in Helsinki for discerning travelers who want an authentic perspective of the city beyond the mundane tourist traps.</p>
-                <p>Discover a side of the capital that most travelers—and even locals—never get to experience. Strictly limited spots available.</p>
+                <p>Considered the best thing to do in Helsinki for discerning travelers who want an authentic perspective of the city beyond the mundane tourist traps[cite: 1].</p>
+                <p>Discover a side of the capital that most travelers—and even locals—never get to experience. Strictly limited spots available[cite: 1].</p>
 
                 <div class="info-heading">Tour Information</div>
                 <ul class="info-list">
@@ -763,6 +769,10 @@
                     <li><strong>Duration:</strong> 1.5 to 2 hours (90–120 minutes).</li>
                     <li><strong>Capacity:</strong> Limited to 12 spots to preserve exclusivity.</li>
                 </ul>
+
+                <button type="button" class="btn-info btn-close-info" onclick="closeInfo()">
+                    Close Info −
+                </button>
             </div>
         </section>
 
@@ -886,6 +896,31 @@
             }
         }
 
+        // Navigation Routing
+        function navTo(target) {
+            var menu = document.getElementById("nav-floating-menu");
+            if (menu) menu.style.display = "none";
+
+            if (target === 'home') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (target === 'info') {
+                var content = document.getElementById("info-content");
+                var btn = document.getElementById("info-btn");
+                if (content && content.style.display !== "block") {
+                    content.style.display = "block";
+                    if (btn) btn.innerText = "Info −";
+                }
+                var infoSection = document.getElementById("info-section");
+                if (infoSection) infoSection.scrollIntoView({ behavior: 'smooth' });
+            } else if (target === 'calendar') {
+                var calSection = document.getElementById("calendar-section");
+                if (calSection) calSection.scrollIntoView({ behavior: 'smooth' });
+            } else if (target === 'contact') {
+                var inqSection = document.getElementById("inquiry-section");
+                if (inqSection) inqSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
         // Close floating menu when clicking outside
         document.addEventListener('click', function(e) {
             var menu = document.getElementById("nav-floating-menu");
@@ -907,6 +942,15 @@
                 content.style.display = "block";
                 btn.innerText = "Info −";
             }
+        }
+
+        function closeInfo() {
+            var content = document.getElementById("info-content");
+            var btn = document.getElementById("info-btn");
+            if (content) content.style.display = "none";
+            if (btn) btn.innerText = "Info +";
+            var infoSection = document.getElementById("info-section");
+            if (infoSection) infoSection.scrollIntoView({ behavior: 'smooth' });
         }
 
         // Direct Clipboard Copy
