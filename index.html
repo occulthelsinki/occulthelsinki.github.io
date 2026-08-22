@@ -268,19 +268,19 @@
             letter-spacing: 0.5px;
         }
 
-        /* Section Titles (White & Gold) */
-        .section-title {
+        /* Non-bold Golden Section Titles */
+        .section-title-gold {
             font-family: 'Cinzel', serif;
             font-size: clamp(1.25rem, 2.4vw, 1.55rem);
-            color: #ffffff;
+            color: var(--sun);
             letter-spacing: 1.5px;
             text-transform: uppercase;
             margin-bottom: 18px;
             text-align: center;
-            font-weight: 600;
+            font-weight: 400;
         }
 
-        .section-title-gold {
+        .section-title-gold-tight {
             font-family: 'Cinzel', serif;
             font-size: clamp(1.25rem, 2.4vw, 1.55rem);
             color: var(--sun);
@@ -288,7 +288,7 @@
             text-transform: uppercase;
             margin-bottom: 10px;
             text-align: center;
-            font-weight: 600;
+            font-weight: 400;
         }
 
         /* 5-Star Reviews Section */
@@ -349,81 +349,72 @@
             -webkit-hyphens: none;
         }
 
-        /* Custom Tour Inquiries Form */
-        .form-section {
+        /* Custom Tour Inquiries Copy Section */
+        .inquiry-section {
             width: 100%;
             max-width: 640px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
         }
 
-        .inquiry-form {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .form-group label {
-            font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            color: #ffffff;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px 16px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
+        .inquiry-text {
             color: var(--moon);
-            font-family: 'IM Fell Great Primer', serif;
-            font-size: clamp(1rem, 1.8vw, 1.12rem);
-            border-radius: 2px;
-            outline: none;
-            transition: border-color 0.2s ease;
+            font-size: clamp(1.05rem, 1.9vw, 1.2rem);
+            line-height: 1.75;
+            margin: 0 0 20px;
+            hyphens: none;
+            -webkit-hyphens: none;
+            text-wrap: pretty;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: var(--sun);
+        .email-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            position: relative;
         }
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-        }
-
-        /* Golden Submit Button */
-        .form-submit-btn {
-            margin-top: 6px;
-            padding: 15px;
-            background: var(--sun);
-            color: #0c0c0c;
+        .btn-email-copy {
+            display: block;
+            width: 100%;
+            max-width: 440px;
+            padding: 16px 14px;
             border: 1px solid var(--sun);
-            font-family: 'Cinzel', serif;
-            font-size: clamp(0.95rem, 1.8vw, 1.05rem);
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .form-submit-btn:hover {
             background: transparent;
             color: var(--sun);
-            border-color: var(--sun);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+            text-transform: lowercase;
+            text-align: center;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .btn-email-copy:hover {
+            background: var(--sun);
+            color: #0c0c0c;
+        }
+
+        .copy-tooltip {
+            font-family: 'IM Fell Great Primer', serif;
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--sun);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            pointer-events: none;
+            margin-top: 8px;
         }
 
         /* Map Embed Section */
@@ -570,7 +561,6 @@
 
         @media (max-width: 600px) {
             body { padding: 18px 12px 90px; }
-            .form-row { grid-template-columns: 1fr; }
             .info-content { padding: 18px 20px; }
             .review-card { padding: 16px 18px; }
             .map-container { height: 290px; }
@@ -777,7 +767,7 @@
 
         <!-- 4. 5-Star Guest Reviews Section -->
         <section class="reviews-section" id="reviews-section">
-            <div class="section-title">guest reviews</div>
+            <div class="section-title-gold">guest reviews</div>
             
             <div class="reviews-grid">
                 <div class="review-card">
@@ -844,41 +834,21 @@
 
         <hr>
 
-        <!-- 5. Custom Tour Inquiries Form (Between Reviews & Map) -->
-        <section class="form-section" id="inquiry-section">
-            <div class="section-title-gold">custom tour inquires</div>
+        <!-- 5. Custom Tour Inquiries Copy Section (Between Reviews & Map) -->
+        <section class="inquiry-section" id="inquiry-section">
+            <div class="section-title-gold-tight">custom tour inquiries</div>
             <hr class="tight-hr">
             
-            <form class="inquiry-form" onsubmit="handleInquirySubmit(event)">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" required placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="email@domain.com">
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="date">Preferred Date</label>
-                        <input type="text" id="date" name="date" placeholder="e.g. Autumn / Specific Day">
-                    </div>
-                    <div class="form-group">
-                        <label for="group-size">Group Size</label>
-                        <input type="text" id="group-size" name="group-size" placeholder="Number of guests">
-                    </div>
-                </div>
+            <p class="inquiry-text">
+                If you need something truly bespoke with custom hotel pickup anything unique tailored to your wishes, click the address below to copy it to your clipboard and send Henri an email.
+            </p>
 
-                <div class="form-group">
-                    <label for="message">Tour Requirements & Inquiries</label>
-                    <textarea id="message" name="message" rows="4" required placeholder="Tell us about your schedule, group, or custom wishes..."></textarea>
-                </div>
-
-                <button type="submit" class="form-submit-btn">Send Inquiry</button>
-            </form>
+            <div class="email-container">
+                <button type="button" class="btn-email-copy" onclick="copyEmail(event)" title="Click to copy email address">
+                    contact@occulthelsinki.com
+                </button>
+                <span id="copy-feedback" class="copy-tooltip">Copied to clipboard!</span>
+            </div>
         </section>
 
         <hr>
@@ -931,24 +901,37 @@
             }
         }
 
-        function handleInquirySubmit(e) {
-            e.preventDefault();
-            var name = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
-            var date = document.getElementById('date').value;
-            var size = document.getElementById('group-size').value;
-            var message = document.getElementById('message').value;
+        function copyEmail(event) {
+            var selection = window.getSelection().toString();
+            if (selection.length > 0) return;
 
-            var subject = encodeURIComponent("Bespoke Occult Helsinki Tour Inquiry: " + name);
-            var body = encodeURIComponent(
-                "Name: " + name + "\n" +
-                "Email: " + email + "\n" +
-                "Preferred Date: " + date + "\n" +
-                "Group Size: " + size + "\n\n" +
-                "Message:\n" + message
-            );
+            var email = "contact@occulthelsinki.com";
+            
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(email).then(showFeedback);
+            } else {
+                var tempInput = document.createElement("input");
+                tempInput.value = email;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                try {
+                    document.execCommand("copy");
+                    showFeedback();
+                } catch (err) {
+                    console.error("Copy failed", err);
+                }
+                document.body.removeChild(tempInput);
+            }
+        }
 
-            window.location.href = "mailto:contact@occulthelsinki.com?subject=" + subject + "&body=" + body;
+        function showFeedback() {
+            var feedback = document.getElementById("copy-feedback");
+            if (feedback) {
+                feedback.style.opacity = "1";
+                setTimeout(function() {
+                    feedback.style.opacity = "0";
+                }, 2000);
+            }
         }
     </script>
     <script src="https://fareharbor.com/embeds/api/v1/?autolightframe=yes"></script>
