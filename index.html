@@ -59,6 +59,8 @@
             --sun: #d4af37; /* Golden Accent */
             --moon: #e0e0e0; /* Off-white text */
             --bg: #111213; 
+            --card-bg: #17181a;
+            --border-color: #27282c;
         }
         
         body { 
@@ -145,22 +147,94 @@
         /* Embed Sections */
         .embed-wrapper {
             width: 100%;
-            margin: 0 0 25px;
+            margin: 0 0 20px;
             background: transparent;
         }
 
-        /* Collapsible Description Box */
+        hr {
+            border: 0;
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+            margin: 30px 0;
+        }
+
+        /* Distinct Category Sections */
+        .category-section {
+            width: 100%;
+            max-width: 620px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .category-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.05rem;
+            color: var(--sun);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .btn-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .btn { 
+            display: block; 
+            width: 100%;
+            max-width: 500px;
+            padding: 15px 12px; 
+            border: 1px solid var(--sun); 
+            background: transparent;
+            color: var(--sun); 
+            text-decoration: none; 
+            transition: 0.3s ease; 
+            font-weight: 400; 
+            font-size: 1rem;
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            letter-spacing: 1px;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        .btn:hover { 
+            background: var(--sun); 
+            color: #000; 
+        }
+
+        .btn-compact {
+            max-width: 100%;
+            padding: 14px 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Collapsible Story */
         .collapsible-content {
             display: none;
             width: 100%;
-            max-width: 580px;
-            margin: 15px auto 25px;
+            max-width: 500px;
+            margin: 14px 0;
             text-align: justify;
             text-justify: inter-word;
             hyphens: auto; 
             -webkit-hyphens: auto;
             border-left: 2px solid var(--sun);
-            padding-left: 18px;
+            padding-left: 16px;
             box-sizing: border-box;
         }
 
@@ -176,68 +250,13 @@
             color: #C8B58C !important;
             text-decoration: none !important;
             border-bottom: none !important;
-            box-shadow: none !important;
-            outline: none !important;
-            transition: color 0.2s ease;
         }
 
         .author-link:hover {
             color: #ffffff !important;
         }
 
-        hr {
-            border: 0;
-            border-top: 1px solid #333;
-            width: 100%;
-            margin: 25px 0;
-        }
-
-        section { 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-
-        .btn { 
-            display: block; 
-            width: 320px; 
-            padding: 16px 0; 
-            border: 1px solid var(--sun); 
-            background: transparent;
-            color: var(--sun); 
-            text-decoration: none; 
-            transition: 0.3s ease; 
-            margin-bottom: 15px; 
-            font-weight: 400; 
-            font-size: 1.05rem;
-            font-family: 'Cinzel', serif;
-            text-align: center;
-            letter-spacing: 1px;
-            box-sizing: border-box;
-            cursor: pointer;
-        }
-
-        .btn:last-child { margin-bottom: 0; }
-        .btn:hover { background: var(--sun); color: #000; }
-
-        .btn-email {
-            font-size: 0.95rem;
-            font-family: 'Cinzel', serif;
-            letter-spacing: 0.5px;
-            text-transform: lowercase;
-            user-select: text;
-            -webkit-user-select: text;
-            -moz-user-select: text;
-            -ms-user-select: text;
-            padding: 16px 10px;
-        }
-
-        .btn-email:hover {
-            background: var(--sun);
-            color: #000;
-        }
-
+        /* Email Copy Container */
         .email-container {
             display: flex;
             flex-direction: column;
@@ -246,11 +265,17 @@
             position: relative;
         }
 
+        .btn-email {
+            font-size: 0.95rem;
+            text-transform: lowercase;
+            letter-spacing: 0.5px;
+        }
+
         .copy-tooltip {
             font-family: 'IM Fell Great Primer', serif;
             font-size: 0.85rem;
             font-style: italic;
-            color: var(--moon);
+            color: var(--sun);
             opacity: 0;
             transition: opacity 0.3s ease;
             position: absolute;
@@ -262,12 +287,27 @@
             margin-top: 6px;
         }
 
-        .label-text {
+        /* Verified Directory Strip */
+        .directory-grid { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 18px 24px; 
+            justify-content: center; 
+            width: 100%;
+        }
+
+        .directory-grid a { 
             font-family: 'IM Fell Great Primer', serif;
-            font-style: italic;
-            color: var(--moon);
-            font-size: 1.1rem;
-            margin-bottom: 12px;
+            color: var(--moon); 
+            text-decoration: none; 
+            font-size: 1.05rem; 
+            transition: 0.3s ease; 
+            opacity: 0.85; 
+        }
+
+        .directory-grid a:hover { 
+            color: var(--sun); 
+            opacity: 1; 
         }
 
         footer { 
@@ -309,8 +349,8 @@
         @media (max-width: 600px) {
             body { padding: 30px 14px 95px; }
             h1 { font-size: 2.1rem; }
-            .btn { width: 100%; max-width: 320px; }
-            .btn-email { font-size: 0.85rem; }
+            .btn-row { grid-template-columns: 1fr; }
+            .btn-compact { font-size: 0.95rem; padding: 15px 12px; }
             .fh-button-custom {
                 bottom: 18px !important;
                 padding: 12px 24px !important;
@@ -449,31 +489,38 @@
             <script src="https://fareharbor.com/embeds/script/items/occulthelsinki/?full-items=yes&flow=1690620&fallback=simple"></script>
         </div>
 
-        <!-- 2. FareHarbor Live Calendar Embed -->
+        <!-- 2. FareHarbor Calendar Embed (Flow #1690620) -->
         <div class="embed-wrapper">
-            <script src="https://fareharbor.com/embeds/script/calendar/occulthelsinki/items/753763/?full-items=yes&fallback=simple"></script>
+            <script src="https://fareharbor.com/embeds/script/calendar/occulthelsinki/?full-items=yes&flow=1690620&fallback=simple"></script>
         </div>
 
-        <!-- 3. Everything Else in Clean Buttons -->
         <hr>
 
-        <section>
-            <div class="label-text">The Experience</div>
-            <button type="button" class="btn" onclick="toggleDescription()" id="desc-btn">
-                Read Tour Story +
-            </button>
-            <div id="desc-content" class="collapsible-content">
-                <p>Occult Helsinki provides professional guided walking tours showcasing the highlights and hidden gems of Finland’s capital. Perfect for all curious minds and lovers of art, architecture, and history.</p>
-                <p>All tours are operated by local Finnish performer <a href="https://henritahvanainen.com" target="_blank" rel="noopener noreferrer" class="author-link">Henri Tahvanainen</a>, who personally guides guests and immerses them in cultural heritage while helping them discover hidden details in their surroundings.</p>
-                <p>Drawing from history, folklore, mythology, and symbolism, he serves guests with meaningful experiences through engaging and insightful storytelling, with a side of warm local hospitality.</p>
-                <p>Considered the best thing to do in Helsinki for discerning travelers who want an authentic perspective of the city beyond the mundane tourist traps. Strictly limited spots available.</p>
+        <!-- Category 1: The Experience & Lore -->
+        <section class="category-section">
+            <div class="category-title">The Experience & Guide</div>
+            <div class="btn-group">
+                <button type="button" class="btn" onclick="toggleDescription()" id="desc-btn">
+                    Read Tour Story +
+                </button>
+                <div id="desc-content" class="collapsible-content">
+                    <p>Occult Helsinki provides professional guided walking tours showcasing the highlights and hidden gems of Finland’s capital. Perfect for all curious minds and lovers of art, architecture, and history[cite: 1, 2].</p>
+                    <p>All tours are operated by local Finnish performer <a href="https://henritahvanainen.com" target="_blank" rel="noopener noreferrer" class="author-link">Henri Tahvanainen</a>, who personally guides guests and immerses them in cultural heritage while helping them discover hidden details in their surroundings[cite: 1, 2].</p>
+                    <p>Drawing from history, folklore, mythology, and symbolism, he serves guests with meaningful experiences through engaging and insightful storytelling, with a side of warm local hospitality[cite: 1, 2].</p>
+                    <p>Considered the best thing to do in Helsinki for discerning travelers who want an authentic perspective of the city beyond the mundane tourist traps[cite: 1, 2]. Strictly limited spots available[cite: 1, 2].</p>
+                </div>
+                <div class="btn-row">
+                    <a href="https://henritahvanainen.com" target="_blank" rel="noopener noreferrer" class="btn btn-compact">About the Guide</a>
+                    <a href="https://ko-fi.com/s/16cf04942b" target="_blank" rel="noopener noreferrer" class="btn btn-compact">Interactive Map</a>
+                </div>
             </div>
         </section>
 
         <hr>
 
-        <section>
-            <div class="label-text">Private tour inquiries</div>
+        <!-- Category 2: Private Bookings -->
+        <section class="category-section">
+            <div class="category-title">Private & Group Inquiries</div>
             <div class="email-container">
                 <button type="button" class="btn btn-email" onclick="copyEmail(event)" title="Click to copy email address">
                     contact@occulthelsinki.com
@@ -484,32 +531,15 @@
 
         <hr>
 
-        <section>
-            <div class="label-text">Featured in</div>
-            <a href="https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/" target="_blank" rel="noopener noreferrer" class="btn">MyHelsinki.fi</a>
-        </section>
-
-        <hr>
-
-        <section>
-            <div class="label-text">Complimentary</div>
-            <a href="https://ko-fi.com/s/16cf04942b" target="_blank" rel="noopener noreferrer" class="btn">Interactive Map</a>
-        </section>
-
-        <hr>
-
-        <section>
-            <div class="label-text">About the guide</div>
-            <a href="https://henritahvanainen.com" target="_blank" rel="noopener noreferrer" class="btn">Henri Tahvanainen</a>
-        </section>
-
-        <hr>
-
-        <section>
-            <div class="label-text">Reviews & Directory</div>
-            <a href="https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html" target="_blank" rel="noopener noreferrer" class="btn">TripAdvisor Reviews</a>
-            <a href="https://www.helsinki.today/en-FI/page/69e31d1bfafad1b3a6324e35/occult-helsinki-walking-tour" target="_blank" rel="noopener noreferrer" class="btn">Helsinki Today</a>
-            <a href="https://share.google/xu9WUon8o6tQv3Hcp" target="_blank" rel="noopener noreferrer" class="btn">Google Profile</a>
+        <!-- Category 3: Verified Press & Reviews -->
+        <section class="category-section">
+            <div class="category-title">Press & Reviews</div>
+            <nav class="directory-grid">
+                <a href="https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html" target="_blank" rel="noopener noreferrer">TripAdvisor (5.0 ★)</a>
+                <a href="https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/" target="_blank" rel="noopener noreferrer">MyHelsinki.fi</a>
+                <a href="https://www.helsinki.today/en-FI/page/69e31d1bfafad1b3a6324e35/occult-helsinki-walking-tour" target="_blank" rel="noopener noreferrer">Helsinki Today</a>
+                <a href="https://share.google/xu9WUon8o6tQv3Hcp" target="_blank" rel="noopener noreferrer">Google Profile</a>
+            </nav>
         </section>
 
         <footer>
