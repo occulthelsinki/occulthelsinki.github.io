@@ -98,11 +98,13 @@
             width: 100%;
         }
 
+        /* Responsive Single-Line Main Title */
         h1 { 
             font-family: 'Cinzel', serif; 
             color: var(--sun); 
-            font-size: clamp(2.5rem, 5.5vw, 3.6rem); 
-            letter-spacing: 2.5px; 
+            font-size: clamp(1.65rem, 6.8vw, 3.6rem); 
+            letter-spacing: clamp(1px, 0.4vw, 2.5px); 
+            white-space: nowrap;
             margin: 0 0 4px; 
             font-weight: 400;
             line-height: 1.15;
@@ -112,7 +114,7 @@
             font-family: 'Cinzel', serif;
             font-style: normal; 
             color: #ffffff; 
-            font-size: clamp(1.2rem, 2.6vw, 1.55rem); 
+            font-size: clamp(1.15rem, 2.6vw, 1.55rem); 
             margin: 0 0 6px;
             line-height: 1.1;
             letter-spacing: 2px;
@@ -377,14 +379,15 @@
             position: relative;
         }
 
+        /* Easily Highlightable & Copyable White Email Button */
         .btn-email-copy {
             display: block;
             width: 100%;
             max-width: 440px;
             padding: 16px 14px;
-            border: 1px solid var(--sun);
+            border: 1px solid #ffffff;
             background: transparent;
-            color: var(--sun);
+            color: #ffffff;
             text-decoration: none;
             transition: all 0.3s ease;
             font-size: clamp(0.95rem, 1.8vw, 1.08rem);
@@ -394,18 +397,23 @@
             text-align: center;
             cursor: pointer;
             box-sizing: border-box;
+            user-select: all !important;
+            -webkit-user-select: all !important;
+            -moz-user-select: all !important;
+            -ms-user-select: all !important;
         }
 
         .btn-email-copy:hover {
-            background: var(--sun);
+            background: #ffffff;
             color: #0c0c0c;
         }
 
+        /* White Copied Feedback Tooltip */
         .copy-tooltip {
             font-family: 'IM Fell Great Primer', serif;
             font-size: 0.9rem;
             font-style: italic;
-            color: var(--sun);
+            color: #ffffff;
             opacity: 0;
             transition: opacity 0.3s ease;
             position: absolute;
@@ -840,7 +848,7 @@
             <hr class="tight-hr">
             
             <p class="inquiry-text">
-                If you need something truly bespoke with custom hotel pickup anything unique tailored to your wishes, click the address below to copy it to your clipboard and send Henri an email.
+                If you need something truly bespoke—such as a custom hotel pickup or anything tailored to your wishes—click the address below to copy it to your clipboard and send Henri an email. He will get back to you within 1 to 2 business days.
             </p>
 
             <div class="email-container">
