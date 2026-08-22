@@ -106,7 +106,7 @@
         .tagline { 
             font-family: 'Cinzel', serif;
             font-style: normal; 
-            color: var(--moon); 
+            color: #ffffff; 
             font-size: 1.2rem; 
             margin: 0 0 6px;
             line-height: 1.1;
@@ -196,10 +196,10 @@
             border: 1px solid var(--border-color);
             border-left: 3px solid var(--sun);
             padding: 22px 24px;
-            text-align: justify;
-            text-justify: inter-word;
-            hyphens: auto; 
-            -webkit-hyphens: auto;
+            text-align: left;
+            hyphens: none;
+            -webkit-hyphens: none;
+            text-wrap: pretty;
         }
 
         .info-content p { 
@@ -207,7 +207,9 @@
             color: var(--moon); 
             margin: 0 0 14px; 
             font-size: 1.02rem; 
-            line-height: 1.65;
+            line-height: 1.7;
+            hyphens: none;
+            -webkit-hyphens: none;
         }
 
         .info-content p:last-child {
@@ -216,7 +218,7 @@
 
         .info-heading {
             font-family: 'Cinzel', serif;
-            color: var(--sun);
+            color: #ffffff;
             font-size: 1.15rem;
             margin: 18px 0 10px;
             letter-spacing: 1px;
@@ -236,11 +238,13 @@
             color: var(--moon);
             line-height: 1.6;
             margin-bottom: 6px;
+            hyphens: none;
+            -webkit-hyphens: none;
         }
 
         .info-list li strong {
             font-family: 'Cinzel', serif;
-            color: var(--sun);
+            color: #ffffff;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
         }
@@ -252,7 +256,7 @@
             margin: 24px 0 20px;
         }
 
-        /* Bespoke Inquiry Contact Form */
+        /* Custom Tour Inquiries Form */
         .form-section {
             width: 100%;
             max-width: 580px;
@@ -264,19 +268,10 @@
         .form-title {
             font-family: 'Cinzel', serif;
             font-size: 1.25rem;
-            color: var(--sun);
+            color: #ffffff;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            margin-bottom: 6px;
-            text-align: center;
-        }
-
-        .form-subtitle {
-            font-family: 'IM Fell Great Primer', serif;
-            font-style: italic;
-            color: #aaa;
-            font-size: 0.95rem;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             text-align: center;
         }
 
@@ -296,7 +291,7 @@
         .form-group label {
             font-family: 'Cinzel', serif;
             font-size: 0.8rem;
-            color: var(--sun);
+            color: #ffffff;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
@@ -581,10 +576,9 @@
 
         <hr>
 
-        <!-- 4. Bespoke & Custom Tour Inquiry Contact Form -->
+        <!-- 4. Custom Tour Inquiries Form -->
         <section class="form-section">
-            <div class="form-title">Private & Bespoke Tours</div>
-            <div class="form-subtitle">Direct inquiries to contact@occulthelsinki.com</div>
+            <div class="form-title">custom tour inquires</div>
             
             <form class="inquiry-form" onsubmit="handleInquirySubmit(event)">
                 <div class="form-row">
@@ -622,8 +616,6 @@
 
         <!-- 5. Google Business Profile Map Embed -->
         <section class="map-section">
-            <div class="form-title">Location & Meeting Point</div>
-            <div class="form-subtitle">Historic Central Helsinki</div>
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254498.04808482924!2d24.689062095540375!3d60.11009636768345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab0ec604aa5bff93%3A0x5f94e81551b16c82!2sOccult%20Helsinki%20Walking%20Tours!5e0!3m2!1sfi!2sfi!4v1787390371506!5m2!1sfi!2sfi" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
