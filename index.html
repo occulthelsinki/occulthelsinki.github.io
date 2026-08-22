@@ -101,7 +101,7 @@
         h1 { 
             font-family: 'Cinzel', serif; 
             color: var(--sun); 
-            font-size: clamp(2.4rem, 5vw, 3.4rem); 
+            font-size: clamp(2.5rem, 5.5vw, 3.6rem); 
             letter-spacing: 2.5px; 
             margin: 0 0 4px; 
             font-weight: 400;
@@ -112,7 +112,7 @@
             font-family: 'Cinzel', serif;
             font-style: normal; 
             color: #ffffff; 
-            font-size: clamp(1.15rem, 2.5vw, 1.45rem); 
+            font-size: clamp(1.2rem, 2.6vw, 1.55rem); 
             margin: 0 0 6px;
             line-height: 1.1;
             letter-spacing: 2px;
@@ -121,7 +121,7 @@
 
         .stars {
             color: var(--sun);
-            font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+            font-size: clamp(1.25rem, 2.6vw, 1.55rem);
             letter-spacing: 6px;
             margin: 0 0 4px;
             line-height: 1;
@@ -135,9 +135,9 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            margin: 10px 0 16px;
+            margin: 10px 0 14px;
             font-family: 'Cinzel', serif;
-            font-size: clamp(0.82rem, 1.8vw, 0.95rem);
+            font-size: clamp(0.85rem, 1.8vw, 1rem);
             color: #ffffff !important;
             letter-spacing: 1px;
             text-align: center;
@@ -152,50 +152,19 @@
             opacity: 0.5;
         }
 
-        /* Nav Accordion */
-        .nav-accordion-section {
+        /* Tight Divider Under Logistics */
+        .tight-hr {
+            border: 0;
+            border-top: 1px solid var(--border-color);
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0 0 16px;
+            margin: 6px 0 18px;
         }
 
-        .nav-accordion-content {
-            display: none;
+        hr {
+            border: 0;
+            border-top: 1px solid var(--border-color);
             width: 100%;
-            max-width: 500px;
-            margin-top: 10px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 16px;
-        }
-
-        .nav-links-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .nav-links-grid a {
-            display: block;
-            padding: 10px 8px;
-            background: #111213;
-            border: 1px solid #333;
-            color: #ffffff;
-            font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            text-decoration: none;
-            text-align: center;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: all 0.2s ease;
-        }
-
-        .nav-links-grid a:hover {
-            border-color: #ffffff;
-            background: #ffffff;
-            color: #000000;
+            margin: 28px 0 24px;
         }
 
         /* Embed Container Spacing */
@@ -205,33 +174,7 @@
             background: transparent;
         }
 
-        /* White General Buttons (Non-Book Now) */
-        .btn-white {
-            display: block; 
-            width: 100%;
-            max-width: 500px;
-            padding: 14px 18px; 
-            border: 1px solid #ffffff; 
-            background: transparent;
-            color: #ffffff; 
-            text-decoration: none; 
-            transition: 0.3s ease; 
-            font-weight: 600; 
-            font-size: clamp(0.95rem, 2vw, 1.05rem);
-            font-family: 'Cinzel', serif;
-            text-align: center;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            cursor: pointer;
-            box-sizing: border-box;
-        }
-
-        .btn-white:hover {
-            background: #ffffff;
-            color: #0c0c0c;
-        }
-
-        /* Collapsible Info Button & Content */
+        /* Golden Info Button */
         .info-section {
             width: 100%;
             display: flex;
@@ -240,14 +183,39 @@
             margin: 4px 0 16px;
         }
 
+        .btn-info {
+            display: block; 
+            width: 100%;
+            max-width: 520px;
+            padding: 14px 18px; 
+            border: 1px solid var(--sun); 
+            background: transparent;
+            color: var(--sun); 
+            text-decoration: none; 
+            transition: 0.3s ease; 
+            font-weight: 600; 
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .btn-info:hover {
+            background: var(--sun);
+            color: #0c0c0c;
+        }
+
         .info-content {
             display: none;
             width: 100%;
-            max-width: 680px;
+            max-width: 700px;
             margin-top: 14px;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-left: 3px solid #ffffff;
+            border-left: 3px solid var(--sun);
             padding: 24px 28px;
             text-align: left;
             hyphens: none;
@@ -258,7 +226,7 @@
         .info-content p { 
             color: var(--moon); 
             margin: 0 0 14px; 
-            font-size: clamp(1.02rem, 1.8vw, 1.15rem); 
+            font-size: clamp(1.02rem, 1.8vw, 1.18rem); 
             line-height: 1.75;
             hyphens: none;
             -webkit-hyphens: none;
@@ -271,7 +239,7 @@
         .info-heading {
             font-family: 'Cinzel', serif;
             color: #ffffff;
-            font-size: clamp(1.15rem, 2vw, 1.3rem);
+            font-size: clamp(1.15rem, 2vw, 1.35rem);
             margin: 20px 0 10px;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -285,7 +253,7 @@
         }
 
         .info-list li {
-            font-size: clamp(1rem, 1.8vw, 1.12rem);
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
             color: var(--moon);
             line-height: 1.7;
             margin-bottom: 8px;
@@ -296,21 +264,14 @@
         .info-list li strong {
             font-family: 'Cinzel', serif;
             color: #ffffff;
-            font-size: clamp(0.92rem, 1.6vw, 1.02rem);
+            font-size: clamp(0.95rem, 1.6vw, 1.05rem);
             letter-spacing: 0.5px;
-        }
-
-        hr {
-            border: 0;
-            border-top: 1px solid var(--border-color);
-            width: 100%;
-            margin: 28px 0 24px;
         }
 
         /* Section Titles (White) */
         .section-title {
             font-family: 'Cinzel', serif;
-            font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+            font-size: clamp(1.25rem, 2.4vw, 1.55rem);
             color: #ffffff;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -319,10 +280,68 @@
             font-weight: 600;
         }
 
+        /* 5-Star Reviews Section */
+        .reviews-section {
+            width: 100%;
+            max-width: 740px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .reviews-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .review-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--sun);
+            padding: 22px 26px;
+            text-align: left;
+            hyphens: none;
+            -webkit-hyphens: none;
+            text-wrap: pretty;
+        }
+
+        .review-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px 12px;
+            margin-bottom: 10px;
+        }
+
+        .review-stars {
+            color: var(--sun);
+            font-size: 1.15rem;
+            letter-spacing: 2px;
+        }
+
+        .review-author {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .review-body {
+            color: var(--moon);
+            font-size: clamp(1rem, 1.8vw, 1.12rem);
+            line-height: 1.72;
+            margin: 0;
+            hyphens: none;
+            -webkit-hyphens: none;
+        }
+
         /* Custom Tour Inquiries Form */
         .form-section {
             width: 100%;
-            max-width: 620px;
+            max-width: 640px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -357,7 +376,7 @@
             border: 1px solid var(--border-color);
             color: var(--moon);
             font-family: 'IM Fell Great Primer', serif;
-            font-size: clamp(1rem, 1.8vw, 1.1rem);
+            font-size: clamp(1rem, 1.8vw, 1.12rem);
             border-radius: 2px;
             outline: none;
             transition: border-color 0.2s ease;
@@ -374,6 +393,7 @@
             gap: 14px;
         }
 
+        /* White Submit Button */
         .form-submit-btn {
             margin-top: 6px;
             padding: 15px;
@@ -381,7 +401,7 @@
             color: #0c0c0c;
             border: 1px solid #ffffff;
             font-family: 'Cinzel', serif;
-            font-size: 0.95rem;
+            font-size: clamp(0.95rem, 1.8vw, 1.05rem);
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -395,68 +415,10 @@
             border-color: #ffffff;
         }
 
-        /* 5-Star Reviews Section */
-        .reviews-section {
-            width: 100%;
-            max-width: 720px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .reviews-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            width: 100%;
-        }
-
-        .review-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-left: 3px solid var(--sun);
-            padding: 22px 24px;
-            text-align: left;
-            hyphens: none;
-            -webkit-hyphens: none;
-            text-wrap: pretty;
-        }
-
-        .review-header {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 8px 12px;
-            margin-bottom: 10px;
-        }
-
-        .review-stars {
-            color: var(--sun);
-            font-size: 1.15rem;
-            letter-spacing: 2px;
-        }
-
-        .review-author {
-            font-family: 'Cinzel', serif;
-            color: #ffffff;
-            font-size: clamp(0.95rem, 1.8vw, 1.05rem);
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
-
-        .review-body {
-            color: var(--moon);
-            font-size: clamp(1rem, 1.8vw, 1.1rem);
-            line-height: 1.7;
-            margin: 0;
-            hyphens: none;
-            -webkit-hyphens: none;
-        }
-
         /* Map Embed Section */
         .map-section {
             width: 100%;
-            max-width: 720px;
+            max-width: 740px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -488,7 +450,72 @@
             width: 100%;
         }
 
-        /* Floating Booking Button (Retains Gold FareHarbor Style) */
+        /* Floating Accordion Navigation Button */
+        .floating-nav-btn {
+            position: fixed !important;
+            bottom: 22px !important;
+            left: 20px !important;
+            z-index: 9999 !important;
+            background: #18191c !important;
+            color: #ffffff !important;
+            border: 1px solid #ffffff !important;
+            border-radius: 50% !important;
+            width: 52px !important;
+            height: 52px !important;
+            font-size: 1.5rem !important;
+            line-height: 1 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            cursor: pointer !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .floating-nav-btn:hover {
+            background: #ffffff !important;
+            color: #0c0c0c !important;
+            transform: scale(1.05);
+        }
+
+        /* Floating Navigation Popover Menu */
+        .floating-nav-menu {
+            display: none;
+            position: fixed;
+            bottom: 84px;
+            left: 20px;
+            z-index: 10000;
+            background: #18191c;
+            border: 1px solid var(--border-color);
+            border-radius: 3px;
+            padding: 10px 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.95);
+            width: 210px;
+        }
+
+        .floating-nav-menu a {
+            display: block;
+            padding: 10px 18px;
+            color: #ffffff;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #242529;
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+
+        .floating-nav-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .floating-nav-menu a:hover {
+            background: #242529;
+            color: var(--sun);
+        }
+
+        /* Floating Book Now Button */
         .fh-button-custom {
             position: fixed !important;
             bottom: 22px !important;
@@ -515,10 +542,20 @@
         @media (max-width: 600px) {
             body { padding: 18px 12px 90px; }
             .form-row { grid-template-columns: 1fr; }
-            .nav-links-grid { grid-template-columns: 1fr; }
-            .info-content { padding: 16px 18px; }
+            .info-content { padding: 18px 20px; }
             .review-card { padding: 16px 18px; }
             .map-container { height: 290px; }
+            .floating-nav-btn {
+                bottom: 16px !important;
+                left: 14px !important;
+                width: 46px !important;
+                height: 46px !important;
+                font-size: 1.3rem !important;
+            }
+            .floating-nav-menu {
+                bottom: 72px;
+                left: 14px;
+            }
             .fh-button-custom {
                 bottom: 16px !important;
                 padding: 11px 22px !important;
@@ -648,34 +685,19 @@
             <span class="sep">•</span>
             <span>📍 CENTRAL HELSINKI</span>
             <span class="sep">•</span>
-            <span>🗣️ ENGLISH</span>
+            <span>🔊 ENGLISH</span>
         </div>
 
-        <!-- Navigation Accordion -->
-        <section class="nav-accordion-section">
-            <button type="button" class="btn-white" onclick="toggleNav()" id="nav-btn">
-                Navigation +
-            </button>
-            <div id="nav-content" class="nav-accordion-content">
-                <div class="nav-links-grid">
-                    <a href="#tours-grid" onclick="toggleNav()">Tours</a>
-                    <a href="#info-section" onclick="toggleNav()">Info</a>
-                    <a href="#calendar-section" onclick="toggleNav()">Calendar</a>
-                    <a href="#inquiry-section" onclick="toggleNav()">Custom Tours</a>
-                    <a href="#reviews-section" onclick="toggleNav()">Reviews</a>
-                    <a href="#map-section" onclick="toggleNav()">Location</a>
-                </div>
-            </div>
-        </section>
+        <hr class="tight-hr">
 
         <!-- 1. FareHarbor Item Grid Embed -->
         <div class="embed-wrapper" id="tours-grid">
             <script src="https://fareharbor.com/embeds/script/items/occulthelsinki/?full-items=yes&flow=1690620&fallback=simple"></script>
         </div>
 
-        <!-- 2. Info Toggle Button & Expanded Narrative -->
+        <!-- 2. Golden Info Toggle Button & Expanded Narrative -->
         <section class="info-section" id="info-section">
-            <button type="button" class="btn-white" onclick="toggleInfo()" id="info-btn">
+            <button type="button" class="btn-info" onclick="toggleInfo()" id="info-btn">
                 Info +
             </button>
             <div id="info-content" class="info-content">
@@ -704,47 +726,9 @@
 
         <hr>
 
-        <!-- 4. Custom Tour Inquiries Form -->
-        <section class="form-section" id="inquiry-section">
-            <div class="section-title">custom tour inquires</div>
-            
-            <form class="inquiry-form" onsubmit="handleInquirySubmit(event)">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" required placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="email@domain.com">
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="date">Preferred Date</label>
-                        <input type="text" id="date" name="date" placeholder="e.g. Autumn / Specific Day">
-                    </div>
-                    <div class="form-group">
-                        <label for="group-size">Group Size</label>
-                        <input type="text" id="group-size" name="group-size" placeholder="Number of guests">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Tour Requirements & Inquiries</label>
-                    <textarea id="message" name="message" rows="4" required placeholder="Tell us about your schedule, group, or custom wishes..."></textarea>
-                </div>
-
-                <button type="submit" class="form-submit-btn">Send Tour Inquiry</button>
-            </form>
-        </section>
-
-        <hr>
-
-        <!-- 5. 5-Star Reviews Section -->
+        <!-- 4. 5-Star Guest Reviews Section -->
         <section class="reviews-section" id="reviews-section">
-            <div class="section-title">Guest Reviews</div>
+            <div class="section-title">guest reviews</div>
             
             <div class="reviews-grid">
                 <div class="review-card">
@@ -811,6 +795,44 @@
 
         <hr>
 
+        <!-- 5. Custom Tour Inquiries Form (Between Reviews & Map) -->
+        <section class="form-section" id="inquiry-section">
+            <div class="section-title">custom tour inquires</div>
+            
+            <form class="inquiry-form" onsubmit="handleInquirySubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="email@domain.com">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="text" id="date" name="date" placeholder="e.g. Autumn / Specific Day">
+                    </div>
+                    <div class="form-group">
+                        <label for="group-size">Group Size</label>
+                        <input type="text" id="group-size" name="group-size" placeholder="Number of guests">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Tour Requirements & Inquiries</label>
+                    <textarea id="message" name="message" rows="4" required placeholder="Tell us about your schedule, group, or custom wishes..."></textarea>
+                </div>
+
+                <button type="submit" class="form-submit-btn">Send Tour Inquiry</button>
+            </form>
+        </section>
+
+        <hr>
+
         <!-- 6. Google Business Profile Map Embed -->
         <section class="map-section" id="map-section">
             <div class="map-container">
@@ -823,18 +845,41 @@
         </footer>
     </main>
 
+    <!-- Floating Accordion Navigation Button & Menu -->
+    <button type="button" class="floating-nav-btn" onclick="toggleNavMenu()" id="nav-toggle-btn" aria-label="Navigation Menu" title="Navigation">🪗</button>
+    
+    <div id="nav-floating-menu" class="floating-nav-menu">
+        <a href="#tours-grid" onclick="toggleNavMenu()">Tours</a>
+        <a href="#info-section" onclick="toggleNavMenu()">Info</a>
+        <a href="#calendar-section" onclick="toggleNavMenu()">Calendar</a>
+        <a href="#reviews-section" onclick="toggleNavMenu()">Reviews</a>
+        <a href="#inquiry-section" onclick="toggleNavMenu()">Custom Tours</a>
+        <a href="#map-section" onclick="toggleNavMenu()">Location</a>
+    </div>
+
+    <!-- Floating Book Now Button -->
+    <a href="https://fareharbor.com/embeds/book/occulthelsinki/items/?full-items=yes" class="fh-button-blue fh-icon--ticket fh-shape--default fh-size--default fh-button-custom">Book Now</a>
+
     <script>
-        function toggleNav() {
-            var content = document.getElementById("nav-content");
-            var btn = document.getElementById("nav-btn");
-            if (content.style.display === "block") {
-                content.style.display = "none";
-                btn.innerText = "Navigation +";
+        function toggleNavMenu() {
+            var menu = document.getElementById("nav-floating-menu");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
             } else {
-                content.style.display = "block";
-                btn.innerText = "Navigation −";
+                menu.style.display = "block";
             }
         }
+
+        // Close floating menu when clicking outside
+        document.addEventListener('click', function(e) {
+            var menu = document.getElementById("nav-floating-menu");
+            var btn = document.getElementById("nav-toggle-btn");
+            if (menu && btn && menu.style.display === "block") {
+                if (!menu.contains(e.target) && !btn.contains(e.target)) {
+                    menu.style.display = "none";
+                }
+            }
+        });
 
         function toggleInfo() {
             var content = document.getElementById("info-content");
@@ -868,7 +913,6 @@
             window.location.href = "mailto:contact@occulthelsinki.com?subject=" + subject + "&body=" + body;
         }
     </script>
-    <a href="https://fareharbor.com/embeds/book/occulthelsinki/items/?full-items=yes" class="fh-button-blue fh-icon--ticket fh-shape--default fh-size--default fh-button-custom">Book Now</a>
     <script src="https://fareharbor.com/embeds/api/v1/?autolightframe=yes"></script>
 </body>
 </html>
