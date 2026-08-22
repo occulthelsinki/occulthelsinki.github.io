@@ -70,7 +70,7 @@
             background: var(--bg); 
             color: var(--moon); 
             margin: 0; 
-            padding: 60px 20px; 
+            padding: 60px 20px 100px; 
             display: flex; 
             justify-content: center; 
             -webkit-font-smoothing: antialiased;
@@ -288,6 +288,7 @@
             width: 100%;
         }
 
+        /* Floating Booking Button - Responsive Single-Line Fix */
         .fh-button-custom {
             position: fixed !important;
             bottom: 24px !important;
@@ -298,16 +299,33 @@
             z-index: 9999 !important;
             font-family: 'Cinzel', serif !important;
             font-weight: 600 !important;
+            font-size: 1rem !important;
             letter-spacing: 1.5px !important;
             text-transform: uppercase !important;
+            white-space: nowrap !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: auto !important;
+            min-width: 170px !important;
+            padding: 14px 28px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.75), 0 0 15px rgba(212, 175, 55, 0.35) !important;
+            box-sizing: border-box !important;
         }
 
         @media (max-width: 600px) {
-            body { padding: 40px 20px; }
+            body { padding: 40px 20px 90px; }
             h1 { font-size: 2.2rem; }
             .btn { width: 100%; max-width: 320px; }
             .btn-email { font-size: 0.85rem; }
             article { width: 100%; }
+            .fh-button-custom {
+                bottom: 18px !important;
+                padding: 12px 24px !important;
+                font-size: 0.9rem !important;
+                letter-spacing: 1px !important;
+                min-width: 150px !important;
+            }
         }
     </style>
 
