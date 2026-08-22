@@ -51,7 +51,7 @@
     <!-- Google Fonts: Cinzel and IM Fell Great Primer -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=IM+Fell+Great+Primer:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=IM+Fell+Great+Primer:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fh-kit.com/buttons/v2/?blue=D4AF37" type="text/css" media="screen" />
 
     <style>
@@ -59,15 +59,19 @@
             --sun: #d4af37; /* Golden Accent */
             --moon: #e0e0e0; /* Off-white text */
             --bg: #111213; 
-            --card-bg: #17181a;
-            --border-color: #27282c;
+            --card-bg: #18191c;
+            --border-color: #26272b;
         }
         
+        * {
+            box-sizing: border-box;
+        }
+
         body { 
             background: var(--bg); 
             color: var(--moon); 
             margin: 0; 
-            padding: 40px 16px 110px; 
+            padding: 24px 16px 100px; 
             display: flex; 
             justify-content: center; 
             -webkit-font-smoothing: antialiased;
@@ -82,9 +86,9 @@
         }
 
         header { 
-            border-bottom: 1px solid #333; 
-            margin-bottom: 20px; 
-            padding-bottom: 16px; 
+            border-bottom: 1px solid var(--border-color); 
+            margin-bottom: 12px; 
+            padding-bottom: 10px; 
             text-align: center;
             width: 100%;
         }
@@ -92,30 +96,29 @@
         h1 { 
             font-family: 'Cinzel', serif; 
             color: var(--sun); 
-            font-size: 2.8rem; 
+            font-size: 2.6rem; 
             letter-spacing: 2px; 
-            margin: 0; 
+            margin: 0 0 2px; 
             font-weight: 400;
+            line-height: 1.15;
         }
 
         .tagline { 
             font-family: 'Cinzel', serif;
             font-style: normal; 
             color: var(--moon); 
-            font-size: 1.3rem; 
-            margin-top: 5px; 
-            margin-bottom: 10px;
-            line-height: 1;
+            font-size: 1.2rem; 
+            margin: 0 0 6px;
+            line-height: 1.1;
             letter-spacing: 1.5px;
             text-transform: uppercase;
         }
 
         .stars {
             color: var(--sun);
-            font-size: 1.3rem;
-            letter-spacing: 8px;
-            margin-top: -2px;
-            margin-bottom: -2px;
+            font-size: 1.2rem;
+            letter-spacing: 6px;
+            margin: 0 0 4px;
             line-height: 1;
             text-align: center;
             opacity: 0.9;
@@ -123,13 +126,13 @@
 
         .logistics-bar {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            margin: 16px 0 24px;
+            margin: 10px 0 16px;
             font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: #ffffff !important;
             letter-spacing: 1px;
             text-align: center;
@@ -144,178 +147,237 @@
             opacity: 0.5;
         }
 
-        /* Embed Sections */
+        /* Embed Container Spacing */
         .embed-wrapper {
             width: 100%;
-            margin: 0 0 20px;
+            margin: 0 0 14px;
             background: transparent;
+        }
+
+        /* Collapsible Info Button & Content */
+        .info-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 4px 0 16px;
+        }
+
+        .btn-info {
+            display: block; 
+            width: 100%;
+            max-width: 480px;
+            padding: 13px 16px; 
+            border: 1px solid var(--sun); 
+            background: transparent;
+            color: var(--sun); 
+            text-decoration: none; 
+            transition: 0.3s ease; 
+            font-weight: 600; 
+            font-size: 0.95rem;
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .btn-info:hover {
+            background: var(--sun);
+            color: #0c0c0c;
+        }
+
+        .info-content {
+            display: none;
+            width: 100%;
+            max-width: 640px;
+            margin-top: 14px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--sun);
+            padding: 22px 24px;
+            text-align: justify;
+            text-justify: inter-word;
+            hyphens: auto; 
+            -webkit-hyphens: auto;
+        }
+
+        .info-content p { 
+            font-family: 'IM Fell Great Primer', serif;
+            color: var(--moon); 
+            margin: 0 0 14px; 
+            font-size: 1.02rem; 
+            line-height: 1.65;
+        }
+
+        .info-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-heading {
+            font-family: 'Cinzel', serif;
+            color: var(--sun);
+            font-size: 1.15rem;
+            margin: 18px 0 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-list li {
+            font-family: 'IM Fell Great Primer', serif;
+            font-size: 1rem;
+            color: var(--moon);
+            line-height: 1.6;
+            margin-bottom: 6px;
+        }
+
+        .info-list li strong {
+            font-family: 'Cinzel', serif;
+            color: var(--sun);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
         }
 
         hr {
             border: 0;
             border-top: 1px solid var(--border-color);
             width: 100%;
-            margin: 30px 0;
+            margin: 24px 0 20px;
         }
 
-        /* Distinct Category Sections */
-        .category-section {
+        /* Bespoke Inquiry Contact Form */
+        .form-section {
             width: 100%;
-            max-width: 620px;
+            max-width: 580px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
         }
 
-        .category-title {
+        .form-title {
             font-family: 'Cinzel', serif;
-            font-size: 1.05rem;
+            font-size: 1.25rem;
             color: var(--sun);
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            margin-bottom: 16px;
+            margin-bottom: 6px;
+            text-align: center;
         }
 
-        .btn-group {
+        .form-subtitle {
+            font-family: 'IM Fell Great Primer', serif;
+            font-style: italic;
+            color: #aaa;
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .inquiry-form {
+            width: 100%;
             display: flex;
             flex-direction: column;
             gap: 12px;
-            width: 100%;
-            align-items: center;
         }
 
-        .btn-row {
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            color: var(--sun);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 14px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--moon);
+            font-family: 'IM Fell Great Primer', serif;
+            font-size: 1rem;
+            border-radius: 2px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--sun);
+        }
+
+        .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-            width: 100%;
-            max-width: 500px;
         }
 
-        .btn { 
-            display: block; 
-            width: 100%;
-            max-width: 500px;
-            padding: 15px 12px; 
-            border: 1px solid var(--sun); 
-            background: transparent;
-            color: var(--sun); 
-            text-decoration: none; 
-            transition: 0.3s ease; 
-            font-weight: 400; 
-            font-size: 1rem;
+        .form-submit-btn {
+            margin-top: 6px;
+            padding: 14px;
+            background: var(--sun);
+            color: #0c0c0c;
+            border: 1px solid var(--sun);
             font-family: 'Cinzel', serif;
-            text-align: center;
-            letter-spacing: 1px;
-            box-sizing: border-box;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .btn:hover { 
-            background: var(--sun); 
-            color: #000; 
+        .form-submit-btn:hover {
+            background: #fff;
+            border-color: #fff;
+            color: #000;
         }
 
-        .btn-compact {
-            max-width: 100%;
-            padding: 14px 10px;
-            font-size: 0.9rem;
-        }
-
-        /* Collapsible Story */
-        .collapsible-content {
-            display: none;
+        /* Map Embed Section */
+        .map-section {
             width: 100%;
-            max-width: 500px;
-            margin: 14px 0;
-            text-align: justify;
-            text-justify: inter-word;
-            hyphens: auto; 
-            -webkit-hyphens: auto;
-            border-left: 2px solid var(--sun);
-            padding-left: 16px;
-            box-sizing: border-box;
-        }
-
-        p { 
-            font-family: 'IM Fell Great Primer', serif;
-            color: var(--moon); 
-            margin-bottom: 16px; 
-            font-size: 1.05rem; 
-            line-height: 1.7;
-        }
-
-        .author-link {
-            color: #C8B58C !important;
-            text-decoration: none !important;
-            border-bottom: none !important;
-        }
-
-        .author-link:hover {
-            color: #ffffff !important;
-        }
-
-        /* Email Copy Container */
-        .email-container {
+            max-width: 580px;
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        .map-container {
             width: 100%;
-            position: relative;
+            height: 340px;
+            border: 1px solid var(--border-color);
+            border-radius: 2px;
+            overflow: hidden;
+            background: var(--card-bg);
         }
 
-        .btn-email {
-            font-size: 0.95rem;
-            text-transform: lowercase;
-            letter-spacing: 0.5px;
-        }
-
-        .copy-tooltip {
-            font-family: 'IM Fell Great Primer', serif;
-            font-size: 0.85rem;
-            font-style: italic;
-            color: var(--sun);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            white-space: nowrap;
-            pointer-events: none;
-            margin-top: 6px;
-        }
-
-        /* Verified Directory Strip */
-        .directory-grid { 
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 18px 24px; 
-            justify-content: center; 
+        .map-container iframe {
             width: 100%;
-        }
-
-        .directory-grid a { 
-            font-family: 'IM Fell Great Primer', serif;
-            color: var(--moon); 
-            text-decoration: none; 
-            font-size: 1.05rem; 
-            transition: 0.3s ease; 
-            opacity: 0.85; 
-        }
-
-        .directory-grid a:hover { 
-            color: var(--sun); 
-            opacity: 1; 
+            height: 100%;
+            border: 0;
+            display: block;
         }
 
         footer { 
-            margin-top: 50px; 
-            font-size: 0.9rem; 
+            margin-top: 40px; 
+            font-size: 0.85rem; 
             font-family: 'IM Fell Great Primer', serif;
             color: #666; 
-            padding-top: 20px; 
+            padding-top: 16px; 
             border-top: 1px solid #222; 
             text-align: center;
             width: 100%;
@@ -324,7 +386,7 @@
         /* Floating Booking Button */
         .fh-button-custom {
             position: fixed !important;
-            bottom: 24px !important;
+            bottom: 20px !important;
             left: 50% !important;
             top: auto !important;
             right: auto !important;
@@ -332,7 +394,7 @@
             z-index: 9999 !important;
             font-family: 'Cinzel', serif !important;
             font-weight: 600 !important;
-            font-size: 1rem !important;
+            font-size: 0.95rem !important;
             letter-spacing: 1.5px !important;
             text-transform: uppercase !important;
             white-space: nowrap !important;
@@ -340,23 +402,22 @@
             align-items: center !important;
             justify-content: center !important;
             width: auto !important;
-            min-width: 170px !important;
-            padding: 14px 28px !important;
+            min-width: 160px !important;
+            padding: 12px 26px !important;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.4) !important;
-            box-sizing: border-box !important;
         }
 
         @media (max-width: 600px) {
-            body { padding: 30px 14px 95px; }
+            body { padding: 18px 12px 90px; }
             h1 { font-size: 2.1rem; }
-            .btn-row { grid-template-columns: 1fr; }
-            .btn-compact { font-size: 0.95rem; padding: 15px 12px; }
+            .form-row { grid-template-columns: 1fr; }
+            .info-content { padding: 16px 18px; }
+            .map-container { height: 280px; }
             .fh-button-custom {
-                bottom: 18px !important;
-                padding: 12px 24px !important;
-                font-size: 0.9rem !important;
-                letter-spacing: 1px !important;
-                min-width: 150px !important;
+                bottom: 16px !important;
+                padding: 11px 22px !important;
+                font-size: 0.85rem !important;
+                min-width: 140px !important;
             }
         }
     </style>
@@ -489,57 +550,83 @@
             <script src="https://fareharbor.com/embeds/script/items/occulthelsinki/?full-items=yes&flow=1690620&fallback=simple"></script>
         </div>
 
-        <!-- 2. FareHarbor Calendar Embed (Flow #1690620) -->
+        <!-- 2. Info Toggle Button & Expanded Narrative -->
+        <section class="info-section">
+            <button type="button" class="btn-info" onclick="toggleInfo()" id="info-btn">
+                Info +
+            </button>
+            <div id="info-content" class="info-content">
+                <p>Occult Helsinki provides professional guided walking tours showcasing the highlights and hidden gems of Finland’s capital. Perfect for all curious minds and lovers of art, architecture, and history.</p>
+                <p>All tours are operated by local Finnish performer Henri Tahvanainen, who personally guides guests and immerses them in cultural heritage while helping them to find hidden details in their surroundings.</p>
+                <p>Drawing from history, folklore, mythology, and symbolism, he serves guests meaningful experiences through engaging and insightful storytelling with a side of warm local hospitality.</p>
+                <p>As the cultural gateway to the North, Helsinki is the ideal stop before or after visiting Lapland, Rovaniemi, and the Arctic Circle.</p>
+                <p>Whether you are heading north or returning south, this walk provides the essential Finnish folklore and mythological context to enrich your entire journey through Finland.</p>
+                <p>Considered the best thing to do in Helsinki for discerning travelers who want an authentic perspective of the city beyond the mundane tourist traps.</p>
+                <p>Discover a side of the capital that most travelers—and even locals—never get to experience. Strictly limited spots available.</p>
+
+                <div class="info-heading">Tour Information</div>
+                <ul class="info-list">
+                    <li><strong>Route:</strong> Approximately 3–4 km (1.8–2.4 miles) through central Helsinki.</li>
+                    <li><strong>Pace:</strong> Comfortable and conversational.</li>
+                    <li><strong>Duration:</strong> 1.5 to 2 hours (90–120 minutes).</li>
+                    <li><strong>Capacity:</strong> Limited to 12 spots to preserve exclusivity.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3. FareHarbor Live Calendar Embed -->
         <div class="embed-wrapper">
             <script src="https://fareharbor.com/embeds/script/calendar/occulthelsinki/?full-items=yes&flow=1690620&fallback=simple"></script>
         </div>
 
         <hr>
 
-        <!-- Category 1: The Experience & Lore -->
-        <section class="category-section">
-            <div class="category-title">The Experience & Guide</div>
-            <div class="btn-group">
-                <button type="button" class="btn" onclick="toggleDescription()" id="desc-btn">
-                    Read Tour Story +
-                </button>
-                <div id="desc-content" class="collapsible-content">
-                    <p>Occult Helsinki provides professional guided walking tours showcasing the highlights and hidden gems of Finland’s capital. Perfect for all curious minds and lovers of art, architecture, and history[cite: 1, 2].</p>
-                    <p>All tours are operated by local Finnish performer <a href="https://henritahvanainen.com" target="_blank" rel="noopener noreferrer" class="author-link">Henri Tahvanainen</a>, who personally guides guests and immerses them in cultural heritage while helping them discover hidden details in their surroundings[cite: 1, 2].</p>
-                    <p>Drawing from history, folklore, mythology, and symbolism, he serves guests with meaningful experiences through engaging and insightful storytelling, with a side of warm local hospitality[cite: 1, 2].</p>
-                    <p>Considered the best thing to do in Helsinki for discerning travelers who want an authentic perspective of the city beyond the mundane tourist traps[cite: 1, 2]. Strictly limited spots available[cite: 1, 2].</p>
+        <!-- 4. Bespoke & Custom Tour Inquiry Contact Form -->
+        <section class="form-section">
+            <div class="form-title">Private & Bespoke Tours</div>
+            <div class="form-subtitle">Direct inquiries to contact@occulthelsinki.com</div>
+            
+            <form class="inquiry-form" onsubmit="handleInquirySubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="email@domain.com">
+                    </div>
                 </div>
-                <div class="btn-row">
-                    <a href="https://henritahvanainen.com" target="_blank" rel="noopener noreferrer" class="btn btn-compact">About the Guide</a>
-                    <a href="https://ko-fi.com/s/16cf04942b" target="_blank" rel="noopener noreferrer" class="btn btn-compact">Interactive Map</a>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="text" id="date" name="date" placeholder="e.g. Autumn / Specific Day">
+                    </div>
+                    <div class="form-group">
+                        <label for="group-size">Group Size</label>
+                        <input type="text" id="group-size" name="group-size" placeholder="Number of guests">
+                    </div>
                 </div>
-            </div>
+
+                <div class="form-group">
+                    <label for="message">Tour Requirements & Inquiries</label>
+                    <textarea id="message" name="message" rows="4" required placeholder="Tell us about your schedule, group, or custom wishes..."></textarea>
+                </div>
+
+                <button type="submit" class="form-submit-btn">Send Tour Inquiry</button>
+            </form>
         </section>
 
         <hr>
 
-        <!-- Category 2: Private Bookings -->
-        <section class="category-section">
-            <div class="category-title">Private & Group Inquiries</div>
-            <div class="email-container">
-                <button type="button" class="btn btn-email" onclick="copyEmail(event)" title="Click to copy email address">
-                    contact@occulthelsinki.com
-                </button>
-                <span id="copy-feedback" class="copy-tooltip">Copied to clipboard!</span>
+        <!-- 5. Google Business Profile Map Embed -->
+        <section class="map-section">
+            <div class="form-title">Location & Meeting Point</div>
+            <div class="form-subtitle">Historic Central Helsinki</div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254498.04808482924!2d24.689062095540375!3d60.11009636768345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab0ec604aa5bff93%3A0x5f94e81551b16c82!2sOccult%20Helsinki%20Walking%20Tours!5e0!3m2!1sfi!2sfi!4v1787390371506!5m2!1sfi!2sfi" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
-        </section>
-
-        <hr>
-
-        <!-- Category 3: Verified Press & Reviews -->
-        <section class="category-section">
-            <div class="category-title">Press & Reviews</div>
-            <nav class="directory-grid">
-                <a href="https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html" target="_blank" rel="noopener noreferrer">TripAdvisor (5.0 ★)</a>
-                <a href="https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/" target="_blank" rel="noopener noreferrer">MyHelsinki.fi</a>
-                <a href="https://www.helsinki.today/en-FI/page/69e31d1bfafad1b3a6324e35/occult-helsinki-walking-tour" target="_blank" rel="noopener noreferrer">Helsinki Today</a>
-                <a href="https://share.google/xu9WUon8o6tQv3Hcp" target="_blank" rel="noopener noreferrer">Google Profile</a>
-            </nav>
         </section>
 
         <footer>
@@ -548,49 +635,36 @@
     </main>
 
     <script>
-        function toggleDescription() {
-            var content = document.getElementById("desc-content");
-            var btn = document.getElementById("desc-btn");
+        function toggleInfo() {
+            var content = document.getElementById("info-content");
+            var btn = document.getElementById("info-btn");
             if (content.style.display === "block") {
                 content.style.display = "none";
-                btn.innerText = "Read Tour Story +";
+                btn.innerText = "Info +";
             } else {
                 content.style.display = "block";
-                btn.innerText = "Hide Tour Story −";
+                btn.innerText = "Info −";
             }
         }
 
-        function copyEmail(event) {
-            var selection = window.getSelection().toString();
-            if (selection.length > 0) return;
+        function handleInquirySubmit(e) {
+            e.preventDefault();
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var date = document.getElementById('date').value;
+            var size = document.getElementById('group-size').value;
+            var message = document.getElementById('message').value;
 
-            var email = "contact@occulthelsinki.com";
-            
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(email).then(showFeedback);
-            } else {
-                var tempInput = document.createElement("input");
-                tempInput.value = email;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                try {
-                    document.execCommand("copy");
-                    showFeedback();
-                } catch (err) {
-                    console.error("Copy failed", err);
-                }
-                document.body.removeChild(tempInput);
-            }
-        }
+            var subject = encodeURIComponent("Bespoke Occult Helsinki Tour Inquiry: " + name);
+            var body = encodeURIComponent(
+                "Name: " + name + "\n" +
+                "Email: " + email + "\n" +
+                "Preferred Date: " + date + "\n" +
+                "Group Size: " + size + "\n\n" +
+                "Message:\n" + message
+            );
 
-        function showFeedback() {
-            var feedback = document.getElementById("copy-feedback");
-            if (feedback) {
-                feedback.style.opacity = "1";
-                setTimeout(function() {
-                    feedback.style.opacity = "0";
-                }, 2000);
-            }
+            window.location.href = "mailto:contact@occulthelsinki.com?subject=" + subject + "&body=" + body;
         }
     </script>
     <a href="https://fareharbor.com/embeds/book/occulthelsinki/items/?full-items=yes" class="fh-button-blue fh-icon--ticket fh-shape--default fh-size--default fh-button-custom">Book Now</a>
