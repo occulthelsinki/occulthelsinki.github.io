@@ -19,11 +19,6 @@
       })();
     </script>
 
-    <!-- DNS Prefetch for Booking Partners -->
-    <link rel="dns-prefetch" href="https://www.airbnb.com">
-    <link rel="dns-prefetch" href="https://www.getyourguide.com">
-    <link rel="dns-prefetch" href="https://www.tripadvisor.com">
-
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,18 +65,24 @@
             background: var(--bg); 
             color: var(--moon); 
             margin: 0; 
-            padding: 60px 20px 100px; 
+            padding: 40px 16px 100px; 
             display: flex; 
             justify-content: center; 
             -webkit-font-smoothing: antialiased;
         }
 
-        main { max-width: 700px; width: 100%; display: flex; flex-direction: column; align-items: center; }
+        main { 
+            max-width: 780px; 
+            width: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
 
         header { 
             border-bottom: 1px solid #333; 
-            margin-bottom: 30px; 
-            padding-bottom: 20px; 
+            margin-bottom: 24px; 
+            padding-bottom: 16px; 
             text-align: center;
             width: 100%;
         }
@@ -89,7 +90,7 @@
         h1 { 
             font-family: 'Cinzel', serif; 
             color: var(--sun); 
-            font-size: 3rem; 
+            font-size: 2.8rem; 
             letter-spacing: 2px; 
             margin: 0; 
             font-weight: 400;
@@ -99,7 +100,7 @@
             font-family: 'Cinzel', serif;
             font-style: normal; 
             color: var(--moon); 
-            font-size: 1.4rem; 
+            font-size: 1.3rem; 
             margin-top: 5px; 
             margin-bottom: 10px;
             line-height: 1;
@@ -109,7 +110,7 @@
 
         .stars {
             color: var(--sun);
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             letter-spacing: 8px;
             margin-top: -2px;
             margin-bottom: -2px;
@@ -124,7 +125,7 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            margin: 20px 0 10px;
+            margin: 18px 0 24px;
             font-family: 'Cinzel', serif;
             font-size: 0.85rem;
             color: #ffffff !important;
@@ -141,13 +142,23 @@
             opacity: 0.5;
         }
 
+        /* First Screen Embed Container */
+        .embed-wrapper {
+            width: 100%;
+            margin: 0 0 30px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: transparent;
+        }
+
         article {
             text-align: justify;
             text-justify: inter-word;
             hyphens: auto; 
             -webkit-hyphens: auto;
-            width: 85%;
-            max-width: 550px;
+            width: 90%;
+            max-width: 580px;
+            margin-top: 10px;
         }
 
         p { 
@@ -259,7 +270,7 @@
         }
 
         .directory { 
-            margin-top: 40px; 
+            margin-top: 30px; 
             display: flex; 
             flex-wrap: wrap; 
             gap: 25px; 
@@ -271,24 +282,24 @@
             font-family: 'IM Fell Great Primer', serif;
             color: var(--moon); 
             text-decoration: none; 
-            font-size: 1.1rem; 
+            font-size: 1.05rem; 
             transition: 0.3s ease; 
             opacity: 0.8; 
         }
         .directory a:hover { color: var(--sun); opacity: 1; }
 
         footer { 
-            margin-top: 80px; 
+            margin-top: 60px; 
             font-size: 0.9rem; 
             font-family: 'IM Fell Great Primer', serif;
-            color: #555; 
+            color: #666; 
             padding-top: 20px; 
-            border-top: 1px solid #1a1a1a; 
+            border-top: 1px solid #222; 
             text-align: center;
             width: 100%;
         }
 
-        /* Floating Booking Button - Responsive Single-Line Fix */
+        /* Floating Booking Button */
         .fh-button-custom {
             position: fixed !important;
             bottom: 24px !important;
@@ -309,13 +320,13 @@
             width: auto !important;
             min-width: 170px !important;
             padding: 14px 28px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.75), 0 0 15px rgba(212, 175, 55, 0.35) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.4) !important;
             box-sizing: border-box !important;
         }
 
         @media (max-width: 600px) {
-            body { padding: 40px 20px 90px; }
-            h1 { font-size: 2.2rem; }
+            body { padding: 30px 14px 90px; }
+            h1 { font-size: 2.1rem; }
             .btn { width: 100%; max-width: 320px; }
             .btn-email { font-size: 0.85rem; }
             article { width: 100%; }
@@ -400,8 +411,6 @@
           },
           "sameAs": [
             "https://www.wikidata.org/wiki/Q141082275",
-            "https://www.airbnb.com/x/occulthelsinki",
-            "https://www.getyourguide.com/occult-helsinki-walking-tour-s751267/",
             "https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html",
             "https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/",
             "https://www.helsinki.today/en-FI/page/69e31d1bfafad1b3a6324e35/occult-helsinki-walking-tour",
@@ -426,44 +435,6 @@
               }
             ]
           }
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://occulthelsinki.com/#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Who guides the Occult Helsinki walking tours?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "All tours are personally operated and guided by Henri Tahvanainen, a Finnish performing audiovisual artist, actor, and storyteller with a deep connection to Finnish culture and lore."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What distance does the walking tour cover?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "The walking tour typically covers a comfortable 3 to 4 km route through historic central Helsinki."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I book a private or corporate tour?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, private group and corporate walking tours can be arranged upon request in English or Finnish by contacting contact@occulthelsinki.com."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What language is the tour conducted in?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Public tours are conducted in fluent English, delivering an engaging and authentic experience for international travelers."
-              }
-            }
-          ]
         }
       ]
     }
@@ -492,6 +463,11 @@
             <span>🗣️ ENGLISH</span>
         </div>
 
+        <!-- Direct Tour Booking Embed on the First Screen -->
+        <div class="embed-wrapper">
+            <script src="https://fareharbor.com/embeds/script/items/occulthelsinki/?full-items=yes&flow=1690620&fallback=simple"></script>
+        </div>
+
         <article>
             <p>Occult Helsinki provides professional guided walking tours showcasing the highlights and hidden gems of Finland’s capital. Perfect for all curious minds and lovers of art, architecture, and history.</p>
             
@@ -501,14 +477,6 @@
             
             <p>Considered the best thing to do in Helsinki for discerning travelers who want an authentic perspective of the city beyond the mundane tourist traps. Strictly limited spots available.</p>
         </article>
-
-        <hr>
-
-        <section>
-            <div class="label-text">Book now</div>
-            <a href="https://www.airbnb.com/x/occulthelsinki" target="_blank" rel="noopener noreferrer" class="btn">on Airbnb Experiences</a>
-            <a href="https://www.getyourguide.com/occult-helsinki-walking-tour-s751267/" target="_blank" rel="noopener noreferrer" class="btn">on GetYourGuide</a>
-        </section>
 
         <hr>
 
@@ -546,7 +514,7 @@
         <hr>
 
         <nav class="directory">
-            <a href="https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html" target="_blank" rel="noopener noreferrer">TripAdvisor</a>
+            <a href="https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html" target="_blank" rel="noopener noreferrer">TripAdvisor Reviews</a>
             <a href="https://www.helsinki.today/en-FI/page/69e31d1bfafad1b3a6324e35/occult-helsinki-walking-tour" target="_blank" rel="noopener noreferrer">Helsinki Today</a>
             <a href="https://share.google/xu9WUon8o6tQv3Hcp" target="_blank" rel="noopener noreferrer">Google Profile</a>
         </nav>
