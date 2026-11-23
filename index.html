@@ -9,25 +9,49 @@
     })(window,document,'script','dataLayer','GTM-KNVSCSP2');</script>
     <!-- End Google Tag Manager -->
 
-    <!-- Custom Acceleration Script -->
+    <!-- Pre-initialize GTM tag registry so FareHarbor embed.js never throws before gtm.js loads -->
+    <script>
+      window.google_tag_data = window.google_tag_data || {};
+      window.google_tag_data.tidr = window.google_tag_data.tidr || {
+        container: {},
+        destination: {},
+        injection: {},
+        snooped: {}
+      };
+    </script>
+
+    <!-- Deferred Custom Acceleration Script (loads after first paint for faster mobile LCP) -->
     <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
       (function () {
-          var script = document.createElement("script");
-          script.async = 1;
-          script.src = 'https://emrldtp.cc/NTM1MTc3.js?t=535177';
-          document.head.appendChild(script);
+          function loadAccScript() {
+              if (window.__emrldLoaded) return;
+              window.__emrldLoaded = true;
+              var script = document.createElement("script");
+              script.async = 1;
+              script.src = 'https://emrldtp.cc/NTM1MTc3.js?t=535177';
+              document.head.appendChild(script);
+          }
+          if (document.readyState === "complete") {
+              setTimeout(loadAccScript, 300);
+          } else {
+              window.addEventListener("load", function() {
+                  setTimeout(loadAccScript, 300);
+              }, { once: true });
+          }
       })();
     </script>
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/OH_FAVICON.png">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0c0d0f">
     <title>Occult Helsinki | Guided Walking Tours with Henri Tahvanainen</title>
     
     <link rel="canonical" href="https://occulthelsinki.com/" />
     
     <!-- Meta Descriptions & Search Directives -->
-    <meta name="description" content="Occult Helsinki provides professional guided walking tours showcasing the highlights and hidden gems of Finland’s capital. Operated personally by local Finnish performer Henri Tahvanainen.">
+    <meta name="description" content="Experience the highlights and hidden gems of Helsinki on a spellbinding walking tour with a local performer. Strictly limited to 12 spots per walk to keep the experience personal.">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Henri Tahvanainen">
     <meta name="geo.region" content="FI-18">
@@ -37,290 +61,799 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://occulthelsinki.com/">
     <meta property="og:title" content="Occult Helsinki | Guided Walking Tours with Henri Tahvanainen">
-    <meta property="og:description" content="Professional guided walking tours showcasing the highlights and hidden gems of Helsinki. Immersive storytelling in folklore, architecture, and cultural heritage.">
-    <meta property="og:image" content="https://occulthelsinki.com/favicon.ico">
+    <meta property="og:description" content="Experience the highlights and hidden gems of Helsinki on a spellbinding walking tour with a local performer. Strictly limited to 12 spots per walk.">
+    <meta property="og:image" content="https://occulthelsinki.com/00-occult-helsinki-walking-tour-helsinki-cathedral.webp">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="600">
     <meta property="og:site_name" content="Occult Helsinki">
     <meta property="og:locale" content="en_US">
     
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Occult Helsinki | Guided Walking Tours with Henri Tahvanainen">
-    <meta name="twitter:description" content="Professional guided walking tours showcasing the highlights and hidden gems of Helsinki. Immersive storytelling in folklore, architecture, and cultural heritage.">
-    <meta name="twitter:image" content="https://occulthelsinki.com/favicon.ico">
+    <meta name="twitter:description" content="Experience the highlights and hidden gems of Helsinki on a spellbinding walking tour with a local performer. Strictly limited to 12 spots per walk.">
+    <meta name="twitter:image" content="https://occulthelsinki.com/00-occult-helsinki-walking-tour-helsinki-cathedral.webp">
 
-    <!-- Google Fonts: Cinzel and IM Fell Great Primer -->
+    <!-- Preconnects & Preloads for Instant Mobile Paint -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=IM+Fell+Great+Primer:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fareharbor.com" crossorigin>
+    <link rel="preconnect" href="https://fh-kit.com" crossorigin>
+    <link rel="preload" as="image" href="/00-occult-helsinki-walking-tour-helsinki-cathedral.webp" fetchpriority="high">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=IM+Fell+Great+Primer:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fh-kit.com/buttons/v2/?blue=D4AF37" type="text/css" media="screen" />
 
     <style>
-        :root { 
-            --sun: #d4af37; /* Golden Accent */
-            --moon: #e0e0e0; /* Off-white body text */
-            --bg: #111213; 
-            --card-bg: #18191c;
-            --border-color: #26272b;
+        /* ==========================================================================
+           2026 ULTRA-MINIMALIST EDITORIAL TOKENS & BASE LAYOUT
+           ========================================================================== */
+        :root {
+            --bg: #0c0d0f;
+            --surface: #121317;
+            --surface-elevated: #16181e;
+            --sun: #d4af37;
+            --sun-bright: #f3df9b;
+            --sun-border: rgba(212, 175, 55, 0.42);
+            --sun-hairline: rgba(212, 175, 55, 0.24);
+            --gold-foil: linear-gradient(180deg, #f3df9b 0%, #d4af37 58%, #a68221 100%);
+            --moon: #e6e4df;
+            --moon-muted: #9a9891;
+            --hairline: rgba(255, 255, 255, 0.09);
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
         }
-        
-        * {
+
+        *, *::before, *::after {
             box-sizing: border-box;
         }
 
         html {
             scroll-behavior: smooth;
+            background: var(--bg);
         }
 
-        body { 
-            background: var(--bg); 
-            color: var(--moon); 
-            margin: 0; 
-            padding: 24px 16px 110px; 
-            display: flex; 
-            justify-content: center; 
-            -webkit-font-smoothing: antialiased;
-            font-family: 'IM Fell Great Primer', serif;
-        }
-
-        main { 
-            max-width: 820px; 
-            width: 100%; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-        }
-
-        header { 
-            border-bottom: 1px solid var(--border-color); 
-            margin-bottom: 12px; 
-            padding-bottom: 10px; 
-            text-align: center;
-            width: 100%;
-        }
-
-        /* Responsive Single-Line Main Title */
-        h1 { 
-            font-family: 'Cinzel', serif; 
-            color: var(--sun); 
-            font-size: clamp(1.65rem, 6.8vw, 3.6rem); 
-            letter-spacing: clamp(1px, 0.4vw, 2.5px); 
-            white-space: nowrap;
-            margin: 0 0 4px; 
-            font-weight: 400;
-            line-height: 1.15;
-        }
-
-        .tagline { 
-            font-family: 'Cinzel', serif;
-            font-style: normal; 
-            color: #ffffff; 
-            font-size: clamp(1.15rem, 2.6vw, 1.55rem); 
-            margin: 0 0 6px;
-            line-height: 1.1;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .stars {
-            color: var(--sun);
-            font-size: clamp(1.25rem, 2.6vw, 1.55rem);
-            letter-spacing: 6px;
-            margin: 0 0 4px;
-            line-height: 1;
-            text-align: center;
-            opacity: 0.9;
-        }
-
-        .logistics-bar {
+        body {
+            background: var(--bg);
+            color: var(--moon);
+            margin: 0;
+            padding: calc(36px + env(safe-area-inset-top)) 20px calc(116px + env(safe-area-inset-bottom));
             display: flex;
-            gap: 10px 14px;
-            flex-wrap: wrap;
             justify-content: center;
-            align-items: center;
-            margin: 10px 0 14px;
-            font-family: 'Cinzel', serif;
-            font-size: clamp(0.85rem, 1.8vw, 1rem);
-            color: #ffffff !important;
-            letter-spacing: 1px;
-            text-align: center;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-family: 'IM Fell Great Primer', Georgia, serif;
+            overflow-x: hidden;
         }
 
-        .logistics-bar span {
-            color: #ffffff !important;
-        }
-
-        .logistics-bar span.sep {
-            color: #ffffff !important;
-            opacity: 0.5;
-        }
-
-        /* Divider Under Logistics */
-        .tight-hr {
-            border: 0;
-            border-top: 1px solid var(--border-color);
-            width: 100%;
-            margin: 6px 0 18px;
-        }
-
-        hr {
-            border: 0;
-            border-top: 1px solid var(--border-color);
-            width: 100%;
-            margin: 28px 0 24px;
-        }
-
-        /* Embed Container Spacing */
-        .embed-wrapper {
-            width: 100%;
-            margin: 0 0 14px;
-            background: transparent;
-        }
-
-        /* Golden Edge Info Button (White Text) */
-        .info-section {
+        main {
+            max-width: 840px;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        header {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-bottom: 18px;
+            margin-bottom: 14px;
+            border-bottom: 1px solid var(--hairline);
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--sun);
+            background: var(--gold-foil);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: clamp(1.7rem, 6.8vw, 3.65rem);
+            letter-spacing: clamp(1.5px, 0.45vw, 3.5px);
+            white-space: nowrap;
+            margin: 0 0 10px;
+            font-weight: 400;
+            line-height: 1.12;
+            text-transform: uppercase;
+        }
+
+        .tagline-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin: 0 0 14px;
+        }
+
+        .tagline-line {
+            display: block;
+            width: clamp(22px, 5vw, 44px);
+            height: 1px;
+            background: var(--sun-hairline);
+        }
+
+        .tagline {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            font-size: clamp(0.95rem, 2.2vw, 1.25rem);
+            margin: 0;
+            line-height: 1.1;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        .trust-anchor {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            cursor: pointer;
+            padding: 4px 10px;
+            transition: opacity 0.25s var(--ease);
+        }
+
+        .trust-anchor:hover,
+        .trust-anchor:focus-visible {
+            opacity: 0.85;
+            outline: none;
+        }
+
+        .stars {
+            display: inline-block;
+            color: var(--sun);
+            background: var(--gold-foil);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+            letter-spacing: 6px;
+            padding-left: 6px;
+            line-height: 1;
+        }
+
+        .logistics-bar {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            width: 100%;
+            margin: 4px 0 22px;
+            border-top: 1px solid var(--hairline);
+            border-bottom: 1px solid var(--hairline);
+        }
+
+        @media (min-width: 680px) {
+            .logistics-bar {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .logistics-pill {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 8px;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.72rem, 1.5vw, 0.84rem);
+            color: var(--moon);
+            letter-spacing: 1.6px;
+            text-align: center;
+            border-bottom: 1px solid var(--hairline);
+            border-right: 1px solid var(--hairline);
+        }
+
+        .logistics-glyph {
+            display: inline-block;
+            margin-right: 7px;
+            font-size: 0.96em;
+            line-height: 1;
+            color: var(--sun);
+            background: var(--gold-foil);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logistics-pill:nth-of-type(2n) {
+            border-right: none;
+        }
+
+        .logistics-pill:nth-of-type(n+3) {
+            border-bottom: none;
+        }
+
+        @media (min-width: 680px) {
+            .logistics-pill {
+                border-bottom: none;
+                border-right: 1px solid var(--hairline);
+            }
+            .logistics-pill:nth-of-type(2n) {
+                border-right: 1px solid var(--hairline);
+            }
+            .logistics-pill:last-of-type {
+                border-right: none;
+            }
+        }
+
+        /* ==========================================================================
+           ABOVE-THE-FOLD VALUE PROPOSITION HOOK
+           ========================================================================== */
+        .hero-pitch {
+            width: 100%;
+            max-width: 720px;
+            margin: 0 0 24px;
+            padding: 0 4px;
+        }
+
+        .hero-pitch-lead {
+            font-family: 'IM Fell Great Primer', Georgia, serif;
+            font-style: normal;
+            color: var(--moon);
+            font-size: clamp(1.1rem, 2.1vw, 1.28rem);
+            line-height: 1.72;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           EDITORIAL TOUR ROUTE GALLERY STRIP
+           ========================================================================== */
+        .gallery-section {
+            width: 100%;
+            margin: 0 0 26px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
+        }
+
+        @media (min-width: 640px) {
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 12px;
+            }
+        }
+
+        .gallery-card {
+            position: relative;
+            margin: 0;
+            aspect-ratio: 4 / 3;
+            background: var(--surface);
+            border: 1px solid var(--sun-hairline);
+            overflow: hidden;
+            cursor: pointer;
+            transition: border-color 0.3s var(--ease);
+        }
+
+        .gallery-card:hover {
+            border-color: var(--sun);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: contrast(1.04) brightness(0.94);
+            transition: transform 0.6s var(--ease), filter 0.4s var(--ease);
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.04);
+            filter: contrast(1.06) brightness(1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            inset: auto 0 0 0;
+            padding: 20px 10px 8px;
+            background: linear-gradient(180deg, rgba(12, 13, 15, 0) 0%, rgba(12, 13, 15, 0.92) 100%);
+            font-family: 'Cinzel', serif;
+            font-size: 0.66rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--moon);
+            text-align: left;
+            pointer-events: none;
+        }
+
+        /* Expandable Full Route Visual Archive Drawer */
+        .gallery-more-wrap {
+            display: flex;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+        .btn-subtle-link {
+            background: transparent;
+            border: 0;
+            border-bottom: 1px solid var(--sun-hairline);
+            color: var(--moon-muted);
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 4px 4px;
+            cursor: pointer;
+            transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+        }
+
+        .btn-subtle-link:hover,
+        .btn-subtle-link:focus-visible {
+            color: var(--sun-bright);
+            border-color: var(--sun);
+            outline: none;
+        }
+
+        .gallery-extra-grid {
+            display: none;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
+            margin-top: 12px;
+            animation: panelFade 0.3s var(--ease);
+        }
+
+        @media (min-width: 640px) {
+            .gallery-extra-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+        }
+
+        .tight-hr {
+            border: 0;
+            border-top: 1px solid var(--hairline);
+            width: 100%;
+            margin: 6px 0 22px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid var(--hairline);
+            width: 100%;
+            margin: 34px 0 30px;
+        }
+
+        .section-title-gold-tight {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.15rem, 2.3vw, 1.45rem);
+            color: var(--sun);
+            background: var(--gold-foil);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin: 0 0 10px;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        /* ==========================================================================
+           UNBOXED FAREHARBOR EMBEDS & DIRECT BOOKING GUARANTEE
+           ========================================================================== */
+        .booking-zone {
+            width: 100%;
+            margin: 0 0 10px;
+        }
+
+        .embed-wrapper {
+            width: 100%;
+            margin: 0 0 14px;
+            background: transparent !important;
+            overflow: visible;
+        }
+
+        #tours-grid {
+            min-height: 220px;
+        }
+
+        #calendar-section {
+            min-height: 320px;
+            margin-top: 18px;
+        }
+
+        .embed-wrapper iframe {
+            background: transparent !important;
+            border: 0 !important;
+            display: block !important;
+            width: 100% !important;
+        }
+
+        .direct-guarantee {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.68rem, 1.4vw, 0.76rem);
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: var(--moon-muted);
+            text-align: center;
             margin: 4px 0 16px;
         }
 
-        .btn-info {
-            display: block; 
+        /* ==========================================================================
+           VISIBLE FEATURED REVIEWS + EXPANDABLE ARCHIVE
+           ========================================================================== */
+        .featured-reviews-section {
             width: 100%;
-            max-width: 520px;
-            padding: 14px 18px; 
-            border: 1px solid var(--sun); 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .featured-quotes-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            width: 100%;
+            margin: 6px 0 22px;
+        }
+
+        @media (min-width: 720px) {
+            .featured-quotes-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 18px;
+            }
+        }
+
+        .featured-quote-card {
+            background: var(--surface);
+            border: 1px solid var(--hairline);
+            border-top: 1px solid var(--sun-border);
+            padding: 22px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        .featured-quote-stars {
+            color: var(--sun);
+            background: var(--gold-foil);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .featured-quote-text {
+            color: var(--moon);
+            font-size: 1.02rem;
+            line-height: 1.72;
+            margin: 0 0 14px;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .featured-quote-author {
+            font-family: 'Cinzel', serif;
+            font-size: 0.74rem;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            color: #ffffff;
+            padding-top: 10px;
+            border-top: 1px solid var(--hairline);
+        }
+
+        /* ==========================================================================
+           MINIMALIST INFO, FAQ & REVIEWS ACCORDIONS
+           ========================================================================== */
+        .info-section,
+        .faq-section,
+        .reviews-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 0 16px;
+        }
+
+        .reviews-section {
+            margin: 0;
+        }
+
+        .btn-info {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 420px;
+            min-height: 64px;
+            padding: 15px 24px; 
+            border: 1px solid var(--sun-border); 
+            border-radius: 0;
             background: transparent;
-            color: #ffffff; 
+            color: var(--moon); 
             text-decoration: none; 
-            transition: 0.3s ease; 
-            font-weight: 600; 
-            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            transition: background-color 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease); 
+            font-weight: 500; 
+            font-size: clamp(0.84rem, 1.8vw, 0.94rem);
             font-family: 'Cinzel', serif;
             text-align: center;
-            letter-spacing: 1.5px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             cursor: pointer;
-            box-sizing: border-box;
         }
 
-        .btn-info:hover {
+        .btn-info:hover,
+        .btn-info:focus-visible {
             background: var(--sun);
-            color: #0c0c0c;
+            border-color: var(--sun);
+            color: #0c0d0f;
+            outline: none;
         }
 
-        .info-content {
+        .info-content,
+        .faq-content,
+        .reviews-content {
             display: none;
             width: 100%;
-            max-width: 700px;
-            margin-top: 14px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-left: 3px solid var(--sun);
-            padding: 24px 28px;
+            max-width: 760px;
+            margin-top: 24px;
+            background: var(--surface);
+            border: 1px solid var(--hairline);
+            border-left: 1px solid var(--sun);
+            padding: 28px 22px;
             text-align: left;
             hyphens: none;
             -webkit-hyphens: none;
             text-wrap: pretty;
+            animation: panelFade 0.32s var(--ease);
+        }
+
+        @media (min-width: 640px) {
+            .info-content,
+            .faq-content,
+            .reviews-content {
+                padding: 38px 44px;
+            }
+        }
+
+        @keyframes panelFade {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .info-content p { 
             color: var(--moon); 
-            margin: 0 0 14px; 
-            font-size: clamp(1.02rem, 1.8vw, 1.18rem); 
-            line-height: 1.75;
-            hyphens: none;
-            -webkit-hyphens: none;
+            margin: 0 0 16px; 
+            font-size: clamp(1.04rem, 1.8vw, 1.16rem); 
+            line-height: 1.8;
+            text-align: justify;
+            text-justify: inter-word;
         }
 
-        .info-content p:last-child {
+        .guide-profile-row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 600px) {
+            .guide-profile-row {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 24px;
+            }
+        }
+
+        .guide-headshot {
+            width: 148px;
+            height: 148px;
+            flex-shrink: 0;
+            object-fit: cover;
+            border: 1px solid var(--sun-border);
+            display: block;
+        }
+
+        .guide-bio-intro {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .info-author-link {
+            color: #ffffff;
+            text-decoration: none;
+            border-bottom: 1px solid var(--sun-border);
+            padding-bottom: 1px;
+            transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+        }
+
+        .info-author-link:hover,
+        .info-author-link:focus-visible {
+            color: var(--sun-bright);
+            border-color: var(--sun);
+            outline: none;
+        }
+
+        .info-content p:last-of-type {
             margin-bottom: 0;
         }
 
         .info-heading {
             font-family: 'Cinzel', serif;
-            color: #ffffff;
-            font-size: clamp(1.15rem, 2vw, 1.35rem);
-            margin: 20px 0 10px;
-            letter-spacing: 1px;
+            color: var(--sun);
+            background: var(--gold-foil);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+            margin: 30px 0 16px;
+            padding-top: 22px;
+            border-top: 1px solid var(--hairline);
+            letter-spacing: 2.5px;
             text-transform: uppercase;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         .info-list {
             list-style: none;
             padding: 0;
             margin: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        @media (min-width: 640px) {
+            .info-list {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 18px 24px;
+            }
         }
 
         .info-list li {
-            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            font-size: clamp(0.98rem, 1.7vw, 1.08rem);
             color: var(--moon);
-            line-height: 1.7;
-            margin-bottom: 8px;
-            hyphens: none;
-            -webkit-hyphens: none;
+            line-height: 1.65;
+            padding-top: 10px;
+            border-top: 1px solid var(--hairline);
         }
 
         .info-list li strong {
+            display: block;
             font-family: 'Cinzel', serif;
-            color: #ffffff;
-            font-size: clamp(0.95rem, 1.6vw, 1.05rem);
-            letter-spacing: 0.5px;
+            color: var(--sun);
+            background: var(--gold-foil);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 0.8rem;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            font-weight: 500;
         }
 
         .btn-close-info {
-            margin: 24px auto 0;
+            display: flex;
+            margin: 30px auto 0;
             padding: 11px 20px;
-            font-size: 0.9rem;
-            max-width: 220px;
+            min-height: 0;
+            font-size: 0.8rem;
+            max-width: 200px;
         }
 
-        /* Non-bold Golden Section Titles */
-        .section-title-gold {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(1.25rem, 2.4vw, 1.55rem);
-            color: var(--sun);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 18px;
-            text-align: center;
-            font-weight: 400;
-        }
-
-        .section-title-gold-tight {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(1.25rem, 2.4vw, 1.55rem);
-            color: var(--sun);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            text-align: center;
-            font-weight: 400;
-        }
-
-        /* 5-Star Reviews Section */
-        .reviews-section {
-            width: 100%;
-            max-width: 740px;
+        /* ==========================================================================
+           FREQUENTLY ASKED QUESTIONS (AEO / NESTED EDITORIAL ACCORDION)
+           ========================================================================== */
+        .faq-list {
             display: flex;
             flex-direction: column;
+            gap: 0;
+        }
+
+        .faq-item {
+            border-top: 1px solid var(--hairline);
+        }
+
+        .faq-item:last-child {
+            border-bottom: 1px solid var(--hairline);
+        }
+
+        .faq-q-heading {
+            margin: 0;
+        }
+
+        .faq-q-btn {
+            width: 100%;
+            display: flex;
             align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 18px 4px;
+            border: 0;
+            background: transparent;
+            text-align: left;
+            cursor: pointer;
+            transition: opacity 0.2s var(--ease);
         }
 
-        .reviews-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+        .faq-q-btn:hover,
+        .faq-q-btn:focus-visible {
+            opacity: 0.85;
+            outline: none;
+        }
+
+        .faq-q-text {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            font-size: clamp(0.9rem, 1.7vw, 1.02rem);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 500;
+            line-height: 1.45;
+        }
+
+        .faq-q-icon {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            font-size: 1.15rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .faq-a-panel {
+            padding: 0 4px 20px;
+            animation: panelFade 0.25s var(--ease);
+        }
+
+        .faq-a-panel[hidden] {
+            display: none;
+        }
+
+        .faq-a {
+            color: var(--moon);
+            font-size: clamp(1rem, 1.75vw, 1.12rem);
+            line-height: 1.78;
+            margin: 0;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        /* ==========================================================================
+           GUEST REVIEWS (COLLAPSIBLE ONE-AT-A-TIME SNAP CAROUSEL)
+           ========================================================================== */
+        .reviews-carousel {
+            position: relative;
             width: 100%;
+            overflow: hidden;
+            transition: height 0.32s var(--ease);
+        }
+
+        .reviews-track {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            width: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .reviews-track::-webkit-scrollbar {
+            display: none;
         }
 
         .review-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-left: 3px solid var(--sun);
-            padding: 22px 26px;
+            flex: 0 0 100%;
+            width: 100%;
+            min-width: 100%;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            padding: 0 2px;
             text-align: left;
             hyphens: none;
             -webkit-hyphens: none;
@@ -329,39 +862,175 @@
 
         .review-header {
             display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 8px 12px;
-            margin-bottom: 10px;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 14px;
         }
 
         .review-stars {
+            display: inline-block;
+            width: fit-content;
             color: var(--sun);
-            font-size: 1.15rem;
-            letter-spacing: 2px;
+            background: var(--gold-foil);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            opacity: 0.98;
         }
 
         .review-author {
             font-family: 'Cinzel', serif;
             color: #ffffff;
-            font-size: clamp(0.95rem, 1.8vw, 1.08rem);
-            letter-spacing: 0.5px;
-            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            font-weight: 500;
         }
 
         .review-body {
             color: var(--moon);
-            font-size: clamp(1rem, 1.8vw, 1.12rem);
-            line-height: 1.72;
+            font-size: clamp(1.02rem, 1.8vw, 1.14rem);
+            line-height: 1.82;
             margin: 0;
-            hyphens: none;
-            -webkit-hyphens: none;
+            opacity: 0.94;
+            text-align: justify;
+            text-justify: inter-word;
         }
 
-        /* Custom Tour Inquiries Copy Section */
+        .reviews-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 26px;
+            padding-top: 20px;
+            border-top: 1px solid var(--hairline);
+            width: 100%;
+        }
+
+        .reviews-nav-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--sun-hairline);
+            border-radius: 0;
+            background: var(--gold-foil);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: var(--sun);
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: background-color 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
+        }
+
+        .reviews-nav-btn:hover,
+        .reviews-nav-btn:focus-visible {
+            background: var(--sun);
+            -webkit-background-clip: border-box;
+            background-clip: border-box;
+            -webkit-text-fill-color: #0c0d0f;
+            border-color: var(--sun);
+            color: #0c0d0f;
+            outline: none;
+        }
+
+        .reviews-status {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .reviews-counter {
+            font-family: 'Cinzel', serif;
+            font-size: 0.78rem;
+            letter-spacing: 2.5px;
+            color: var(--moon-muted);
+            text-transform: uppercase;
+        }
+
+        .reviews-dots {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .review-dot {
+            width: 14px;
+            height: 14px;
+            padding: 6px 0;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .review-dot::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1.5px;
+            background: var(--hairline);
+            transition: background-color 0.25s var(--ease), transform 0.25s var(--ease);
+        }
+
+        .review-dot:hover::before {
+            background: var(--sun-border);
+        }
+
+        .review-dot.is-active::before {
+            background: var(--sun);
+            height: 2px;
+        }
+
+        /* TripAdvisor, GetYourGuide & Ko-fi Stacked Widgets */
+        .ta-badge-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 22px;
+            width: 100%;
+            margin: 4px 0 0;
+        }
+
+        .ta-badge-wrapper > a.gyg-badge-link,
+        .ta-badge-wrapper .kofi-widget-slot {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 0;
+        }
+
+        .ta-badge-wrapper .TA_rated,
+        .ta-badge-wrapper img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .ta-badge-wrapper .btn-container {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        /* ==========================================================================
+           CUSTOM TOUR INQUIRIES (CENTERED MONOGRAPH BLOCK)
+           ========================================================================== */
         .inquiry-section {
             width: 100%;
-            max-width: 640px;
+            max-width: 580px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -370,12 +1039,11 @@
 
         .inquiry-text {
             color: var(--moon);
-            font-size: clamp(1.05rem, 1.9vw, 1.2rem);
-            line-height: 1.75;
-            margin: 0 0 20px;
-            hyphens: none;
-            -webkit-hyphens: none;
-            text-wrap: pretty;
+            font-size: clamp(1.02rem, 1.8vw, 1.15rem);
+            line-height: 1.8;
+            margin: 0 0 26px;
+            text-align: justify;
+            text-justify: inter-word;
         }
 
         .email-container {
@@ -386,54 +1054,91 @@
             position: relative;
         }
 
-        /* Golden Edge Contact Button (White Text) */
         .btn-email-copy {
-            display: block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             width: 100%;
-            max-width: 440px;
-            padding: 16px 14px;
-            border: 1px solid var(--sun);
+            max-width: 420px;
+            padding: 15px 20px;
+            border: 1px solid var(--sun-border);
+            border-radius: 0;
             background: transparent;
-            color: #ffffff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+            color: var(--moon);
+            transition: background-color 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
+            font-size: clamp(0.88rem, 1.7vw, 1rem);
             font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
+            letter-spacing: 1.8px;
             text-transform: lowercase;
-            text-align: center;
             cursor: pointer;
-            box-sizing: border-box;
             user-select: text;
             -webkit-user-select: text;
         }
 
-        .btn-email-copy:hover {
-            background: var(--sun);
-            color: #0c0c0c;
+        .btn-email-copy svg {
+            width: 15px;
+            height: 15px;
+            stroke: currentColor;
+            fill: none;
+            flex-shrink: 0;
+            opacity: 0.8;
         }
 
-        /* White Copied Feedback Tooltip */
+        .btn-email-copy:hover,
+        .btn-email-copy:focus-visible,
+        .btn-email-copy.copied {
+            background: var(--sun);
+            border-color: var(--sun);
+            color: #0c0d0f;
+            outline: none;
+        }
+
+        .mailto-fallback-link {
+            display: inline-block;
+            margin-top: 14px;
+            font-family: 'IM Fell Great Primer', Georgia, serif;
+            font-style: italic;
+            font-size: 0.96rem;
+            color: var(--moon-muted);
+            text-decoration: none;
+            border-bottom: 1px solid var(--sun-hairline);
+            padding-bottom: 2px;
+            transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+        }
+
+        .mailto-fallback-link:hover,
+        .mailto-fallback-link:focus-visible {
+            color: var(--sun-bright);
+            border-color: var(--sun);
+            outline: none;
+        }
+
         .copy-tooltip {
             font-family: 'IM Fell Great Primer', serif;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             font-style: italic;
-            color: #ffffff;
+            color: var(--sun-bright);
+            background: var(--gold-foil);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.25s ease;
             position: absolute;
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
             white-space: nowrap;
             pointer-events: none;
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
-        /* Map Embed Section (Dark Mode / Greyscale) */
+        /* ==========================================================================
+           SEAMLESS DARK MONOCHROME MAP
+           ========================================================================== */
         .map-section {
             width: 100%;
-            max-width: 740px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -441,11 +1146,17 @@
 
         .map-container {
             width: 100%;
-            height: 360px;
-            border: 1px solid var(--border-color);
-            border-radius: 2px;
+            height: 320px;
+            border: 1px solid var(--sun-hairline);
+            border-radius: 0;
             overflow: hidden;
-            background: #18191c;
+            background: var(--surface);
+        }
+
+        @media (min-width: 640px) {
+            .map-container {
+                height: 380px;
+            }
         }
 
         .map-container iframe {
@@ -458,103 +1169,239 @@
         }
 
         footer { 
-            margin-top: 40px; 
-            font-size: 0.9rem; 
-            color: #777; 
-            padding-top: 20px; 
-            border-top: 1px solid #222; 
+            margin-top: 52px; 
+            font-family: 'Cinzel', serif;
+            font-size: 0.74rem; 
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--moon-muted); 
+            padding-top: 22px; 
+            border-top: 1px solid var(--hairline); 
             text-align: center;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
         }
 
-        /* Upper Right Floating 3-Line Hamburger Navigation Button */
+        .footer-social-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            color: var(--sun);
+            text-decoration: none;
+            opacity: 0.85;
+            transition: opacity 0.25s var(--ease), color 0.25s var(--ease), transform 0.25s var(--ease);
+        }
+
+        .social-link svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .social-link:hover,
+        .social-link:focus-visible {
+            opacity: 1;
+            color: var(--sun-bright);
+            transform: translateY(-1px);
+            outline: none;
+        }
+
+        /* ==========================================================================
+           LIGHTBOX MODAL FOR ROUTE PHOTOGRAPHS
+           ========================================================================== */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 11000;
+            background: rgba(8, 9, 11, 0.94);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .lightbox-modal.is-open {
+            display: flex;
+            animation: panelFade 0.22s var(--ease);
+        }
+
+        .lightbox-inner {
+            position: relative;
+            max-width: 820px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .lightbox-inner img {
+            max-width: 100%;
+            max-height: 76vh;
+            width: auto;
+            height: auto;
+            border: 1px solid var(--sun-border);
+            display: block;
+        }
+
+        .lightbox-caption {
+            font-family: 'Cinzel', serif;
+            font-size: 0.82rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--sun-bright);
+            text-align: center;
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 22px;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--sun-hairline);
+            background: rgba(12, 13, 15, 0.9);
+            color: var(--sun);
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-close:hover {
+            background: var(--sun);
+            color: #0c0d0f;
+        }
+
+        /* ==========================================================================
+           RAZOR-SHARP FLOATING NAVIGATION (2-LINE ARCHITECTURAL TRIGGER)
+           ========================================================================== */
         .floating-nav-btn {
             position: fixed !important;
-            top: 22px !important;
-            right: 22px !important;
+            top: calc(18px + env(safe-area-inset-top)) !important;
+            right: 18px !important;
             bottom: auto !important;
             left: auto !important;
             z-index: 9999 !important;
-            background: rgba(24, 25, 28, 0.95) !important;
-            backdrop-filter: blur(8px) !important;
-            border: 1px solid #ffffff !important;
-            border-radius: 4px !important;
-            width: 46px !important;
-            height: 46px !important;
+            background: rgba(12, 13, 15, 0.88) !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            border: 1px solid var(--sun-hairline) !important;
+            border-radius: 0 !important;
+            width: 44px !important;
+            height: 44px !important;
             display: flex !important;
             flex-direction: column !important;
             align-items: center !important;
             justify-content: center !important;
-            gap: 5px !important;
+            gap: 6px !important;
             cursor: pointer !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8) !important;
-            transition: all 0.3s ease !important;
+            transition: border-color 0.25s ease, background-color 0.25s ease !important;
             padding: 0 !important;
+        }
+
+        @media (min-width: 640px) {
+            .floating-nav-btn {
+                top: 24px !important;
+                right: 26px !important;
+            }
         }
 
         .floating-nav-btn .bar {
             display: block;
-            width: 22px;
-            height: 2px;
-            background: #ffffff;
-            transition: all 0.3s ease;
-            border-radius: 1px;
+            width: 18px;
+            height: 1px;
+            background: var(--sun);
+            transition: transform 0.25s var(--ease), opacity 0.2s ease, background 0.25s ease;
+        }
+
+        .floating-nav-btn .bar:nth-child(2) {
+            display: none;
+        }
+
+        .floating-nav-btn.is-open .bar:nth-child(1) {
+            transform: translateY(3.5px) rotate(45deg);
+        }
+
+        .floating-nav-btn.is-open .bar:nth-child(3) {
+            transform: translateY(-3.5px) rotate(-45deg);
         }
 
         .floating-nav-btn:hover {
-            background: #ffffff !important;
-            border-color: #ffffff !important;
-            transform: scale(1.04);
+            background: var(--sun) !important;
+            border-color: var(--sun) !important;
         }
 
         .floating-nav-btn:hover .bar {
-            background: #0c0c0c;
+            background: #0c0d0f;
         }
 
-        /* Upper Right Popover Navigation Menu */
         .floating-nav-menu {
             display: none;
             position: fixed;
-            top: 76px;
-            right: 22px;
-            bottom: auto;
-            left: auto;
+            top: calc(68px + env(safe-area-inset-top));
+            right: 18px;
             z-index: 10000;
-            background: #18191c;
-            border: 1px solid var(--border-color);
-            border-radius: 3px;
-            padding: 8px 0;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.95);
+            background: rgba(14, 15, 18, 0.98);
+            border: 1px solid var(--sun-hairline);
+            border-radius: 0;
+            padding: 4px 0;
             width: 190px;
+            animation: panelFade 0.2s var(--ease);
         }
 
-        .floating-nav-menu a {
+        @media (min-width: 640px) {
+            .floating-nav-menu {
+                top: 74px;
+                right: 26px;
+            }
+        }
+
+        .floating-nav-menu a.nav-item {
             display: block;
-            padding: 10px 18px;
-            color: #ffffff;
+            padding: 12px 20px;
+            color: var(--moon);
             font-family: 'Cinzel', serif;
-            font-size: 0.88rem;
+            font-size: 0.8rem;
             text-decoration: none;
-            letter-spacing: 1px;
+            letter-spacing: 2.2px;
             text-transform: uppercase;
-            border-bottom: 1px solid #242529;
+            border-bottom: 1px solid var(--hairline);
             transition: color 0.2s ease, background 0.2s ease;
             cursor: pointer;
         }
 
-        .floating-nav-menu a:last-child {
+        .floating-nav-menu a.nav-item:last-child {
             border-bottom: none;
         }
 
-        .floating-nav-menu a:hover {
-            background: #242529;
-            color: var(--sun);
+        .floating-nav-menu a.nav-item:hover {
+            background: rgba(212, 175, 55, 0.08);
+            color: var(--sun-bright);
         }
 
-        /* Floating Book Now Button */
+        /* ==========================================================================
+           SHARP ARCHITECTURAL FLOATING BOOK NOW CTA
+           ========================================================================== */
         .fh-button-custom {
             position: fixed !important;
-            bottom: 22px !important;
+            bottom: calc(20px + env(safe-area-inset-bottom)) !important;
             left: 50% !important;
             top: auto !important;
             right: auto !important;
@@ -562,43 +1409,69 @@
             z-index: 9999 !important;
             font-family: 'Cinzel', serif !important;
             font-weight: 600 !important;
-            font-size: 1rem !important;
-            letter-spacing: 1.5px !important;
+            font-size: 0.88rem !important;
+            letter-spacing: 3px !important;
             text-transform: uppercase !important;
             white-space: nowrap !important;
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
             width: auto !important;
-            min-width: 170px !important;
-            padding: 13px 28px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.4) !important;
+            min-width: 185px !important;
+            padding: 14px 30px !important;
+            border-radius: 0 !important;
+            border: 1px solid var(--sun) !important;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.75) !important;
+            transition: transform 0.28s var(--ease), opacity 0.28s var(--ease), background-color 0.2s ease !important;
+        }
+
+        .fh-button-custom.is-hidden {
+            opacity: 0 !important;
+            pointer-events: none !important;
+            transform: translateX(-50%) translateY(14px) !important;
+        }
+
+        .fh-button-custom:hover {
+            transform: translateX(-50%) translateY(-1px) !important;
         }
 
         @media (max-width: 600px) {
-            body { padding: 18px 12px 90px; }
-            .info-content { padding: 18px 20px; }
-            .review-card { padding: 16px 18px; }
-            .map-container { height: 290px; }
-            .floating-nav-btn {
-                top: 14px !important;
-                right: 14px !important;
-                width: 40px !important;
-                height: 40px !important;
-                gap: 4px !important;
-            }
-            .floating-nav-btn .bar {
-                width: 18px;
-            }
-            .floating-nav-menu {
-                top: 60px;
-                right: 14px;
+            body {
+                padding: calc(26px + env(safe-area-inset-top)) 16px calc(105px + env(safe-area-inset-bottom));
             }
             .fh-button-custom {
-                bottom: 16px !important;
-                padding: 11px 22px !important;
-                font-size: 0.85rem !important;
-                min-width: 140px !important;
+                bottom: calc(16px + env(safe-area-inset-bottom)) !important;
+                padding: 12px 24px !important;
+                font-size: 0.82rem !important;
+                min-width: 165px !important;
+            }
+        }
+
+        /* Subtle Scroll-Reveal Utility */
+        .reveal-block {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+        }
+
+        .js-enhanced .reveal-block:not(.is-visible) {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        /* Accessibility: Respect Reduced Motion Preferences */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .js-enhanced .reveal-block:not(.is-visible) {
+                opacity: 1;
+                transform: none;
             }
         }
     </style>
@@ -617,10 +1490,15 @@
             "Occult Helsinki Tours"
           ],
           "url": "https://occulthelsinki.com",
-          "logo": "https://occulthelsinki.com/favicon.ico",
-          "image": "https://occulthelsinki.com/favicon.ico",
+          "logo": "https://occulthelsinki.com/OH_FAVICON.png",
+          "image": [
+            "https://occulthelsinki.com/00-occult-helsinki-walking-tour-helsinki-cathedral.webp",
+            "https://occulthelsinki.com/02-all-seeing-eye-freemasonry-senate-square-helsinki.webp",
+            "https://occulthelsinki.com/03-national-library-of-finland-occult-helsinki-tour.webp",
+            "https://occulthelsinki.com/11-st-johns-church-johanneksenkirkko-occult-helsinki-tour.webp"
+          ],
           "email": "contact@occulthelsinki.com",
-          "description": "Occult Helsinki provides professional guided walking tours showcasing the highlights and hidden gems of Finland’s capital. Operated personally by local Finnish performer Henri Tahvanainen.",
+          "description": "Experience the highlights and hidden gems of Helsinki on a spellbinding walking tour with a local performer. Operated personally by Henri Tahvanainen.",
           "priceRange": "€€",
           "currenciesAccepted": "EUR",
           "founder": {
@@ -628,6 +1506,7 @@
             "@id": "https://henritahvanainen.com/#person",
             "name": "Henri Tahvanainen",
             "url": "https://henritahvanainen.com",
+            "image": "https://occulthelsinki.com/Henri_Tahvanainen_Actor_VO_Headshot_Square.webp",
             "sameAs": [
               "https://www.wikidata.org/wiki/Q141081833",
               "https://imdb.me/henritahvanainen",
@@ -639,9 +1518,16 @@
           },
           "address": {
             "@type": "PostalAddress",
+            "streetAddress": "Unioninkatu 29",
             "addressLocality": "Helsinki",
             "addressRegion": "Uusimaa",
+            "postalCode": "00170",
             "addressCountry": "FI"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 60.17015,
+            "longitude": 24.95145
           },
           "areaServed": {
             "@type": "City",
@@ -673,31 +1559,242 @@
             "reviewCount": "35"
           },
           "sameAs": [
+            "https://www.instagram.com/occulthelsinki",
+            "https://www.facebook.com/occulthelsinki",
             "https://www.wikidata.org/wiki/Q141082275",
             "https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html",
+            "https://www.getyourguide.com/-s751267",
             "https://www.myhelsinki.fi/events/occult-helsinki-walking-tour/",
             "https://www.helsinki.today/en-FI/page/69e31d1bfafad1b3a6324e35/occult-helsinki-walking-tour",
             "https://share.google/xu9WUon8o6tQv3Hcp"
           ],
           "hasOfferCatalog": {
             "@type": "OfferCatalog",
-            "name": "Helsinki Walking Tours",
+            "name": "Helsinki Experiences & Walking Tours",
             "itemListElement": [
               {
                 "@type": "Offer",
+                "url": "https://fareharbor.com/embeds/book/occulthelsinki/items/?full-items=yes&flow=1690620",
+                "priceCurrency": "EUR",
+                "availability": "https://schema.org/InStock",
+                "validFrom": "2026-01-01",
                 "itemOffered": {
                   "@type": "TouristTrip",
                   "name": "Occult Helsinki Guided Walking Tour",
                   "description": "A 3 to 4 km English-language walking tour personally hosted by Henri Tahvanainen exploring Helsinki's folklore, architecture, mythology, and hidden history.",
+                  "duration": "PT2H",
+                  "inLanguage": "en",
+                  "maximumAttendeeCapacity": 12,
+                  "itinerary": {
+                    "@type": "ItemList",
+                    "itemListElement": [
+                      {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Senate Square & Helsinki Cathedral"
+                      },
+                      {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "National Library of Finland"
+                      },
+                      {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Art Nouveau & Jugendstil Symbolism in Central Helsinki"
+                      }
+                    ]
+                  },
                   "touristType": [
                     "Cultural tourists",
                     "History enthusiasts",
                     "Art & Architecture lovers"
                   ]
                 }
+              },
+              {
+                "@type": "Offer",
+                "url": "https://fareharbor.com/embeds/book/occulthelsinki/items/?full-items=yes&flow=1690620",
+                "priceCurrency": "EUR",
+                "availability": "https://schema.org/InStock",
+                "validFrom": "2026-01-01",
+                "itemOffered": {
+                  "@type": "TouristTrip",
+                  "name": "Private Occult Helsinki Walking Tour",
+                  "description": "A private, bespoke English-language walking tour through central Helsinki personally led by Henri Tahvanainen with optional custom hotel pickup.",
+                  "duration": "PT2H",
+                  "inLanguage": "en",
+                  "touristType": [
+                    "Private groups",
+                    "Couples & families",
+                    "Cultural travelers"
+                  ]
+                }
               }
             ]
-          }
+          },
+          "review": [
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Verified Guest" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "Absolutely captivating and passionate! A huge favorite! The \"Occult Helsinki\" guided tour led by Henri is a pure marvel. The subject is incredibly interesting, rich in anecdotes, and Henri conveys it with incredible generosity and energy. The explanations are perfect, fluid, and delivered with so much heart and passion: you can feel that he truly lives and breathes what he's saying. It was a timeless experience that allows you to discover the city's history in a unique way. If you're looking for a very good experience in Helsinki, go for it without hesitation."
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Becky" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "Henri you were amazing! We learned so much about Helsinki's history, more than we anticipated on this tour as you were so knowledgeable. We covered a large part of the city on the tour, and really enjoyed unpicking all the symbolism in sites you showed us. You were so generous with your time, allowing us to stop and look in some fascinating shops that we wouldn't have known about otherwise! Your passion for all things occult and strange was contagious, and from the start we felt like we were spending time with a good friend. Kiitos paljon, Henri for making our trip something we will treasure."
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Michelle" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "I enjoyed the night tour with Henri. He was easy to find as he held up his black bag with Occult Tours. Henri is fun, knowledgeable, and enjoys sharing the richness of Helsinki's unique buildings and hidden mysteries. The upside down giant head that I would never have seen. The unique shops for upliftment. His voice is easy to listen to and his patience to answer all our curious questions or when we lose track of him and he gathers us by stopping and waiting. We finished on time. He clearly planned the route and also custom fitted it to expand our learning. What he shares is not a reflection of his beliefs. Think occult as in the beauty of arts and science. Definitely do this tour early in your arrival to get a deeper cultural sense of the city. Night is less crowded. Summer has longer light, so perfect."
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Glenn" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "It was not until this tour that I began to appreciate what an amazing city Helsinki is. Henri pointed out many details that helped me better understand the history and factors that influenced the development of Helsinki culture. While the title mentioned “occult”, I think a better term would be not commonly mentioned details associated with various buildings and places in the city. I highly recommend this tour to anyone wanting a more in depth perspective of Helsinki."
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Alison" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "Henri was great fun and very knowledgeable. When we finished the tour with spectacular views from the top floor cocktail bar, we could appreciate how much of the city we had seen. Most of the must see places, but with folklore, symbolism, myths and stories thrown in!"
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Jennifer" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "Henri provided good insights into some of Helsinki's grand buildings, and covered areas of the city you might not find on your own. Occult and religious symbols are often interchangeable, and found in some unlikely places. A very interesting couple of hours... especially the birds' eye view of the city from the tower at the end!"
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "M" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "Highly recommend! Did the night tour and this is a very pleasant way to spend an evening getting to know the secrets of Helsinki. Henri is a wonderful storyteller and will take you to places you will want to go back to, so my tip is to do this tour early in your stay. Thank you Henri!"
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Todd" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "Great. Henri was super knowledgeable and gave me a great understanding of Finland and history. I was impressed by his story telling about The Kalevala and how he pointed out monuments and hidden elements tied to this throughout the tour."
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Donna" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "Henri was friendly and welcoming, which made the atmosphere relaxed and easygoing. This itinerary took us through a range of Helsinki sights — from churches to library spaces to small specialty shops. It was enjoyable to see different parts of the city and get a broad impression of its history and character."
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Stephanie" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "Henri's Occult tour of Helsinki was great. He was friendly, knowledgeable, and easy to speak with. We got to learn about some of the classically important buildings as well as several off the beaten path locations. If you enjoy learning about the lesser known history I would definitely recommend this tour."
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Charlotte" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "We had a wonderful time guided through Helsinki with Henry. We loved getting off the beaten path! He is well informed and being a local is an enormous advantage. We had a wonderful time! Would recommend this tour highly!"
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Pam" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "A pleasant walk around a fascinating part of old Helsinki, and loads of facts. What more could you want 🙂 I did this on a sunny autumn afternoon, timed to finish on top of a city tower at sunset: perfect."
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Susanne Rodgers" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "He only does small groups, which is great. An actor by trade, he was well spoken and knowledgeable. Provided interesting insights into historical Helsinki. Would highly recommend."
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Jennie" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "I had a wonderful time on this tour and visited places I would have probably missed. Henri is an excellent guide and this was one of the highlights of my trip. Highly recommend!"
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Verified Guest" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "An interesting and entertaining tour led by a friendly and knowledgeable guide. This was true even for those who have lived in the Helsinki metropolitan area for a long time!"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://occulthelsinki.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What does \"occult\" mean in the context of this tour?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Occult comes from the Latin word occultus, meaning hidden from view or concealed. On this walk through central Helsinki, you explore architectural symbolism, Finnish mythology, and local folklore. The route connects major landmarks with lesser-known corners so you notice overlooked details tucked in plain sight across the city center."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Who leads this Helsinki walking tour, and in what language?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Local Finnish actor Henri Tahvanainen guides every tour in English. His stage background keeps the storytelling lively and easy to follow, with warm local hospitality at every stop. Guests are welcome to ask questions freely, whether you know Finland well or are visiting for the first time."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Where does the Occult Helsinki walking tour start and end?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Tours start in central Helsinki at the top of the Senate Square steps, between Helsinki Cathedral and the National Library of Finland (Unioninkatu 29 / 36). Spot Henri by his black bag marked Occult Helsinki. The walk ends in the Design District at St. John's Church, and when time allows, he loves showing even more."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long is the walk, and is it wheelchair accessible?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The walk lasts 1.5 to 2 hours (90 to 120 minutes) and covers 3 to 4 km (1.8 to 2.4 miles) at a relaxed pace. Because the path crosses city sidewalks, cobblestones, stone stairs, and gentle hills, the public tour is not wheelchair accessible. Wear comfortable shoes with good grip."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are entrance tickets included, and do we go inside buildings?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Helsinki Cathedral and Uspenski Cathedral charge separate admission, so we view them from outside unless seasonal free entry applies. We visit all other indoor locations whenever open, especially on the 11:00 AM timeslot. Holiday hours cannot be guaranteed, though Henri always adds extra outdoor spots so you always get a full experience."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does the Helsinki walking tour run in winter or rain?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, departures run year-round in every season and weather condition, from rain and winter snow to early darkness and bright summer evenings. Each season brings a different atmosphere to the capital. Dress for the daily Helsinki forecast with warm layers in winter or a waterproof coat on wet days."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "When during a Helsinki trip should I book this tour?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Joining early in your stay helps you get oriented in the city and find independent shops, cafes, and viewpoints worth revisiting later. The folklore and regional traditions covered on the walk also give helpful background before onward travel to other towns or northern regions across Finland."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the group size limit, and are private tours available?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Public groups have a strict cap of 12 guests so everyone hears easily and has plenty of room for questions. If you want a private tour for your own party with a custom schedule or hotel pickup, book the Private Occult Helsinki Walking Tour on this page or email contact@occulthelsinki.com."
+              }
+            }
+          ]
         }
       ]
     }
@@ -709,65 +1806,365 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Upper Right Floating 3-Line Hamburger Navigation Button -->
-    <button type="button" class="floating-nav-btn" onclick="toggleNavMenu()" id="nav-toggle-btn" aria-label="Navigation Menu" title="Navigation">
+    <!-- Upper Right Floating Glass Navigation Button -->
+    <button type="button" class="floating-nav-btn" onclick="toggleNavMenu()" id="nav-toggle-btn" aria-label="Navigation Menu" aria-expanded="false" aria-controls="nav-floating-menu" title="Navigation">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
     </button>
     
     <!-- Floating Navigation Menu -->
-    <div id="nav-floating-menu" class="floating-nav-menu">
-        <a onclick="navTo('home')">Home</a>
-        <a onclick="navTo('info')">Info</a>
-        <a onclick="navTo('calendar')">Calendar</a>
-        <a onclick="navTo('contact')">Contact</a>
-    </div>
+    <nav id="nav-floating-menu" class="floating-nav-menu" aria-label="Site Navigation">
+        <a class="nav-item" onclick="navTo('home')">Home</a>
+        <a class="nav-item" onclick="navTo('tours')">Experiences</a>
+        <a class="nav-item" onclick="navTo('calendar')">Calendar</a>
+        <a class="nav-item" onclick="navTo('reviews')">5/5 Reviews</a>
+        <a class="nav-item" onclick="navTo('info')">About</a>
+        <a class="nav-item" onclick="navTo('faq')">FAQ</a>
+        <a class="nav-item" onclick="navTo('contact')">Contact</a>
+    </nav>
 
     <main>
         <header>
             <h1>Occult Helsinki</h1>
-            <p class="tagline">Walking tours</p>
-            <div class="stars" aria-label="5 Star Rating">★★★★★</div>
+            
+            <div class="tagline-row">
+                <span class="tagline-line" aria-hidden="true"></span>
+                <p class="tagline">Walking tours</p>
+                <span class="tagline-line" aria-hidden="true"></span>
+            </div>
+
+            <a href="#featured-reviews" class="trust-anchor" aria-label="5 Star Rating">
+                <span class="stars" aria-hidden="true">★★★★★</span>
+            </a>
         </header>
 
         <div class="logistics-bar">
-            <span>⏳ ~100–120 MIN</span>
-            <span class="sep">•</span>
-            <span>🚶 3–4 KM ROUTE</span>
-            <span class="sep">•</span>
-            <span>📍 CENTRAL HELSINKI</span>
-            <span class="sep">•</span>
-            <span>🔊 ENGLISH</span>
+            <div class="logistics-pill"><span><span class="logistics-glyph" aria-hidden="true">&#10711;</span>~100–120 MIN</span></div>
+            <div class="logistics-pill"><span><span class="logistics-glyph" aria-hidden="true">&#8605;</span>3–4 KM ROUTE</span></div>
+            <div class="logistics-pill"><span><span class="logistics-glyph" aria-hidden="true">&#8982;</span>CENTRAL HELSINKI</span></div>
+            <div class="logistics-pill"><span><span class="logistics-glyph" aria-hidden="true">&#10077;</span>ENGLISH</span></div>
         </div>
+
+        <!-- Above-the-Fold Value Proposition Hook & Personal Group Cap -->
+        <section class="hero-pitch" aria-label="Tour Overview">
+            <p class="hero-pitch-lead">
+                Experience the highlights and hidden gems of Helsinki on a spellbinding walking tour with a local performer. Strictly limited to 12 spots per walk to keep the experience personal.
+            </p>
+        </section>
+
+        <!-- Editorial 4-Photo Strip + Expandable Route Preview -->
+        <section class="gallery-section" aria-label="Highlights along the route">
+            <div class="gallery-grid">
+                <figure class="gallery-card" onclick="openLightbox('00-occult-helsinki-walking-tour-helsinki-cathedral.webp', 'Senate Square & Helsinki Cathedral — Meeting Point')">
+                    <img src="/00-occult-helsinki-walking-tour-helsinki-cathedral.webp" alt="Occult Helsinki walking tour starting at Helsinki Cathedral on Senate Square" width="800" height="600" fetchpriority="high" decoding="async">
+                    <figcaption class="gallery-caption">Senate Square</figcaption>
+                </figure>
+                <figure class="gallery-card" onclick="openLightbox('02-all-seeing-eye-freemasonry-senate-square-helsinki.webp', 'Hidden Masonic & Esoteric Symbolism')">
+                    <img src="/02-all-seeing-eye-freemasonry-senate-square-helsinki.webp" alt="All-Seeing Eye architectural symbolism near Senate Square in Helsinki" width="800" height="600" fetchpriority="high" decoding="async">
+                    <figcaption class="gallery-caption">Hidden Symbolism</figcaption>
+                </figure>
+                <figure class="gallery-card" onclick="openLightbox('03-national-library-of-finland-occult-helsinki-tour.webp', 'National Library of Finland — Sacred Geometry & History')">
+                    <img src="/03-national-library-of-finland-occult-helsinki-tour.webp" alt="National Library of Finland interior architecture on the Occult Helsinki tour" width="800" height="600" loading="lazy" decoding="async">
+                    <figcaption class="gallery-caption">National Library</figcaption>
+                </figure>
+                <figure class="gallery-card" onclick="openLightbox('08-tarotpuoti-tarot-boutique-esoteric-helsinki-tour.webp', 'Independent Esoteric Boutiques & Hidden Corners')">
+                    <img src="/08-tarotpuoti-tarot-boutique-esoteric-helsinki-tour.webp" alt="Esoteric boutique visited during the Occult Helsinki walking tour" width="800" height="600" loading="lazy" decoding="async">
+                    <figcaption class="gallery-caption">Esoteric Helsinki</figcaption>
+                </figure>
+            </div>
+
+            <div class="gallery-more-wrap">
+                <button type="button" class="btn-subtle-link" id="gallery-toggle-btn" aria-expanded="false" onclick="toggleMorePhotos()">
+                    View More Route Stops (6) +
+                </button>
+            </div>
+
+            <div class="gallery-extra-grid" id="gallery-extra-grid">
+                <figure class="gallery-card" onclick="openLightbox('04-national-library-finland-cupola-hall-helsinki-tour.webp', 'Cupola Hall — National Library of Finland')">
+                    <img data-src="/04-national-library-finland-cupola-hall-helsinki-tour.webp" alt="Cupola Hall at the National Library of Finland" width="800" height="600" loading="lazy" decoding="async">
+                    <figcaption class="gallery-caption">Cupola Hall</figcaption>
+                </figure>
+                <figure class="gallery-card" onclick="openLightbox('05-national-library-finland-rotunda-glass-dome-helsinki.webp', 'Rotunda Glass Dome — National Library of Finland')">
+                    <img data-src="/05-national-library-finland-rotunda-glass-dome-helsinki.webp" alt="Rotunda glass dome inside the National Library of Finland" width="800" height="600" loading="lazy" decoding="async">
+                    <figcaption class="gallery-caption">The Rotunda</figcaption>
+                </figure>
+                <figure class="gallery-card" onclick="openLightbox('06-old-market-hall-vanha-kauppahalli-helsinki-tour.webp', 'Old Market Hall (Vanha Kauppahalli)')">
+                    <img data-src="/06-old-market-hall-vanha-kauppahalli-helsinki-tour.webp" alt="Historic Old Market Hall Vanha Kauppahalli on the Helsinki waterfront" width="800" height="600" loading="lazy" decoding="async">
+                    <figcaption class="gallery-caption">Old Market Hall</figcaption>
+                </figure>
+                <figure class="gallery-card" onclick="openLightbox('07-helsinki-observatory-hill-tahtitorninvuori-walking-tour.webp', 'Observatory Hill (Tähtitorninvuori) Viewpoint')">
+                    <img data-src="/07-helsinki-observatory-hill-tahtitorninvuori-walking-tour.webp" alt="Helsinki Observatory Hill Tahtitorninvuori panoramic viewpoint" width="800" height="600" loading="lazy" decoding="async">
+                    <figcaption class="gallery-caption">Observatory Hill</figcaption>
+                </figure>
+                <figure class="gallery-card" onclick="openLightbox('09-aioni-occult-bookshop-esoteric-books-helsinki.webp', 'Occult Bookshop — Curated Esoteric Literature')">
+                    <img data-src="/09-aioni-occult-bookshop-esoteric-books-helsinki.webp" alt="Occult bookshop shelves in central Helsinki" width="800" height="600" loading="lazy" decoding="async">
+                    <figcaption class="gallery-caption">Occult Bookshop</figcaption>
+                </figure>
+                <figure class="gallery-card" onclick="openLightbox('11-st-johns-church-johanneksenkirkko-occult-helsinki-tour.webp', 'St. John’s Church (Johanneksenkirkko) — Design District Finale')">
+                    <img data-src="/11-st-johns-church-johanneksenkirkko-occult-helsinki-tour.webp" alt="Twin spires of St. John's Church Johanneksenkirkko in Helsinki" width="800" height="600" loading="lazy" decoding="async">
+                    <figcaption class="gallery-caption">St. John’s Church</figcaption>
+                </figure>
+            </div>
+        </section>
 
         <hr class="tight-hr">
 
-        <!-- 1. FareHarbor Item Grid Embed -->
-        <div class="embed-wrapper" id="tours-grid">
-            <script src="https://fareharbor.com/embeds/script/items/occulthelsinki/?full-items=yes&flow=1690620&fallback=simple"></script>
-        </div>
+        <!-- 1. Primary Booking Section (Item Grid First for Immediate Selection) -->
+        <section class="booking-zone reveal-block" id="booking-zone" aria-label="Book an Experience">
+            <h2 class="section-title-gold-tight">Available Experiences</h2>
+            <p class="direct-guarantee">Direct Booking &middot; Instant Confirmation &middot; Free Rescheduling</p>
 
-        <!-- 2. Golden Edge Info Toggle Button (White Text) & Expanded Narrative -->
-        <section class="info-section" id="info-section">
-            <button type="button" class="btn-info" onclick="toggleInfo()" id="info-btn">
-                Info +
+            <div class="embed-wrapper" id="tours-grid">
+                <script src="https://fareharbor.com/embeds/script/items/occulthelsinki/?full-items=yes&flow=1690620&fallback=simple"></script>
+            </div>
+
+            <div class="gallery-more-wrap">
+                <button type="button" class="btn-subtle-link" id="calendar-toggle-btn" aria-expanded="false" onclick="toggleCalendarDrawer()">
+                    View Full Monthly Calendar +
+                </button>
+            </div>
+
+            <div class="embed-wrapper" id="calendar-section" style="display: none;">
+                <script src="https://fareharbor.com/embeds/script/calendar/occulthelsinki/?full-items=yes&flow=1690620&fallback=simple"></script>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- 2. Visible Social Proof (Top 3 Reviews Always Shown Above Fold/Mid-Page) -->
+        <section class="featured-reviews-section reveal-block" id="featured-reviews" aria-label="Featured Guest Reviews">
+            <h2 class="section-title-gold-tight">What Guests Say</h2>
+
+            <div class="featured-quotes-grid">
+                <article class="featured-quote-card">
+                    <div>
+                        <span class="featured-quote-stars" aria-label="5 out of 5 stars">★★★★★</span>
+                        <p class="featured-quote-text">“The ‘Occult Helsinki’ guided tour led by Henri is a pure marvel. Rich in anecdotes, delivered with so much heart and passion—you can feel that he truly lives and breathes what he’s saying. A timeless experience.”</p>
+                    </div>
+                    <div class="featured-quote-author">Verified Guest &middot; 5/5</div>
+                </article>
+
+                <article class="featured-quote-card">
+                    <div>
+                        <span class="featured-quote-stars" aria-label="5 out of 5 stars">★★★★★</span>
+                        <p class="featured-quote-text">“We really enjoyed unpicking all the symbolism in sites you showed us, and stopping in fascinating shops we wouldn’t have known about otherwise. From the start we felt like we were spending time with a good friend.”</p>
+                    </div>
+                    <div class="featured-quote-author">Becky, United Kingdom &middot; 5/5</div>
+                </article>
+
+                <article class="featured-quote-card">
+                    <div>
+                        <span class="featured-quote-stars" aria-label="5 out of 5 stars">★★★★★</span>
+                        <p class="featured-quote-text">“The upside-down giant head that I would never have seen, the unique shops, and Henri’s patience to answer all our curious questions. Definitely do this tour early in your arrival to get a deeper cultural sense of the city.”</p>
+                    </div>
+                    <div class="featured-quote-author">Michelle, United States &middot; 5/5</div>
+                </article>
+            </div>
+
+            <!-- Collapsible Featured Reviews Carousel -->
+            <div class="reviews-section" id="reviews-section">
+                <button type="button" class="btn-info" onclick="toggleReviews()" id="reviews-btn" aria-expanded="false" aria-controls="reviews-content">
+                    <span id="reviews-btn-label">5/5 Reviews +</span>
+                </button>
+                
+                <div id="reviews-content" class="reviews-content">
+                    <div class="reviews-carousel" id="reviews-carousel">
+                        <div class="reviews-track" id="reviews-track" role="region" aria-label="Guest Reviews Carousel" tabindex="0">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <span class="review-stars">★★★★★</span>
+                                    <span class="review-author">5/5 Verified Guest</span>
+                                </div>
+                                <p class="review-body">
+                                    Absolutely captivating and passionate! A huge favorite! The "Occult Helsinki" guided tour led by Henri is a pure marvel. The subject is incredibly interesting, rich in anecdotes, and Henri conveys it with incredible generosity and energy. The explanations are perfect, fluid, and delivered with so much heart and passion: you can feel that he truly lives and breathes what he's saying. It was a timeless experience that allows you to discover the city's history in a unique way. If you're looking for a very good experience in Helsinki, go for it without hesitation.
+                                </p>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <span class="review-stars">★★★★★</span>
+                                    <span class="review-author">5/5 Becky, from England, United Kingdom</span>
+                                </div>
+                                <p class="review-body">
+                                    Henri you were amazing! We learned so much about Helsinki's history, more than we anticipated on this tour as you were so knowledgeable. We covered a large part of the city on the tour, and really enjoyed unpicking all the symbolism in sites you showed us. You were so generous with your time, allowing us to stop and look in some fascinating shops that we wouldn't have known about otherwise! Your passion for all things occult and strange was contagious, and from the start we felt like we were spending time with a good friend. Kiitos paljon, Henri for making our trip something we will treasure.
+                                </p>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <span class="review-stars">★★★★★</span>
+                                    <span class="review-author">5/5 Michelle, from United States</span>
+                                </div>
+                                <p class="review-body">
+                                    I enjoyed the night tour with Henri. He was easy to find as he held up his black bag with Occult Tours. Henri is fun, knowledgeable, and enjoys sharing the richness of Helsinki's unique buildings and hidden mysteries. The upside down giant head that I would never have seen. The unique shops for upliftment. His voice is easy to listen to and his patience to answer all our curious questions or when we lose track of him and he gathers us by stopping and waiting. We finished on time. He clearly planned the route and also custom fitted it to expand our learning. What he shares is not a reflection of his beliefs. Think occult as in the beauty of arts and science. Definitely do this tour early in your arrival to get a deeper cultural sense of the city. Night is less crowded. Summer has longer light, so perfect.
+                                </p>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <span class="review-stars">★★★★★</span>
+                                    <span class="review-author">5/5 Glenn, from United States</span>
+                                </div>
+                                <p class="review-body">
+                                    It was not until this tour that I began to appreciate what an amazing city Helsinki is. Henri pointed out many details that helped me better understand the history and factors that influenced the development of Helsinki culture. While the title mentioned “occult”, I think a better term would be not commonly mentioned details associated with various buildings and places in the city. I highly recommend this tour to anyone wanting a more in depth perspective of Helsinki.
+                                </p>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <span class="review-stars">★★★★★</span>
+                                    <span class="review-author">5/5 Alison, from England, United Kingdom</span>
+                                </div>
+                                <p class="review-body">
+                                    Henri was great fun and very knowledgeable. When we finished the tour with spectacular views from the top floor cocktail bar, we could appreciate how much of the city we had seen. Most of the must see places, but with folklore, symbolism, myths and stories thrown in!
+                                </p>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <span class="review-stars">★★★★★</span>
+                                    <span class="review-author">5/5 Jennifer, from Melbourne, Australia</span>
+                                </div>
+                                <p class="review-body">
+                                    Henri provided good insights into some of Helsinki's grand buildings, and covered areas of the city you might not find on your own. Occult and religious symbols are often interchangeable, and found in some unlikely places. A very interesting couple of hours... especially the birds' eye view of the city from the tower at the end!
+                                </p>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <span class="review-stars">★★★★★</span>
+                                    <span class="review-author">5/5 M, from Australia</span>
+                                </div>
+                                <p class="review-body">
+                                    Highly recommend! Did the night tour and this is a very pleasant way to spend an evening getting to know the secrets of Helsinki. Henri is a wonderful storyteller and will take you to places you will want to go back to, so my tip is to do this tour early in your stay. Thank you Henri!
+                                </p>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <span class="review-stars">★★★★★</span>
+                                    <span class="review-author">5/5 Todd, from United States</span>
+                                </div>
+                                <p class="review-body">
+                                    Great. Henri was super knowledgeable and gave me a great understanding of Finland and history. I was impressed by his story telling about The Kalevala and how he pointed out monuments and hidden elements tied to this throughout the tour.
+                                </p>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <span class="review-stars">★★★★★</span>
+                                    <span class="review-author">5/5 Donna, from United Kingdom</span>
+                                </div>
+                                <p class="review-body">
+                                    Henri was friendly and welcoming, which made the atmosphere relaxed and easygoing. This itinerary took us through a range of Helsinki sights — from churches to library spaces to small specialty shops. It was enjoyable to see different parts of the city and get a broad impression of its history and character.
+                                </p>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <span class="review-stars">★★★★★</span>
+                                    <span class="review-author">5/5 Stephanie, from United States</span>
+                                </div>
+                                <p class="review-body">
+                                    Henri's Occult tour of Helsinki was great. He was friendly, knowledgeable, and easy to speak with. We got to learn about some of the classically important buildings as well as several off the beaten path locations. If you enjoy learning about the lesser known history I would definitely recommend this tour.
+                                </p>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <span class="review-stars">★★★★★</span>
+                                    <span class="review-author">5/5 Charlotte, from Germany</span>
+                                </div>
+                                <p class="review-body">
+                                    We had a wonderful time guided through Helsinki with Henry. We loved getting off the beaten path! He is well informed and being a local is an enormous advantage. We had a wonderful time! Would recommend this tour highly!
+                                </p>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <span class="review-stars">★★★★★</span>
+                                    <span class="review-author">5/5 Pam, from Terang, Australia</span>
+                                </div>
+                                <p class="review-body">
+                                    A pleasant walk around a fascinating part of old Helsinki, and loads of facts. What more could you want 🙂 I did this on a sunny autumn afternoon, timed to finish on top of a city tower at sunset: perfect.
+                                </p>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <span class="review-stars">★★★★★</span>
+                                    <span class="review-author">5/5 Susanne Rodgers, from Panama</span>
+                                </div>
+                                <p class="review-body">
+                                    He only does small groups, which is great. An actor by trade, he was well spoken and knowledgeable. Provided interesting insights into historical Helsinki. Would highly recommend.
+                                </p>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <span class="review-stars">★★★★★</span>
+                                    <span class="review-author">5/5 Jennie, from United States</span>
+                                </div>
+                                <p class="review-body">
+                                    I had a wonderful time on this tour and visited places I would have probably missed. Henri is an excellent guide and this was one of the highlights of my trip. Highly recommend!
+                                </p>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <span class="review-stars">★★★★★</span>
+                                    <span class="review-author">5/5 Verified Guest, from Finland</span>
+                                </div>
+                                <p class="review-body">
+                                    An interesting and entertaining tour led by a friendly and knowledgeable guide. This was true even for those who have lived in the Helsinki metropolitan area for a long time!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reviews-controls" aria-label="Review Navigation">
+                        <button type="button" class="reviews-nav-btn" onclick="stepReview(-1)" aria-label="Previous review" title="Previous review">&#8592;</button>
+                        <div class="reviews-status">
+                            <span class="reviews-counter" id="reviews-counter" aria-live="polite">1 / 15</span>
+                            <div class="reviews-dots" id="reviews-dots" role="tablist" aria-label="Select review"></div>
+                        </div>
+                        <button type="button" class="reviews-nav-btn" onclick="stepReview(1)" aria-label="Next review" title="Next review">&#8594;</button>
+                    </div>
+
+                    <button type="button" class="btn-info btn-close-info" onclick="closeReviews()">
+                        Close Reviews −
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- 3. About the Experience & FAQ Drawers -->
+        <section class="info-section reveal-block" id="info-section">
+            <button type="button" class="btn-info" onclick="toggleInfo()" id="info-btn" aria-expanded="false" aria-controls="info-content">
+                About the Tour &amp; Guide +
             </button>
             <div id="info-content" class="info-content">
-                <p>Occult Helsinki provides professional guided walking tours showcasing the highlights and hidden gems of Finland’s capital. Perfect for all curious minds and lovers of art, architecture, and history.</p>
-                <p>All tours are operated by local Finnish performer Henri Tahvanainen, who personally guides guests and immerses them in cultural heritage while helping them to find hidden details in their surroundings.</p>
+                <div class="guide-profile-row">
+                    <img src="/Henri_Tahvanainen_Actor_VO_Headshot_Square.webp" alt="Henri Tahvanainen — Local Finnish Performer and Tour Guide" class="guide-headshot" width="400" height="400" loading="lazy" decoding="async">
+                    <div class="guide-bio-intro">
+                        <p>Occult Helsinki provides professional guided walking tours and curated experiences showcasing the highlights and hidden gems of Finland’s capital. Perfect for all curious minds and lovers of art, architecture, and history.</p>
+                        <p>All tours are created and operated by local Finnish performer <a href="https://henritahvanainen.com" target="_blank" rel="noopener noreferrer" class="info-author-link">Henri Tahvanainen</a>, who personally guides guests and immerses them in cultural heritage while helping them find hidden details in their surroundings.</p>
+                    </div>
+                </div>
                 <p>Drawing from history, folklore, mythology, and symbolism, he serves guests meaningful experiences through engaging and insightful storytelling with a side of warm local hospitality.</p>
                 <p>As the cultural gateway to the North, Helsinki is the ideal stop before or after visiting Lapland, Rovaniemi, and the Arctic Circle.</p>
-                <p>Whether you are heading north or returning south, this walk provides the essential Finnish folklore and mythological context to enrich your entire journey through Finland.</p>
-                <p>Considered the best thing to do in Helsinki for discerning travelers who want an authentic perspective of the city beyond the mundane tourist traps.</p>
+                <p>Whether you are heading north or returning south, this walk provides essential cultural context to enrich your entire journey through Finland.</p>
+                <p>Considered the best thing to do in Helsinki for discerning travelers who want an authentic perspective on the city beyond the mundane tourist traps.</p>
                 <p>Discover a side of the capital that most travelers—and even locals—never get to experience. Strictly limited spots available.</p>
 
                 <div class="info-heading">Tour Information</div>
                 <ul class="info-list">
-                    <li><strong>Route:</strong> Approximately 3–4 km (1.8–2.4 miles) through central Helsinki.</li>
-                    <li><strong>Pace:</strong> Comfortable and conversational.</li>
+                    <li><strong>Route:</strong> Approximately 3–4 km (1.9–2.5 miles).</li>
                     <li><strong>Duration:</strong> 1.5 to 2 hours (90–120 minutes).</li>
-                    <li><strong>Capacity:</strong> Limited to 12 spots to preserve exclusivity.</li>
+                    <li><strong>Capacity:</strong> Limited to 12 spots to keep the experience personal.</li>
                 </ul>
 
                 <button type="button" class="btn-info btn-close-info" onclick="closeInfo()">
@@ -776,85 +2173,113 @@
             </div>
         </section>
 
-        <!-- 3. FareHarbor Live Calendar Embed -->
-        <div class="embed-wrapper" id="calendar-section">
-            <script src="https://fareharbor.com/embeds/script/calendar/occulthelsinki/?full-items=yes&flow=1690620&fallback=simple"></script>
-        </div>
-
-        <hr>
-
-        <!-- 4. 5-Star Guest Reviews Section -->
-        <section class="reviews-section" id="reviews-section">
-            <div class="section-title-gold">guest reviews</div>
-            
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="review-header">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-author">5/5 Glenn, from United States</span>
+        <section class="faq-section reveal-block" id="faq-section">
+            <button type="button" class="btn-info" onclick="toggleFaq()" id="faq-btn" aria-expanded="false" aria-controls="faq-content">
+                Frequently Asked Questions +
+            </button>
+            <div id="faq-content" class="faq-content">
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <h3 class="faq-q-heading">
+                            <button type="button" class="faq-q-btn" aria-expanded="false" onclick="toggleFaqItem(this)">
+                                <span class="faq-q-text">What does "occult" mean in the context of this tour?</span>
+                                <span class="faq-q-icon" aria-hidden="true">+</span>
+                            </button>
+                        </h3>
+                        <div class="faq-a-panel" hidden>
+                            <p class="faq-a">Occult comes from the Latin word <em>occultus</em>, meaning hidden from view or concealed. On this walk through central Helsinki, you explore architectural symbolism, Finnish mythology, and local folklore. The route connects major landmarks with lesser-known corners so you notice overlooked details tucked in plain sight across the city center.</p>
+                        </div>
                     </div>
-                    <p class="review-body">
-                        It was not until this tour that I began to appreciate what an amazing city Helsinki is. Henri pointed out many details that helped me better understand the history and factors that influenced the development of Helsinki culture. While the title mentioned “occult”, I think a better term would be not commonly mentioned details associated with various buildings and places in the city. I highly recommend this tour to anyone wanting a more in in depth perspective of Helsinki.
-                    </p>
+                    <div class="faq-item">
+                        <h3 class="faq-q-heading">
+                            <button type="button" class="faq-q-btn" aria-expanded="false" onclick="toggleFaqItem(this)">
+                                <span class="faq-q-text">Who leads this Helsinki walking tour, and in what language?</span>
+                                <span class="faq-q-icon" aria-hidden="true">+</span>
+                            </button>
+                        </h3>
+                        <div class="faq-a-panel" hidden>
+                            <p class="faq-a">Local Finnish actor Henri Tahvanainen guides every tour in English. His stage background keeps the storytelling lively and easy to follow, with warm local hospitality at every stop. Guests are welcome to ask questions freely, whether you know Finland well or are visiting for the first time.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-q-heading">
+                            <button type="button" class="faq-q-btn" aria-expanded="false" onclick="toggleFaqItem(this)">
+                                <span class="faq-q-text">Where does the Occult Helsinki walking tour start and end?</span>
+                                <span class="faq-q-icon" aria-hidden="true">+</span>
+                            </button>
+                        </h3>
+                        <div class="faq-a-panel" hidden>
+                            <p class="faq-a">Tours start in central Helsinki at the top of the Senate Square steps, between Helsinki Cathedral and the National Library of Finland (Unioninkatu 29 / 36). Spot Henri by his black bag marked Occult Helsinki. The walk ends in the Design District at St. John's Church, and when time allows, he loves showing even more.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-q-heading">
+                            <button type="button" class="faq-q-btn" aria-expanded="false" onclick="toggleFaqItem(this)">
+                                <span class="faq-q-text">How long is the walk, and is it wheelchair accessible?</span>
+                                <span class="faq-q-icon" aria-hidden="true">+</span>
+                            </button>
+                        </h3>
+                        <div class="faq-a-panel" hidden>
+                            <p class="faq-a">The walk lasts 1.5 to 2 hours (90 to 120 minutes) and covers 3 to 4 km (1.8 to 2.4 miles) at a relaxed pace. Because the path crosses city sidewalks, cobblestones, stone stairs, and gentle hills, the public tour is not wheelchair accessible. Wear comfortable shoes with good grip.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-q-heading">
+                            <button type="button" class="faq-q-btn" aria-expanded="false" onclick="toggleFaqItem(this)">
+                                <span class="faq-q-text">Are entrance tickets included, and do we go inside buildings?</span>
+                                <span class="faq-q-icon" aria-hidden="true">+</span>
+                            </button>
+                        </h3>
+                        <div class="faq-a-panel" hidden>
+                            <p class="faq-a">Helsinki Cathedral and Uspenski Cathedral charge separate admission, so we view them from outside unless seasonal free entry applies. We visit all other indoor locations whenever open, especially on the 11:00 AM timeslot. Holiday hours cannot be guaranteed, though Henri always adds extra outdoor spots so you always get a full experience.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-q-heading">
+                            <button type="button" class="faq-q-btn" aria-expanded="false" onclick="toggleFaqItem(this)">
+                                <span class="faq-q-text">Does the Helsinki walking tour run in winter or rain?</span>
+                                <span class="faq-q-icon" aria-hidden="true">+</span>
+                            </button>
+                        </h3>
+                        <div class="faq-a-panel" hidden>
+                            <p class="faq-a">Yes, departures run year-round in every season and weather condition, from rain and winter snow to early darkness and bright summer evenings. Each season brings a different atmosphere to the capital. Dress for the daily Helsinki forecast with warm layers in winter or a waterproof coat on wet days.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-q-heading">
+                            <button type="button" class="faq-q-btn" aria-expanded="false" onclick="toggleFaqItem(this)">
+                                <span class="faq-q-text">When during a Helsinki trip should I book this tour?</span>
+                                <span class="faq-q-icon" aria-hidden="true">+</span>
+                            </button>
+                        </h3>
+                        <div class="faq-a-panel" hidden>
+                            <p class="faq-a">Joining early in your stay helps you get oriented in the city and find independent shops, cafes, and viewpoints worth revisiting later. The folklore and regional traditions covered on the walk also give helpful background before onward travel to other towns or northern regions across Finland.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-q-heading">
+                            <button type="button" class="faq-q-btn" aria-expanded="false" onclick="toggleFaqItem(this)">
+                                <span class="faq-q-text">What is the group size limit, and are private tours available?</span>
+                                <span class="faq-q-icon" aria-hidden="true">+</span>
+                            </button>
+                        </h3>
+                        <div class="faq-a-panel" hidden>
+                            <p class="faq-a">Public groups have a strict cap of 12 guests so everyone hears easily and has plenty of room for questions. If you want a private tour for your own party with a custom schedule or hotel pickup, book the Private Occult Helsinki Walking Tour on this page or email contact@occulthelsinki.com.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="review-card">
-                    <div class="review-header">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-author">5/5 M, from Australia</span>
-                    </div>
-                    <p class="review-body">
-                        Highly recommend! Did the night tour and this is a very pleasant way to spend an evening getting to know the secrets of Helsinki. Henri is a wonderful storyteller and will take you to places you will want to go back to, so my tip is to do this tour early in your stay. Thank you Henri!
-                    </p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-header">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-author">5/5 Charlotte, from Germany</span>
-                    </div>
-                    <p class="review-body">
-                        We had a wonderful time guided through Helsinki with Henry. We loved getting off the beaten path! He is well informed and being a local is an enormous advantage. We had a wonderful time! Would recommend this tour highly!
-                    </p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-header">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-author">5/5 Michelle, from United States</span>
-                    </div>
-                    <p class="review-body">
-                        I enjoyed the night tour with Henri. He was easy to find as he held up his black bag with Occult Tours. Henri is fun, knowledgeable, and enjoys sharing the richness of Helsinki's unique buildings and hidden mysteries. The upside down giant head that I would never have seen. The unique shops for upliftment. His voice is easy to listen to and his patience to answer all our curious questions or when we lose track of him and he gathers us by stopping and waiting. We finished on time. He clearly planned the route and also custom fitted it to expand our learning. What he shares is not a reflection of his beliefs. Think occult as in the beauty of arts and science. Definitely do this tour early in your arrival to get a deeper cultural sense of the city. Night is less crowded. Summer has longer light, so perfect.
-                    </p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-header">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-author">5/5 Todd, from United States</span>
-                    </div>
-                    <p class="review-body">
-                        Great. Henri was super knowledgeable and gave me a great understanding of Finland and history. I was impressed by his story telling about The Kalevala and how we pointed our monuments and hidden elements tied to this throughout the tour.
-                    </p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-header">
-                        <span class="review-stars">★★★★★</span>
-                        <span class="review-author">5/5 Donna, from United Kingdom</span>
-                    </div>
-                    <p class="review-body">
-                        Henri was friendly and welcoming, which made the atmosphere relaxed and easygoing. This itinerary took us through a range of Helsinki sights — from churches to library spaces to small specialty shops. It was enjoyable to see different parts of the city and get a broad impression of its history and character.
-                    </p>
-                </div>
+                <button type="button" class="btn-info btn-close-info" onclick="closeFaq()">
+                    Close FAQ −
+                </button>
             </div>
         </section>
 
         <hr>
 
-        <!-- 5. Custom Tour Inquiries Copy Section (Between Reviews & Map) -->
-        <section class="inquiry-section" id="inquiry-section">
-            <div class="section-title-gold-tight">custom tour inquiries</div>
+        <!-- 4. Custom Tour Inquiries Copy Section -->
+        <section class="inquiry-section reveal-block" id="inquiry-section">
+            <h2 class="section-title-gold-tight">Custom Tour Inquiries</h2>
             <hr class="tight-hr">
             
             <p class="inquiry-text">
@@ -862,73 +2287,295 @@
             </p>
 
             <div class="email-container">
-                <button type="button" class="btn-email-copy" onclick="copyEmail(event)" title="Click to copy email address">
-                    contact@occulthelsinki.com
+                <button type="button" class="btn-email-copy" id="email-copy-btn" onclick="copyEmail(event)" title="Click to copy email address">
+                    <svg viewBox="0 0 24 24" stroke-width="1.6" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="0" ry="0"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    <span>contact@occulthelsinki.com</span>
                 </button>
-                <span id="copy-feedback" class="copy-tooltip">Copied to clipboard!</span>
+                <a href="mailto:contact@occulthelsinki.com?subject=Custom%20Tour%20Inquiry%20%E2%80%94%20Occult%20Helsinki&body=Preferred%20date%3A%0D%0AGroup%20size%3A%0D%0AHotel%20pickup%20or%20special%20requests%3A%0D%0A" class="mailto-fallback-link" id="mailto-fallback-link">or open directly in your mail app</a>
+                <span id="copy-feedback" class="copy-tooltip" role="status" aria-live="polite">Copied to clipboard!</span>
             </div>
         </section>
 
         <hr>
 
-        <!-- 6. Google Business Profile Map Embed (Dark Mode Greyscale) -->
-        <section class="map-section" id="map-section">
+        <!-- 5. Google Business Profile Map Embed (Dark Mode Greyscale) -->
+        <section class="map-section reveal-block" id="map-section">
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254498.04808482924!2d24.689062095540375!3d60.11009636768345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab0ec604aa5bff93%3A0x5f94e81551b16c82!2sOccult%20Helsinki%20Walking%20Tours!5e0!3m2!1sfi!2sfi!4v1787395409544!5m2!1sfi!2sfi" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254498.04808482924!2d24.689062095540375!3d60.11009636768345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab0ec604aa5bff93%3A0x5f94e81551b16c82!2sOccult%20Helsinki%20Walking%20Tours!5e0!3m2!1sfi!2sfi!4v1787395409544!5m2!1sfi!2sfi" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Occult Helsinki Walking Tours on Google Maps"></iframe>
             </div>
         </section>
 
+        <hr>
+
+        <!-- 6. Official TripAdvisor, GetYourGuide & Ko-fi Stacked Widgets -->
+        <section class="ta-badge-wrapper reveal-block" id="platform-badges" aria-label="Verified Platform Ratings">
+            <div id="TA_rated474" class="TA_rated"><ul id="jpAnGar" class="TA_links RanQ9R5RZCzv"><li id="vOfn92usI" class="uVjiqbw763LF"><a target="_blank" rel="noopener noreferrer" href="https://www.tripadvisor.com/Attraction_Review-g189934-d34349534-Reviews-Occult_Helsinki_Walking_Tour-Helsinki_Uusimaa.html"><img src="https://www.tripadvisor.com/img/cdsi/img2/badges/ollie-11424-2.gif" alt="TripAdvisor"/></a></li></ul></div><script type='text/javascript' src='https://www.tripadvisor.com/CyTFkEcmCuWp3_2qu1BSi_KnPykVsrylFQUU0Og3ISULmrWYoJFcN02d5mYxJa7fi7FsHGrLZDa0iKciz6JMvBZnuMM4muQvLL3o6XdxC5fxzOeEexUgmtJP4V-WvLUetI7PQ8A-ghGq8kpKZIq2sxGdN3omM-VHvWTbrO3AKbSTnuvSfPaGOkx6YZYoRNbnmAzL9fhf_gCel1Sks7OV8rSjF6WUSDG9y23ss9ZHPs5JufCY76138f9U2CxUaU6OOvuyNqjdS3EIXujWCpeDDxIJ5jLHpUxE5EaoT9mKqRce7UBO_xDNJ362xBrDQb5D2vhhv_25kDWmInl98DHd3zUyL6rWL5Vq2VdQAtgFYGi-TOG1xHXQYOh6xln0kYmou7xLrR5ctURvCML1SYFUvoW7VzilghtVIvAYVeetVXpw4HWSGIIwBGvW32Swl7mkXA6jEPcr3_mzOYJFbce0PJoDRX_I_qDhyAMjPrih9FwW_WgEhrDRk00zaWAO_GZBhCu0GjLibHd3KNjPnTeG6RAtJaC2RDZGQFvod1oZU5cClRSgGFmMS1RF_nPRRi1_3OXUPraAauUMXMhSl-PtMZFRcR1BC4TovKTvRctIxQpMlPAg7cndrF7I-e58Oinmq_UPUR_2L56f6RatN29agNhgRElRn5VXZUdTtQ'></script><script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=474&amp;locationId=34349534&amp;lang=en_US&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
+            <a class="gyg-badge-link" href="https://www.getyourguide.com/-s751267" target="_blank" rel="noopener noreferrer"><img src="https://gyg.me/kUtga42u" width="160px" height="auto" style="border: 1px solid #c6c8d0" alt="GetYourGuide | Occult Helsinki" /></a>
+            <div class="kofi-widget-slot"><script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support on Ko-fi', '#d4af37', 'C0C31Z5VG5');kofiwidget2.draw();</script></div>
+        </section>
+
         <footer>
-            &copy; 2026 Henri Tahvanainen. All rights reserved.
+            <div class="footer-social-row">
+                <a href="https://www.instagram.com/occulthelsinki" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Occult Helsinki on Instagram" title="Instagram (@occulthelsinki)">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/occulthelsinki" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Occult Helsinki on Facebook" title="Facebook (occulthelsinki)">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+                    </svg>
+                </a>
+            </div>
+            <div>&copy; 2026 Henri Tahvanainen. All rights reserved.</div>
         </footer>
     </main>
 
-    <!-- Floating Book Now Button -->
-    <a href="https://fareharbor.com/embeds/book/occulthelsinki/items/?full-items=yes" class="fh-button-blue fh-icon--ticket fh-shape--default fh-size--default fh-button-custom">Book Now</a>
+    <!-- Lightbox Modal for Route Photos -->
+    <div id="photo-lightbox" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Tour Photograph" onclick="closeLightbox(event)">
+        <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Close photo">&#10005;</button>
+        <div class="lightbox-inner" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- Floating Book Now Button (Flow 1690620 Matched) -->
+    <a href="https://fareharbor.com/embeds/book/occulthelsinki/items/?full-items=yes&flow=1690620" id="floating-book-btn" class="fh-button-blue fh-icon--ticket fh-shape--default fh-size--default fh-button-custom">Book Now</a>
 
     <script>
-        function toggleNavMenu() {
-            var menu = document.getElementById("nav-floating-menu");
-            if (menu.style.display === "block") {
-                menu.style.display = "none";
+        // GTM / GA4 DataLayer Telemetry Helper
+        function pushConversionEvent(eventName, payload) {
+            try {
+                window.dataLayer = window.dataLayer || [];
+                var eventData = { event: eventName };
+                if (payload && typeof payload === "object") {
+                    for (var key in payload) {
+                        if (Object.prototype.hasOwnProperty.call(payload, key)) {
+                            eventData[key] = payload[key];
+                        }
+                    }
+                }
+                window.dataLayer.push(eventData);
+            } catch (e) {}
+        }
+
+        // Photo Lightbox Handlers
+        function openLightbox(filename, caption) {
+            var modal = document.getElementById("photo-lightbox");
+            var img = document.getElementById("lightbox-img");
+            var cap = document.getElementById("lightbox-caption");
+            if (!modal || !img) return;
+            img.src = "/" + filename;
+            img.alt = caption || "Occult Helsinki Walking Tour";
+            if (cap) cap.textContent = caption || "";
+            modal.classList.add("is-open");
+            pushConversionEvent("route_photo_view", { photo: filename });
+        }
+
+        function closeLightbox() {
+            var modal = document.getElementById("photo-lightbox");
+            var img = document.getElementById("lightbox-img");
+            if (modal) modal.classList.remove("is-open");
+            if (img) img.src = "";
+        }
+
+        // Expand/Collapse Extra 6 Route Stops (Lazy-Loaded Only When Opened)
+        function toggleMorePhotos() {
+            var grid = document.getElementById("gallery-extra-grid");
+            var btn = document.getElementById("gallery-toggle-btn");
+            if (!grid || !btn) return;
+            var isOpen = grid.style.display === "grid";
+            if (isOpen) {
+                grid.style.display = "none";
+                btn.textContent = "View More Route Stops (6) +";
+                btn.setAttribute("aria-expanded", "false");
             } else {
-                menu.style.display = "block";
+                var lazyImgs = grid.querySelectorAll("img[data-src]");
+                for (var i = 0; i < lazyImgs.length; i++) {
+                    lazyImgs[i].src = lazyImgs[i].getAttribute("data-src");
+                    lazyImgs[i].removeAttribute("data-src");
+                }
+                grid.style.display = "grid";
+                btn.textContent = "Hide Extra Route Stops −";
+                btn.setAttribute("aria-expanded", "true");
+                pushConversionEvent("gallery_expand", { source: "button" });
             }
         }
 
-        // Navigation Routing
-        function navTo(target) {
+        // Expand/Collapse Full Monthly FareHarbor Calendar
+        function toggleCalendarDrawer() {
+            var cal = document.getElementById("calendar-section");
+            var btn = document.getElementById("calendar-toggle-btn");
+            if (!cal || !btn) return;
+            var isOpen = cal.style.display === "block";
+            if (isOpen) {
+                cal.style.display = "none";
+                btn.textContent = "View Full Monthly Calendar +";
+                btn.setAttribute("aria-expanded", "false");
+            } else {
+                cal.style.display = "block";
+                btn.textContent = "Hide Monthly Calendar −";
+                btn.setAttribute("aria-expanded", "true");
+                pushConversionEvent("calendar_expand", { source: "button" });
+            }
+        }
+
+        function closeNavMenu() {
             var menu = document.getElementById("nav-floating-menu");
+            var btn = document.getElementById("nav-toggle-btn");
             if (menu) menu.style.display = "none";
+            if (btn) {
+                btn.classList.remove("is-open");
+                btn.setAttribute("aria-expanded", "false");
+            }
+        }
+
+        function toggleNavMenu() {
+            var menu = document.getElementById("nav-floating-menu");
+            var btn = document.getElementById("nav-toggle-btn");
+            if (!menu) return;
+            if (menu.style.display === "block") {
+                closeNavMenu();
+            } else {
+                menu.style.display = "block";
+                if (btn) {
+                    btn.classList.add("is-open");
+                    btn.setAttribute("aria-expanded", "true");
+                }
+            }
+        }
+
+        // Safe URL Hash Updater for Shareable Deep Links
+        function updateSectionHash(hash) {
+            try {
+                if (window.history && window.history.replaceState) {
+                    window.history.replaceState(null, "", hash ? "#" + hash : window.location.pathname + window.location.search);
+                }
+            } catch (e) {}
+        }
+
+        // Collapse Sibling Drawers So Only One Panel Expands at a Time
+        function collapseOtherDrawers(except) {
+            if (except !== "info") {
+                var infoContent = document.getElementById("info-content");
+                var infoBtn = document.getElementById("info-btn");
+                if (infoContent) infoContent.style.display = "none";
+                if (infoBtn) {
+                    infoBtn.innerText = "About the Tour & Guide +";
+                    infoBtn.setAttribute("aria-expanded", "false");
+                }
+            }
+            if (except !== "faq") {
+                var faqContent = document.getElementById("faq-content");
+                var faqBtn = document.getElementById("faq-btn");
+                if (faqContent) faqContent.style.display = "none";
+                if (faqBtn) {
+                    faqBtn.innerText = "Frequently Asked Questions +";
+                    faqBtn.setAttribute("aria-expanded", "false");
+                }
+            }
+            if (except !== "reviews") {
+                var revContent = document.getElementById("reviews-content");
+                var revBtn = document.getElementById("reviews-btn");
+                var revLabel = document.getElementById("reviews-btn-label");
+                if (revContent) revContent.style.display = "none";
+                if (revLabel) revLabel.innerText = "5/5 Reviews +";
+                if (revBtn) revBtn.setAttribute("aria-expanded", "false");
+            }
+        }
+
+        // Smooth Navigation Routing
+        function navTo(target, instant) {
+            closeNavMenu();
+            var scrollBehavior = instant ? 'auto' : 'smooth';
 
             if (target === 'home') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                updateSectionHash("");
+                window.scrollTo({ top: 0, behavior: scrollBehavior });
+            } else if (target === 'tours') {
+                updateSectionHash("tours");
+                var bookingZone = document.getElementById("booking-zone");
+                if (bookingZone) bookingZone.scrollIntoView({ behavior: scrollBehavior });
             } else if (target === 'info') {
+                collapseOtherDrawers('info');
                 var content = document.getElementById("info-content");
                 var btn = document.getElementById("info-btn");
                 if (content && content.style.display !== "block") {
                     content.style.display = "block";
-                    if (btn) btn.innerText = "Info −";
+                    if (btn) {
+                        btn.innerText = "About the Tour & Guide −";
+                        btn.setAttribute("aria-expanded", "true");
+                    }
+                    pushConversionEvent("drawer_open", { drawer_name: "info", source: "nav" });
                 }
+                updateSectionHash("info");
                 var infoSection = document.getElementById("info-section");
-                if (infoSection) infoSection.scrollIntoView({ behavior: 'smooth' });
+                if (infoSection) infoSection.scrollIntoView({ behavior: scrollBehavior });
+            } else if (target === 'faq') {
+                collapseOtherDrawers('faq');
+                var faqContent = document.getElementById("faq-content");
+                var faqBtn = document.getElementById("faq-btn");
+                if (faqContent && faqContent.style.display !== "block") {
+                    faqContent.style.display = "block";
+                    if (faqBtn) {
+                        faqBtn.innerText = "Frequently Asked Questions −";
+                        faqBtn.setAttribute("aria-expanded", "true");
+                    }
+                    pushConversionEvent("drawer_open", { drawer_name: "faq", source: "nav" });
+                }
+                updateSectionHash("faq");
+                var faqSection = document.getElementById("faq-section");
+                if (faqSection) faqSection.scrollIntoView({ behavior: scrollBehavior });
             } else if (target === 'calendar') {
                 var calSection = document.getElementById("calendar-section");
-                if (calSection) calSection.scrollIntoView({ behavior: 'smooth' });
+                var calBtn = document.getElementById("calendar-toggle-btn");
+                if (calSection && calSection.style.display !== "block") {
+                    calSection.style.display = "block";
+                    if (calBtn) {
+                        calBtn.textContent = "Hide Monthly Calendar −";
+                        calBtn.setAttribute("aria-expanded", "true");
+                    }
+                }
+                updateSectionHash("calendar");
+                if (calSection) calSection.scrollIntoView({ behavior: scrollBehavior });
+            } else if (target === 'reviews') {
+                collapseOtherDrawers('reviews');
+                var revContent = document.getElementById("reviews-content");
+                var revBtn = document.getElementById("reviews-btn");
+                var revLabel = document.getElementById("reviews-btn-label");
+                if (revContent && revContent.style.display !== "block") {
+                    revContent.style.display = "block";
+                    if (revLabel) revLabel.innerText = "5/5 Reviews −";
+                    if (revBtn) revBtn.setAttribute("aria-expanded", "true");
+                    initReviewsCarousel();
+                    pushConversionEvent("drawer_open", { drawer_name: "reviews", source: "nav" });
+                }
+                updateSectionHash("reviews");
+                var revSection = document.getElementById("reviews-section");
+                if (revSection) revSection.scrollIntoView({ behavior: scrollBehavior });
             } else if (target === 'contact') {
+                updateSectionHash("contact");
                 var inqSection = document.getElementById("inquiry-section");
-                if (inqSection) inqSection.scrollIntoView({ behavior: 'smooth' });
+                if (inqSection) inqSection.scrollIntoView({ behavior: scrollBehavior });
             }
         }
 
-        // Close floating menu when clicking outside
+        // Close floating menu & lightbox when clicking outside or pressing Escape
         document.addEventListener('click', function(e) {
             var menu = document.getElementById("nav-floating-menu");
             var btn = document.getElementById("nav-toggle-btn");
             if (menu && btn && menu.style.display === "block") {
                 if (!menu.contains(e.target) && !btn.contains(e.target)) {
-                    menu.style.display = "none";
+                    closeNavMenu();
                 }
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeNavMenu();
+                closeLightbox();
             }
         });
 
@@ -937,10 +2584,16 @@
             var btn = document.getElementById("info-btn");
             if (content.style.display === "block") {
                 content.style.display = "none";
-                btn.innerText = "Info +";
+                btn.innerText = "About the Tour & Guide +";
+                btn.setAttribute("aria-expanded", "false");
+                updateSectionHash("");
             } else {
+                collapseOtherDrawers("info");
                 content.style.display = "block";
-                btn.innerText = "Info −";
+                btn.innerText = "About the Tour & Guide −";
+                btn.setAttribute("aria-expanded", "true");
+                updateSectionHash("info");
+                pushConversionEvent("drawer_open", { drawer_name: "info", source: "button" });
             }
         }
 
@@ -948,15 +2601,240 @@
             var content = document.getElementById("info-content");
             var btn = document.getElementById("info-btn");
             if (content) content.style.display = "none";
-            if (btn) btn.innerText = "Info +";
+            if (btn) {
+                btn.innerText = "About the Tour & Guide +";
+                btn.setAttribute("aria-expanded", "false");
+            }
+            updateSectionHash("");
             var infoSection = document.getElementById("info-section");
             if (infoSection) infoSection.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Direct Clipboard Copy
+        function toggleFaq() {
+            var content = document.getElementById("faq-content");
+            var btn = document.getElementById("faq-btn");
+            if (!content || !btn) return;
+
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                btn.innerText = "Frequently Asked Questions +";
+                btn.setAttribute("aria-expanded", "false");
+                updateSectionHash("");
+            } else {
+                collapseOtherDrawers("faq");
+                content.style.display = "block";
+                btn.innerText = "Frequently Asked Questions −";
+                btn.setAttribute("aria-expanded", "true");
+                updateSectionHash("faq");
+                pushConversionEvent("drawer_open", { drawer_name: "faq", source: "button" });
+            }
+        }
+
+        function closeFaq() {
+            var content = document.getElementById("faq-content");
+            var btn = document.getElementById("faq-btn");
+            if (content) content.style.display = "none";
+            if (btn) {
+                btn.innerText = "Frequently Asked Questions +";
+                btn.setAttribute("aria-expanded", "false");
+            }
+            updateSectionHash("");
+            var faqSection = document.getElementById("faq-section");
+            if (faqSection) faqSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function toggleFaqItem(btn) {
+            if (!btn) return;
+            var item = btn.closest(".faq-item");
+            var panel = item ? item.querySelector(".faq-a-panel") : null;
+            var icon = btn.querySelector(".faq-q-icon");
+            var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+            btn.setAttribute("aria-expanded", isOpen ? "false" : "true");
+            if (icon) icon.textContent = isOpen ? "+" : "−";
+            if (panel) {
+                if (isOpen) {
+                    panel.setAttribute("hidden", "");
+                } else {
+                    panel.removeAttribute("hidden");
+                    var qLabel = btn.querySelector(".faq-q-text");
+                    pushConversionEvent("faq_question_open", {
+                        question: qLabel ? qLabel.textContent.trim() : ""
+                    });
+                }
+            }
+        }
+
+        // Toggle Guest Reviews Accordion
+        function toggleReviews() {
+            var content = document.getElementById("reviews-content");
+            var btn = document.getElementById("reviews-btn");
+            var label = document.getElementById("reviews-btn-label");
+            if (!content || !btn) return;
+
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                if (label) label.innerText = "5/5 Reviews +";
+                btn.setAttribute("aria-expanded", "false");
+                updateSectionHash("");
+            } else {
+                collapseOtherDrawers("reviews");
+                content.style.display = "block";
+                if (label) label.innerText = "5/5 Reviews −";
+                btn.setAttribute("aria-expanded", "true");
+                initReviewsCarousel();
+                updateSectionHash("reviews");
+                pushConversionEvent("drawer_open", { drawer_name: "reviews", source: "button" });
+            }
+        }
+
+        function closeReviews() {
+            var content = document.getElementById("reviews-content");
+            var btn = document.getElementById("reviews-btn");
+            var label = document.getElementById("reviews-btn-label");
+            if (content) content.style.display = "none";
+            if (label) label.innerText = "5/5 Reviews +";
+            if (btn) btn.setAttribute("aria-expanded", "false");
+            updateSectionHash("");
+            var revSection = document.getElementById("reviews-section");
+            if (revSection) revSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // One-at-a-Time Snap Carousel for Guest Reviews
+        var reviewsInitialized = false;
+        var currentReviewIndex = 0;
+        var reviewResizeObserver = null;
+
+        function initReviewsCarousel() {
+            var track = document.getElementById("reviews-track");
+            var dotsWrap = document.getElementById("reviews-dots");
+            if (!track) return;
+
+            var cards = track.querySelectorAll(".review-card");
+            if (!cards.length) return;
+
+            if (!reviewsInitialized) {
+                reviewsInitialized = true;
+
+                if (dotsWrap) {
+                    dotsWrap.innerHTML = "";
+                    for (var i = 0; i < cards.length; i++) {
+                        (function(index) {
+                            var dot = document.createElement("button");
+                            dot.type = "button";
+                            dot.className = "review-dot" + (index === 0 ? " is-active" : "");
+                            dot.setAttribute("role", "tab");
+                            dot.setAttribute("aria-label", "Review " + (index + 1) + " of " + cards.length);
+                            dot.setAttribute("aria-selected", index === 0 ? "true" : "false");
+                            dot.addEventListener("click", function() {
+                                goToReview(index);
+                            });
+                            dotsWrap.appendChild(dot);
+                        })(i);
+                    }
+                }
+
+                var scrollTimer = null;
+                track.addEventListener("scroll", function() {
+                    if (scrollTimer) clearTimeout(scrollTimer);
+                    scrollTimer = setTimeout(function() {
+                        var width = track.clientWidth || 1;
+                        var idx = Math.round(track.scrollLeft / width);
+                        syncReviewCarouselUI(idx);
+                    }, 50);
+                }, { passive: true });
+
+                track.addEventListener("keydown", function(e) {
+                    if (e.key === "ArrowLeft") {
+                        e.preventDefault();
+                        stepReview(-1);
+                    } else if (e.key === "ArrowRight") {
+                        e.preventDefault();
+                        stepReview(1);
+                    }
+                });
+
+                if ("ResizeObserver" in window) {
+                    reviewResizeObserver = new ResizeObserver(function() {
+                        syncReviewCarouselUI(currentReviewIndex);
+                    });
+                    for (var c = 0; c < cards.length; c++) {
+                        reviewResizeObserver.observe(cards[c]);
+                    }
+                } else {
+                    window.addEventListener("resize", function() {
+                        syncReviewCarouselUI(currentReviewIndex);
+                    });
+                }
+            }
+
+            requestAnimationFrame(function() {
+                syncReviewCarouselUI(currentReviewIndex);
+            });
+        }
+
+        function stepReview(delta) {
+            var track = document.getElementById("reviews-track");
+            if (!track) return;
+            var cards = track.querySelectorAll(".review-card");
+            if (!cards.length) return;
+            var nextIdx = (currentReviewIndex + delta + cards.length) % cards.length;
+            goToReview(nextIdx);
+        }
+
+        function goToReview(idx) {
+            var track = document.getElementById("reviews-track");
+            if (!track) return;
+            var cards = track.querySelectorAll(".review-card");
+            if (!cards.length) return;
+            var clamped = Math.max(0, Math.min(idx, cards.length - 1));
+            track.scrollTo({
+                left: clamped * track.clientWidth,
+                behavior: "smooth"
+            });
+            syncReviewCarouselUI(clamped);
+        }
+
+        function syncReviewCarouselUI(forcedIdx) {
+            var carousel = document.getElementById("reviews-carousel");
+            var track = document.getElementById("reviews-track");
+            var counter = document.getElementById("reviews-counter");
+            var dotsWrap = document.getElementById("reviews-dots");
+            if (!track) return;
+
+            var cards = track.querySelectorAll(".review-card");
+            if (!cards.length) return;
+
+            var idx = typeof forcedIdx === "number" ? forcedIdx : currentReviewIndex;
+            idx = Math.max(0, Math.min(idx, cards.length - 1));
+            currentReviewIndex = idx;
+
+            if (counter) {
+                counter.textContent = (idx + 1) + " / " + cards.length;
+            }
+
+            if (dotsWrap) {
+                var dots = dotsWrap.querySelectorAll(".review-dot");
+                for (var i = 0; i < dots.length; i++) {
+                    var active = i === idx;
+                    dots[i].classList.toggle("is-active", active);
+                    dots[i].setAttribute("aria-selected", active ? "true" : "false");
+                }
+            }
+
+            if (carousel && cards[idx]) {
+                var activeHeight = cards[idx].offsetHeight;
+                if (activeHeight > 0) {
+                    carousel.style.height = activeHeight + "px";
+                }
+            }
+        }
+
+        // Direct Clipboard Copy (Iframe-Safe Fallback Included)
         function copyEmail(event) {
             var email = "contact@occulthelsinki.com";
-            
+            pushConversionEvent("contact_email_copy", { method: "clipboard", email: email });
+
             if (navigator.clipboard && window.isSecureContext) {
                 navigator.clipboard.writeText(email).then(showFeedback).catch(function() {
                     fallbackCopy(email);
@@ -969,6 +2847,8 @@
         function fallbackCopy(text) {
             var tempInput = document.createElement("input");
             tempInput.setAttribute("value", text);
+            tempInput.style.position = "fixed";
+            tempInput.style.opacity = "0";
             document.body.appendChild(tempInput);
             tempInput.select();
             try {
@@ -982,13 +2862,117 @@
 
         function showFeedback() {
             var feedback = document.getElementById("copy-feedback");
+            var btn = document.getElementById("email-copy-btn");
+            if (btn) btn.classList.add("copied");
             if (feedback) {
                 feedback.style.opacity = "1";
                 setTimeout(function() {
                     feedback.style.opacity = "0";
+                    if (btn) btn.classList.remove("copied");
                 }, 2200);
             }
         }
+
+        // Progressive Scroll Reveal, Context-Aware Floating Book CTA, UTM Attribution & Funnel Telemetry
+        (function initEnhancements() {
+            document.documentElement.classList.add("js-enhanced");
+
+            var revealBlocks = document.querySelectorAll(".reveal-block");
+            if ("IntersectionObserver" in window) {
+                var revealObserver = new IntersectionObserver(function(entries, obs) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("is-visible");
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.08 });
+
+                revealBlocks.forEach(function(block) {
+                    revealObserver.observe(block);
+                });
+            } else {
+                revealBlocks.forEach(function(block) {
+                    block.classList.add("is-visible");
+                });
+            }
+
+            // Preserve UTM & Ad Click Attribution Parameters onto Floating Book Now Link
+            var floatingCta = document.getElementById("floating-book-btn") || document.querySelector(".fh-button-custom");
+            if (floatingCta && window.location.search) {
+                try {
+                    var incomingParams = new URLSearchParams(window.location.search);
+                    var trackedKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "fbclid", "msclkid", "ref"];
+                    var ctaUrl = new URL(floatingCta.href);
+                    var hasAttribution = false;
+                    trackedKeys.forEach(function(k) {
+                        if (incomingParams.has(k)) {
+                            ctaUrl.searchParams.set(k, incomingParams.get(k));
+                            hasAttribution = true;
+                        }
+                    });
+                    if (hasAttribution) {
+                        floatingCta.href = ctaUrl.toString();
+                    }
+                } catch (e) {}
+            }
+
+            if (floatingCta) {
+                floatingCta.addEventListener("click", function() {
+                    pushConversionEvent("book_now_click", { cta_location: "floating_bar" });
+                });
+            }
+
+            var mailtoLink = document.getElementById("mailto-fallback-link");
+            if (mailtoLink) {
+                mailtoLink.addEventListener("click", function() {
+                    pushConversionEvent("contact_mailto_click", { method: "mailto" });
+                });
+            }
+
+            // Listen for FareHarbor Lightframe Booking Funnel Events (postMessage)
+            window.addEventListener("message", function(event) {
+                if (!event || !event.origin || event.origin.indexOf("fareharbor.com") === -1) return;
+                var data = event.data;
+                if (typeof data === "string") {
+                    try { data = JSON.parse(data); } catch (e) { data = { raw: data }; }
+                }
+                if (!data || typeof data !== "object") return;
+
+                var action = (data.event || data.type || data.action || data.raw || "").toString().toLowerCase();
+                if (action.indexOf("open") !== -1 || action.indexOf("lightframe") !== -1) {
+                    pushConversionEvent("fh_checkout_open", { fh_action: action });
+                } else if (action.indexOf("book") !== -1 || action.indexOf("complete") !== -1 || action.indexOf("purchase") !== -1 || action.indexOf("confirm") !== -1) {
+                    pushConversionEvent("fh_booking_complete", { fh_action: action, currency: "EUR" });
+                } else if (action.indexOf("item") !== -1 || action.indexOf("availability") !== -1) {
+                    pushConversionEvent("fh_item_select", { fh_action: action });
+                }
+            }, false);
+
+            // Hide floating Book Now button while FareHarbor booking zone is visible
+            var bookingZone = document.getElementById("booking-zone");
+            if (floatingCta && "IntersectionObserver" in window && bookingZone) {
+                var bookingObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            floatingCta.classList.add("is-hidden");
+                        } else {
+                            floatingCta.classList.remove("is-hidden");
+                        }
+                    });
+                }, { threshold: 0.12 });
+
+                bookingObserver.observe(bookingZone);
+            }
+
+            // Open target drawer if visited via shareable URL hash (#tours, #info, #faq, #reviews, #calendar, #contact)
+            var rawHash = (window.location.hash || "").replace("#", "").toLowerCase();
+            if (rawHash === "tours" || rawHash === "info" || rawHash === "faq" || rawHash === "reviews" || rawHash === "calendar" || rawHash === "contact") {
+                setTimeout(function() {
+                    navTo(rawHash, true);
+                }, 60);
+            }
+        })();
     </script>
     <script src="https://fareharbor.com/embeds/api/v1/?autolightframe=yes"></script>
 </body>
