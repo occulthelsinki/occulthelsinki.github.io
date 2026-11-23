@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://occulthelsinki.github.io/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <loc>https://occulthelsinki.com/</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://occulthelsinki.com/00-occult-helsinki-walking-tour-helsinki-cathedral.webp</image:loc>
+      <image:title>Occult Helsinki Walking Tour at Senate Square and Helsinki Cathedral</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://occulthelsinki.com/02-all-seeing-eye-freemasonry-senate-square-helsinki.webp</image:loc>
+      <image:title>Hidden Architectural Symbolism in Central Helsinki</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://occulthelsinki.com/03-national-library-of-finland-occult-helsinki-tour.webp</image:loc>
+      <image:title>National Library of Finland on the Occult Helsinki Walking Tour</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://occulthelsinki.com/11-st-johns-church-johanneksenkirkko-occult-helsinki-tour.webp</image:loc>
+      <image:title>St. John's Church in Helsinki Design District</image:title>
+    </image:image>
   </url>
 </urlset>
