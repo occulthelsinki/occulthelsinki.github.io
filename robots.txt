@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://occulthelsinki.github.io/sitemap.xml
+Sitemap: https://occulthelsinki.com/sitemap.xml
