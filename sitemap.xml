@@ -3,24 +3,50 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://occulthelsinki.com/</loc>
-    <lastmod>2026-11-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-11-24</lastmod>
     <image:image>
       <image:loc>https://occulthelsinki.com/00-occult-helsinki-walking-tour-helsinki-cathedral.webp</image:loc>
       <image:title>Occult Helsinki Walking Tour at Senate Square and Helsinki Cathedral</image:title>
     </image:image>
     <image:image>
       <image:loc>https://occulthelsinki.com/02-all-seeing-eye-freemasonry-senate-square-helsinki.webp</image:loc>
-      <image:title>Hidden Architectural Symbolism in Central Helsinki</image:title>
+      <image:title>All-Seeing Eye Architectural Symbolism near Senate Square in Helsinki</image:title>
     </image:image>
     <image:image>
       <image:loc>https://occulthelsinki.com/03-national-library-of-finland-occult-helsinki-tour.webp</image:loc>
       <image:title>National Library of Finland on the Occult Helsinki Walking Tour</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://occulthelsinki.com/04-national-library-finland-cupola-hall-helsinki-tour.webp</image:loc>
+      <image:title>Cupola Hall at the National Library of Finland</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://occulthelsinki.com/05-national-library-finland-rotunda-glass-dome-helsinki.webp</image:loc>
+      <image:title>Rotunda Glass Dome inside the National Library of Finland</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://occulthelsinki.com/06-old-market-hall-vanha-kauppahalli-helsinki-tour.webp</image:loc>
+      <image:title>Old Market Hall (Vanha Kauppahalli) on the Occult Helsinki Tour</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://occulthelsinki.com/07-helsinki-observatory-hill-tahtitorninvuori-walking-tour.webp</image:loc>
+      <image:title>Helsinki Observatory Hill (Tähtitorninvuori) Panoramic Viewpoint</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://occulthelsinki.com/08-tarotpuoti-tarot-boutique-esoteric-helsinki-tour.webp</image:loc>
+      <image:title>Independent Esoteric Boutique on the Occult Helsinki Walking Tour</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://occulthelsinki.com/09-aioni-occult-bookshop-esoteric-books-helsinki.webp</image:loc>
+      <image:title>Occult Bookshop in Central Helsinki</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://occulthelsinki.com/11-st-johns-church-johanneksenkirkko-occult-helsinki-tour.webp</image:loc>
-      <image:title>St. John's Church in Helsinki Design District</image:title>
+      <image:title>St. John's Church (Johanneksenkirkko) in Helsinki Design District</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://occulthelsinki.com/Henri_Tahvanainen_Actor_VO_Headshot_Square.webp</image:loc>
+      <image:title>Henri Tahvanainen — Local Finnish Performer and Occult Helsinki Tour Guide</image:title>
     </image:image>
   </url>
 </urlset>
